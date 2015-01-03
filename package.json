@@ -1,0 +1,38 @@
+{
+  "name": "cryptox",
+  "version": "0.1.0",
+  "description": "Common API wrapper for REST API for multiple crypto currency exchanges",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dutu/cryptox.git"
+  },
+  "keywords": [
+    "bitcoin",
+    "api",
+    "bitstamp",
+    "bitx",
+    "btc-e",
+    "btce",
+    "crypto",
+    "exchange"
+  ],
+  "author": "adrian.clinciu@outlook.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dutu/cryptox/issues"
+  },
+  "homepage": "https://github.com/dutu/cryptox",
+  "dependencies": {
+    "bitstamp": ">=0.1.9",
+    "moment": "~2.8.4",
+    "bignumber.js": "~2.0.0",
+    "lodash": "~2.4.1"
+  }
+}
