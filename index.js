@@ -3,10 +3,10 @@
  */
 
 var BITSTAMP = require('bitstamp');
-var util = require('lib/util.js'); //custom functions
+var util = require('./lib/util.js'); //custom functions
 
 
-function Cryptox (exchange, apiKey, secret, user_id) {
+function Cryptox (exchange, apiKey, apiSecret, user_id) {
     var self = this;
     self.me = "Bitstamp";
     self.config = {
@@ -15,8 +15,8 @@ function Cryptox (exchange, apiKey, secret, user_id) {
     exchange = "bitstamp";
     var bitstampPublic = new BITSTAMP();
     var bitstampPrivate;
-    if (typeof apiKey === "string" && typeof secret === "string" && typeof user_id === "string" ) {
-        bitstampPrivate = new BITSTAMP(apiKey, secrrt. user_id);
+    if (typeof apiKey === "string" && typeof apiSecret === "string" && typeof user_id === "string" ) {
+        bitstampPrivate = new BITSTAMP(apiKey, apiSecret, user_id);
     } else {
         bitstampPrivate = null;
     }
