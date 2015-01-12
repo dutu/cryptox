@@ -1,7 +1,9 @@
 cryptox
 =======
 
-cryptox is a node.js wrapper for REST API for multiple crypto currency exchanges
+cryptox is a node.js wrapper for REST API for multiple crypto currency exchanges.
+
+cryptox manages API communication with different exchanges and  provides common methods for all exchanges. All differences between the different API's are abstracted away.
 
 ## Install ##
 
@@ -11,38 +13,47 @@ cryptox is a node.js wrapper for REST API for multiple crypto currency exchanges
 
 ```js
 var Cryptox = require('cryptox');
-var account = new Cryptox('bitstamp', your_key, your_secret, your_userId);
+var account = new Cryptox('bitstamp', {key: 'your_key', secret: 'your_secret', userId: 'your_userId'});
 	
-account.getBalance(function(err, balance){
+account.getBalance({}, function(err, balance){
 	console.log(balance);
 });
 ```
 
-## Implemented methods ##
+## Supported Exchanges and Implemented methods ##
 
-|Exchange   |[getTicker](#getTicker)|[getOrderBook](#getOrderBook)|[getTrades](#getTrades)|[getFee](#getFee)|[getTransactions](#getTransactions)|[getBalance](#getBalance)|[getOpenOrders](#getOpenOrders)|[postSellOrder](#postSellOrder)|[postBuyOrder](#postBuyOrder)|[cancelOrder](#cancelOrder)|
+|Exchange   |[getTicker](#getticker)|[getOrderBook](#getorderbook)|[getTrades](#gettrades)|[getFee](#getfee)|[getTransactions](#gettransactions)|[getBalance](#getbalance)|[getOpenOrders](#getopenorders)|[postSellOrder](#postsellorder)|[postBuyOrder](#postbuyorder)|[cancelOrder](#cancelorder)|
 |---		|    :-:                |    :-:                      |    :-:                |   :-:           |    :-:                            |    :-:                  |    :-:                        |    :-:                        |    :-:                      |    :-:                    |
 |Bitstamp	|                       |                             |                       |                 |                                   |                         |                               |                               |                             |                           |
 
-
+*if you are interested in extending cryptox for different exchange or method not yet implemented, check out the document [exchanges.md](exchanges.md)*
 
 ## Constructor
 
 ```js
-Cryptox(exchangeSlug [, key, secret [, userID]])
+Cryptox(exchangeSlug [, options])
 ```
 
-`exchangeSlug` is required and should have one of the following values in table below.
+#### Parameters
+
+* `exchangeSlug` is required and should have one of the following values in table below.
 
 |Exchange name  | `exchangeSlug` | Authentication            |
 | ---	        |    ---         |    ---                    |         
-| Bitstamp      | `'bitstamp'`     | `key`, `secret`, `userID` |
+| Bitstamp      | `'bitstamp'`     | `key`, `secret`, `userId` |
 | BitX          | `'bitx'`         | `key`, `secret`           |
 | BTC-e         | `'btce'`         | `key`, `secret`           |
-| CEX.io        | `'cexio'`        | `key`, `secret`, `userID` |
+| CEX.io        | `'cexio'`        | `key`, `secret`, `userId` |
 
 
-`key`, `secret` and `userID` are optional and should be used when calling methods / API calls that require authentication. Missing or incorrect key causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
+
+
+`key`, `secret` and `userId` are optional and should be used when calling methods / API calls that require authentication. Missing or incorrect key causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
+
+#### Example
+```js
+var account = new Cryptox('bitstamp', your_key, your_secret, your_userId);
+```
 
 ## Methods
 
@@ -71,26 +82,58 @@ Following methods require authentication
 |placeBuyOrder  |     x                     |
 |cancelOrder    |     x                     |
 
-When calling a method that requires authentication, the object should have been constructed with parameters `key`, `secret` and (optional) `userID`.
+When calling a method that requires authentication, the object should have been constructed with parameters `key`, `secret` and (optional) `userId`.
+
 
 ### getTicker
 
 Returns the latest ticker indicators
 
 ```js
-getTicker(callback)
+cryptox.getTicker(options, callback);
 ```
+#### Parameters
 
+* `options` parameter is not used at the moment and can have any value
+* `callback` The arguments passed to callback function are 
+    * an `error` object or `null` if no error occured
+    * an object containing the data returned by the API
+    
+    ```js
+	{ 
+		timestamp: <number>,
+		data: {
+			pair: <string>,      // the pair (market) for which the data is applicable 
+            last: <float>,
+            bid: <float>,
+            ask: <float>,
+            volume: <float>
+		}
+	}
+	
+    ```   
 
-Example:
+#### Example
+
 ```js
-exchange.getTicker(function(err, ticker){
-	console.log(ticker);
+account.getTicker({pair: 'BTCUSD'}, function (err, ticker) {
+if (!err)
+    console.log(ticker);
 });
 ```
-Response example:
-
-
+Result:
+```js
+{
+    "timestamp": 1420935203,
+    "data": {
+        "pair": "BTCUSD",
+        "last": 272.064,
+        "bid": 272.064,
+        "ask": 273.395,
+        "volume": 7087.93047
+    }
+}
+```
 
 ### getOrderBook
 
@@ -100,9 +143,49 @@ Returns a list of bids and asks in the order book. Ask orders are sorted by pric
 
 Returns a list of the most recent trades.
 
+
 ### getFee
 
-Fee is a float that represents the amount the exchange takes out of the orders. If an exchange has a fee of 0.2% this should be `0.0002`.
+```js
+cryptox.getFee(options, callback);
+```
+Returns a fee, which is a float that represents the amount the exchange takes out of the orders. If an exchange has a fee of 0.2% this would be `0.002`.
+
+#### Parameters
+
+* `options` parameter is not used at the moment and can have any value
+* `callback` The arguments passed to callback function are 
+    * an `error` object or `null` if no error occured
+    * an object containing the data returned by the API
+    
+    ```js
+	{ 
+		timestamp: <string>,
+		data: {
+			pair: <string>,      // the pair (market) for which the fee is applicable 
+			fee: <float>         // that represents the amount the exchange takes out of the orders
+		}
+	}
+	
+    ```   
+#### Example
+
+```js
+	var fee = account.getFee({pair: 'BTCUSD'}, function (err, fee) {
+        if (!err)
+		    console.log(fee);
+	});
+```
+Result:
+```js
+	{ 
+		timestamp: '1420766742',
+		data: {
+			pair: 'BTCUSD',
+			fee: 0.002
+		}
+	}
+```
 
 ### getTransactions
  
@@ -112,7 +195,7 @@ Fee is a float that represents the amount the exchange takes out of the orders. 
 
 ### postSellOrder
 
-### placeBuyOrder
+### postBuyOrder
 
 ### cancelOrder
 
