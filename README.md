@@ -33,7 +33,7 @@ account.getBalance({}, function(err, balance){
 |[getOpenOrders](#getopenorders)    |          |      |       |        |
 |[postSellOrder](#postsellorder)    |          |      |       |        |
 |[postBuyOrder](#postbuyorder)      |          |      |       |        |
-[cancelOrder](#cancelorder)         |          |      |       |        |
+|[cancelOrder](#cancelorder)        |          |      |       |        |
 
 
 *if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
