@@ -22,11 +22,21 @@ account.getBalance({}, function(err, balance){
 
 ## Supported Exchanges and Implemented methods ##
 
-|Exchange   |[getTicker](#getticker)|[getOrderBook](#getorderbook)|[getTrades](#gettrades)|[getFee](#getfee)|[getTransactions](#gettransactions)|[getBalance](#getbalance)|[getOpenOrders](#getopenorders)|[postSellOrder](#postsellorder)|[postBuyOrder](#postbuyorder)|[cancelOrder](#cancelorder)|
-|---		|    :-:                |    :-:                      |    :-:                |   :-:           |    :-:                            |    :-:                  |    :-:                        |    :-:                        |    :-:                      |    :-:                    |
-|Bitstamp	|                       |                             |                       |                 |                                   |                         |                               |                               |                             |                           |
+|                                   | Bitstamp | BitX | BTC-e | CEX.io | 
+|	---                             |   :-:    | :-:  |  :-:  |  :-:   |
+|[getTicker](#getticker)            |          |      |   √   |        |
+|[getOrderBook](#getorderbook)      |          |      |       |        |
+|[getTrades](#gettrades)            |          |      |       |        |
+|[getFee](#getfee)                  |          |      |   √   |        |
+|[getTransactions](#gettransactions)|          |      |       |        |
+|[getBalance](#getbalance)          |          |      |       |        |
+|[getOpenOrders](#getopenorders)    |          |      |       |        |
+|[postSellOrder](#postsellorder)    |          |      |       |        |
+|[postBuyOrder](#postbuyorder)      |          |      |       |        |
+[cancelOrder](#cancelorder)         |          |      |       |        |
 
-*if you are interested in extending cryptox for different exchange or method not yet implemented, check out the document [exchanges.md](exchanges.md)*
+
+*if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
 
 ## Constructor
 
@@ -40,10 +50,10 @@ Cryptox(exchangeSlug [, options])
 
 |Exchange name  | `exchangeSlug` | Authentication            |
 | ---	        |    ---         |    ---                    |         
-| Bitstamp      | `'bitstamp'`     | `key`, `secret`, `userId` |
-| BitX          | `'bitx'`         | `key`, `secret`           |
-| BTC-e         | `'btce'`         | `key`, `secret`           |
-| CEX.io        | `'cexio'`        | `key`, `secret`, `userId` |
+| Bitstamp      | `'bitstamp'`   | `key`, `secret`, `userId` |
+| BitX          | `'bitx'`       | `key`, `secret`           |
+| BTC-e         | `'btce'`       | `key`, `secret`           |
+| CEX.io        | `'cexio'`      | `key`, `secret`, `userId` |
 
 
 

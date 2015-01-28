@@ -1,7 +1,3 @@
-/**
- * Created by dutu on 2015-01-03.
- */
-
 var lang = "en";
 var errMsg = require("./lib/errors_" +lang);
 
@@ -25,9 +21,5 @@ function Cryptox (exchangeSlug, options) {
             callback(err, fee);
         });
     }
-
-
-
 }
-
 module.exports = Cryptox;
