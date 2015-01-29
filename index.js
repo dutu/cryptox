@@ -4,7 +4,12 @@
 function Cryptox (exchangeSlug, options) {
     var self = this;
     var Exchange = require("./lib/" + exchangeSlug);
+    var locales = require("./lib/locales");
+
     self.properties = Exchange.prototype.properties;
+    self.options = options;
+    if (!self.options.hasOwnProperty(lang))
+        self.options["lang"]="en";            // set default language to "en" (english)
 
     var exchange = new Exchange(options);
 
