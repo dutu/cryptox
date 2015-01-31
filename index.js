@@ -8,7 +8,7 @@ function Cryptox (exchangeSlug, options) {
 
     self.properties = Exchange.prototype.properties;
     self.options = options;
-    if (!self.options.hasOwnProperty(lang))
+    if (!self.options.hasOwnProperty("lang"))
         self.options["lang"]="en";            // set default language to "en" (english)
 
     var exchange = new Exchange(options);
