@@ -30,7 +30,7 @@ account.getBalance({}, function(err, balance){
 |[getFee](#getfee)                  |          |      |   √   |        |
 |[getTransactions](#gettransactions)|          |      |       |        |
 |[getBalance](#getbalance)          |          |      |       |        |
-|[getOpenOrders](#getopenorders)    |          |      |       |        |
+|[getOpenOrders](#getopenorders)    |          |      |   √   |        |
 |[postSellOrder](#postsellorder)    |          |      |       |        |
 |[postBuyOrder](#postbuyorder)      |          |      |       |        |
 |[cancelOrder](#cancelorder)        |          |      |       |        |
@@ -112,6 +112,7 @@ cryptox.getTicker(options, callback);
     ```js
 	{ 
 		timestamp: <number>,
+		error: <string>
 		data: {
 			pair: <string>,      // the pair (market) for which the data is applicable 
             last: <float>,
@@ -135,6 +136,7 @@ Result:
 ```js
 {
     "timestamp": 1420935203,
+    "error": "",
     "data": {
         "pair": "BTCUSD",
         "last": 272.064,
@@ -148,6 +150,51 @@ Result:
 ### getOrderBook
 
 Returns a list of bids and asks in the order book. Ask orders are sorted by price ascending. Bid orders are sorted by price descending. Note that multiple orders at the same price are not necessarily conflated.
+
+```js
+cryptox.getOrderBook(options, callback);
+```
+#### Parameters
+
+* `options` 
+       * `pair` The trading pair
+* `callback` The arguments passed to callback function are 
+    * an `error` object or `null` if no error occured
+    * an object containing the data returned by the API
+    
+    ```js
+	{ 
+		timestamp: <number>,
+		error: <string>
+		data: {
+            asks: <array>,
+            bids: <array>,
+		}
+	}
+	
+    ```   
+
+#### Example
+
+```js
+account.getOrderBook({pair: 'BTCUSD'}, function (err, orderBook) {
+if (!err)
+    console.log(orderBook);
+});
+```
+Result:
+```js
+{
+    "timestamp": "1422749694",
+    "error": "",
+    "data": {
+        "pair": "BTCUSD",
+        "asks": [[212.962,0.014],[213,1.46820994],[213.226,3.78630967]],
+        "bids": [[212.885,0.014],[212.827,0.00414864],[212.74,6.685]]
+    }
+}
+```
+
 
 ### getTrades
 
@@ -181,20 +228,20 @@ Returns a fee, which is a float that represents the amount the exchange takes ou
 #### Example
 
 ```js
-	var fee = account.getFee({pair: 'BTCUSD'}, function (err, fee) {
-        if (!err)
-		    console.log(fee);
-	});
+var fee = account.getFee({pair: 'BTCUSD'}, function (err, fee) {
+    if (!err)
+	    console.log(fee);
+});
 ```
 Result:
 ```js
-	{ 
-		timestamp: '1420766742',
-		data: {
-			pair: 'BTCUSD',
-			fee: 0.002
-		}
+{ 
+	timestamp: '1420766742',
+	data: {
+		pair: 'BTCUSD',
+		fee: 0.002
 	}
+}
 ```
 
 ### getTransactions
@@ -202,6 +249,80 @@ Result:
 ### getBalance
 
 ### getOpenOrders
+
+```js
+cryptox.getFee(options, callback);
+```
+Returns the open orders
+
+#### Parameters
+
+* `options` 
+    * `pair` (optional) The trading pair. If not specified all active orders are returned
+* `callback` The arguments passed to callback function are 
+    * an `error` object or `null` if no error occured
+    * an object containing the data returned by the API
+    
+   ```js
+	{ 
+		timestamp: <string>,          // UTC UNIX timestamp 
+		error: <string>
+		data: [                       // array of orders
+            {
+                "orderId": <number>,
+                "pair": <string>,
+                "type": <string>,
+                "amount": <number>,
+                "rate": <number>,
+                "status": <number>,
+                "timestamp": <number>
+            },
+            {
+                ...
+            }
+		}
+	}
+	
+    ```   
+#### Example
+
+```js
+var fee = account.getOpenOrders({pair: 'LTCUSD'}, function (err, openOrders) {
+    if (!err)
+	    console.log(openOrders);
+});
+```
+Result:
+```js
+{
+    "timestamp": 1422824716,
+    "error": "",
+    "data": [
+        {
+            "orderId": "563489985",
+            "pair": "LTCUSD",
+            "type": "buy",
+            "amount": 1,
+            "rate": 0.1,
+            "status": 0,
+            "timestamp": 1422818595
+        },
+        {
+            "orderId": "563612426",
+            "pair": "LTCUSD",
+            "type": "buy",
+            "amount": 2,
+            "rate": 0.5,
+            "status": 0,
+            "timestamp": 1422824393
+        }        
+    ]
+}
+```
+
+
+
+
 
 ### postSellOrder
 
