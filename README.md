@@ -79,26 +79,28 @@ Example result:
 # Supported Exchanges and Implemented methods #
 *if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
 
-                                   |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io| 
-   ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |
-[getTicker](#getticker)            |        |   FI         |    | FI  |      |
-[getOrderBook](#getorderbook)      |        |FI<sup>1</sup>|    | FI  |      |
-[getTrades](#gettrades)            |        |              |    |     |      |
-[getFee](#getfee)                  |        |              |    | FI  |      |
-[getTransactions](#gettransactions)|        |              |    |     |      |
-[getBalance](#getbalance)          |        |              |    |     |      |
-[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |
-[postSellOrder](#postsellorder)    |        |              |    |     |      |
-[postBuyOrder](#postbuyorder)      |        |              |    |     |      |
-[cancelOrder](#cancelorder)        |        |              |    |     |      |
+                                   |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR<sup>1</sup>| 
+   ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
+[getTicker](#getticker)            |        |   FI         | FI | FI  |      |FI<sup>2</sup> |
+[getOrderBook](#getorderbook)      |        |FI<sup> </sup>| FI | FI  |      |      —        |
+[getTrades](#gettrades)            |        |              |    |     |      |      —        |
+[getFee](#getfee)                  |        |              |    | FI  |      |      —        |
+[getTransactions](#gettransactions)|        |              |    |     |      |      —        |
+[getBalance](#getbalance)          |        |              |    |     |      |      —        |
+[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |      —        |
+[postSellOrder](#postsellorder)    |        |              |    |     |      |      —        |
+[postBuyOrder](#postbuyorder)      |        |              |    |     |      |      —        |
+[cancelOrder](#cancelorder)        |        |              |    |     |      |      —        |
 
 
 >**FI** = Fully Implemented
 >**FR** = Fully Implemented, but restrictions apply (refer to notes below)
 >**PI** = Partially Implemented (refer to notes below)
->**NS** = Not Supported
+>**—** = Not Supported
 
-><sup>1</sup> Parameter `time` is not supported (time frame for transaction export. Default: hour)
+><sup>1</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat curencies 
+><sup>2</sup> returns the exchange rate (see <sup>1</sup> above) 
+
 
 # Changelog
 
@@ -109,6 +111,8 @@ Example result:
 
 
 **IMPORTANT NOTE**: Major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
+
+See detailed Changelog (changelog.md)
 
 
 # Documentation
