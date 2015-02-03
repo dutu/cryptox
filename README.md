@@ -27,9 +27,12 @@ cryptox
 * [License](#license) 
 
 
+
 # Install #
 
     npm install cryptox
+
+
 
 # Example #
 
@@ -72,28 +75,30 @@ Example result:
 ```
 
 
+
 # Supported Exchanges and Implemented methods #
 *if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
 
-                                   | Bitfinex |Bitstamp | BitX | BTC-e        | CEX.io | 
-   ---                             |   :-:    | :-:     | :-:  |  :-:         |  :-:   |
-[getTicker](#getticker)            |          |         |      |  FI          |        |
-[getOrderBook](#getorderbook)      |          |         |      |              |        |
-[getTrades](#gettrades)            |          |         |      |              |        |
-[getFee](#getfee)                  |          |         |      |   FI         |        |
-[getTransactions](#gettransactions)|          |         |      |              |        |
-[getBalance](#getbalance)          |          |         |      |              |        |
-[getOpenOrders](#getopenorders)    |          |         |      |   FI         |        |
-[postSellOrder](#postsellorder)    |          |         |      |              |        |
-[postBuyOrder](#postbuyorder)      |          |         |      |              |        |
-[cancelOrder](#cancelorder)        |          |         |      |              |        |
+                                   |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io| 
+   ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |
+[getTicker](#getticker)            |        |   FI         |    | FI  |      |
+[getOrderBook](#getorderbook)      |        |FI<sup>1</sup>|    | FI  |      |
+[getTrades](#gettrades)            |        |              |    |     |      |
+[getFee](#getfee)                  |        |              |    | FI  |      |
+[getTransactions](#gettransactions)|        |              |    |     |      |
+[getBalance](#getbalance)          |        |              |    |     |      |
+[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |
+[postSellOrder](#postsellorder)    |        |              |    |     |      |
+[postBuyOrder](#postbuyorder)      |        |              |    |     |      |
+[cancelOrder](#cancelorder)        |        |              |    |     |      |
 
 
-**FI** = Fully Implemented
-**FR** = Fully Implemented, but restrictions apply (refer to notes)
-**PI** = Partially Implemented (refer to notes)
-**NS** = Not supported
+>**FI** = Fully Implemented
+>**FR** = Fully Implemented, but restrictions apply (refer to notes below)
+>**PI** = Partially Implemented (refer to notes below)
+>**NS** = Not Supported
 
+><sup>1</sup> Parameter `time` is not supported (time frame for transaction export. Default: hour)
 
 # Changelog
 
@@ -102,7 +107,6 @@ Example result:
 > 2. MINOR version increments when functionality in a backwards-compatible manner are introduced
 > 3. PATCH version increments when backwards-compatible bug fixes are made
 
- 
 
 **IMPORTANT NOTE**: Major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
 
@@ -123,31 +127,29 @@ Depending on the parameters used, two types of objects can be created
 
 #### Examples
 ```js
-var account = new Cryptox("bitstamp", {key: "your_key", secret: "your_secret", userId: "your_userId"});
+var account = new Cryptox("bitstamp", {key: "yourKey", secret: "yourSecret", username: "yourUserId"});
 ```
 
 ```js
 var exchange = new Cryptox("bitstamp");
 ```
 
-
 #### Arguments
 
 * `exchangeSlug` is required and should have one values in table below
-* `options` is optional; for authentication required parameters indicated in table below
+* `options` is used to pass parameters required for authentication, as indicated in table below
 
-|Exchange name  | `exchangeSlug` | Authentication            |
-| ---	        |    ---         |    ---                    |         
-| Bitstamp      | `"bitstamp"`   | `key`, `secret`, `userId` |
-| BitX          | `"bitx"`       | `key`, `secret`           |
-| BTC-e         | `"btce"`       | `key`, `secret`           |
-| CEX.io        | `"cexio"`      | `key`, `secret`, `userId` |
+|Exchange name  | `exchangeSlug` | Authentication              |
+| ---	        |    ---         |    ---                      |         
+| Bitstamp      | `"bitstamp"`   | `key`, `secret`, `username` |
+| BitX          | `"bitx"`       | `key`, `secret`             |
+| BTC-e         | `"btce"`       | `key`, `secret`             |
+| CEX.io        | `"cexio"`      | `key`, `secret`, `username` |
 
-`key`, `secret` and `userId` are optional and should be used when calling methods / API calls that require authentication. Missing or incorrect key causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
+`options' should be used when calling methods that require authentication. Missing or incorrect key causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
 
 
 ## Methods
-
 
 #### Examples
 
@@ -164,15 +166,15 @@ getTicker({pair: "BTCUSD"}, function (err, result) {
 
 ### Arguments
 
-1. `options` is a JSON object containing parameters specific for each API call
-2. `callback` is executed inside the method once the API response is received from the exchange 
+* `options` is a JSON object containing parameters specific for each API call
+* `callback` is executed inside the method once the API response is received from the exchange 
 
 #### Callbacks
 
 The arguments passed to the callback function for each method are:
 
-1. `err` is an error object or `null` if no error occurred.
-2. `result` is JSON object containing the response.
+* `err` is an error object or `null` if no error occurred.
+* `result` is JSON object containing the response.
 
     Example result:
     ```js
@@ -190,12 +192,14 @@ The arguments passed to the callback function for each method are:
          ]
     }
     ```
-                |  Type  | Description |
-     ---	    | ---    | ---         |
-    `timestamp`     | string | ISO 8601 date & time |
-    `error`         | string | error message or `""` if no error |
-    `data`          | array  | array of one or more JSON objects containig the API result |
+   
+                |  Type  | Description
+     ---     	| ---    | ---                                                        
+    `timestamp` | string | ISO 8601 date & time                                       
+    `error`     | string | error message or `""` if no error                         
+    `data`      | array  | array of one or more JSON objects containig the API result 
     
+   
     
 ### Authentication
 
@@ -214,8 +218,7 @@ Following methods require authentication
 |placeBuyOrder  |     x                     |
 |cancelOrder    |     x                     |
 
-**Notes:**
-1. BTC-e does not require authentication for `getFee`, since the fee is fixed amount
+><sup>1</sup> BTC-e does not require authentication for `getFee`, since the fee is fixed amount
 
 When calling a method that requires authentication, the object should have been constructed with parameters `key`, `secret` and (optional) `userId`.
 
@@ -227,8 +230,8 @@ Returns the latest ticker indicators.
 ```js
 getTicker(options, callback);
 ```
-#### Example
 
+#### Example
 ```js
 exchange.getTicker({pair: "BTCUSD"}, function (err, ticker) {
     if (!err)
@@ -261,24 +264,33 @@ Parameter  |  Type  | Required for | Description |
 `pair`     | string |   BTC-e      | trading pair|
 
 
-* `callback` The arguments passed to callback function are 
-    * an `error` object or `null` if no error occurred
-    * an object containing the data returned by the API (response)
+* `callback` see [Callbacks](#callbacks)
 
 #### Response
 
-Parameter   |  Type   | Required  | Description                       |
- ---	    | ---     | ---       | ---                               |
-`pair`      | String  | mandatory | trading pair                      |
-`last`      | Number  | mandatory |                                   |
-`bid`       | Number  | mandatory |                                   |
-`ask`       | Number  | mandatory |                                   |
-`volume`    | Number  | mandatory |                                   |
+Parameter   |  Type   | Description
+ ---	    | ---     | ---         
+`pair`      | String  | trading pair
+`last`      | Number  | last price
+`bid`       | Number  | highest buy order 
+`ask`       | Number  | lowest sell order
+`volume`    | Number  | last 24 hours volume
 
+Additional (optional) response parameters
+
+Parameter   |  Type   | Availability / Description 
+ ---	    | ---     | ---
+`high`      | Number  | <sup>1</sup> last 24 hours price high
+`low`       | Number  | <sup>1</sup> last 24 hours price low
+`vwap`      | Number  | <sup>1</sup> last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
+
+> <sum>1</sup> Bitstamp
 
 ### getOrderBook
 
-Returns a list of bids and asks in the order book. Ask orders are sorted by price ascending. Bid orders are sorted by price descending. Note that multiple orders at the same price are not necessarily conflated.
+Returns a list of bids and asks in the order book. 
+Ask orders are sorted by price ascending. Bid orders are sorted by price descending. 
+Note that multiple orders at the same price are not necessarily conflated.
 
 ```js
 cryptox.getOrderBook(options, callback);
@@ -292,7 +304,7 @@ exchange.getOrderBook({pair: "BTCUSD"}, function (err, orderBook) {
         console.log(orderBook);
 });
 ```
-Result:
+Example result:
 ```js
 {
     "timestamp": ""2015-02-03T00:01:48+00:00"",
@@ -315,10 +327,8 @@ Parameter  |  Type  | Required    | Description |
  ---	   | ---    |   :-:       | ---         |
 `pair`     | string |All exchanges| trading pair|
 
-* `callback` The arguments passed to callback function are 
-    * an `error` object or `null` if no error occurred
-    * an object containing the data returned by the API
-    
+* `callback` see [Callbacks](#callbacks)
+
 #### Response
 
 Parameter   |  Type   |Required| Description                       |
@@ -333,7 +343,6 @@ Parameter   |  Type   |Required| Description                       |
 ### getTrades
 
 Returns a list of the most recent trades.
-
 
 
 ### getFee
@@ -351,7 +360,7 @@ account.getFee({pair: "BTCUSD"}, function (err, fee) {
 	    console.log(fee);
 });
 ```
-Result:
+Example result:
 ```js
 { 
 	timestamp: "2015-02-01T20:59:53+00:00",
@@ -367,16 +376,13 @@ Result:
 #### Arguments
 
 * `options` parameter is not used at the moment and can have any value
-* `callback` The arguments passed to callback function are 
-    * an `error` object or `null` if no error occurred
-    * an object containing the data returned by the API
+* `callback` see [Callbacks](#callbacks)
+
 
 ### getTransactions
  
 
-
 ### getBalance
-
 
 
 ### getOpenOrders
@@ -386,7 +392,6 @@ getOpenOrders(options, callback);
 ```
 Returns the open orders
 
-
 #### Example
 
 ```js
@@ -395,7 +400,7 @@ account.getOpenOrders({pair: "LTCUSD"}, function (err, openOrders) {
 	    console.log(openOrders);
 });
 ```
-Result:
+Example result:
 ```js
 {
     "timestamp": "2015-02-03T00:03:27+00:00",
@@ -431,23 +436,17 @@ Parameter  |  Type  | Required    | Description |
  ---	   | ---    |   :-:       | ---         |
 `pair`     | string |  No         | trading pair|
 
-
     
-* `callback` The arguments passed to callback function are 
-    * an `error` object or `null` if no error occurred
-    * an object containing the data returned by the API
-    
-
+* `callback` see [Callbacks](#callbacks)    
 
 ### postSellOrder
-
 
 
 ### postBuyOrder
 
 
-
 ### cancelOrder
+
 
 
 # License #
