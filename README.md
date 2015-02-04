@@ -81,8 +81,9 @@ Example result:
 
                                    |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR<sup>1</sup>| 
    ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
-[getTicker](#getticker)            |        |   FI         | FI | FI  |      |FI<sup>2</sup> |
-[getOrderBook](#getorderbook)      |        |FI<sup> </sup>| FI | FI  |      |      —        |
+[getPrice](#getprice)              |        |   FI         | FI | FI  |      |     FI        | 
+[getTicker](#getticker)            |        |   FI         | FI | FI  |      |      —        |
+[getOrderBook](#getorderbook)      |        |   FI         | FI | FI  |      |      —        |
 [getTrades](#gettrades)            |        |              |    |     |      |      —        |
 [getFee](#getfee)                  |        |              |    | FI  |      |      —        |
 [getTransactions](#gettransactions)|        |              |    |     |      |      —        |
@@ -93,26 +94,26 @@ Example result:
 [cancelOrder](#cancelorder)        |        |              |    |     |      |      —        |
 
 
->**FI** = Fully Implemented
->**FR** = Fully Implemented, but restrictions apply (refer to notes below)
->**PI** = Partially Implemented (refer to notes below)
->**—** = Not Supported
+> **FI** = Fully Implemented  
+> **FR** = Fully Implemented, but restrictions apply (refer to notes below)  
+> **PI** = Partially Implemented (refer to notes below)  
+> **—** = Not Supported  
 
-><sup>1</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat curencies 
-><sup>2</sup> returns the exchange rate (see <sup>1</sup> above) 
+><sup>1</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat currencies   
+
 
 
 # Changelog
 
-> **cryptox** module uses semver (http://semver.org/) for versioning: MAJOR.MINOR.PATCH.
-> 1. MAJOR version increments when non-backwards compatible API changes are introduced
-> 2. MINOR version increments when functionality in a backwards-compatible manner are introduced
-> 3. PATCH version increments when backwards-compatible bug fixes are made
+> **cryptox** module uses semver (http://semver.org/) for versioning: MAJOR.MINOR.PATCH.  
+> 1. MAJOR version increments when non-backwards compatible API changes are introduced  
+> 2. MINOR version increments when functionality in a backwards-compatible manner are introduced  
+> 3. PATCH version increments when backwards-compatible bug fixes are made  
 
 
 **IMPORTANT NOTE**: Major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
 
-See detailed Changelog (changelog.md)
+See detailed [Changelog](changelog.md)
 
 
 # Documentation
@@ -209,12 +210,13 @@ The arguments passed to the callback function for each method are:
 
 Following methods require authentication
 
-|Method         | Requires authentication   |
-| ---	        |    :-:                    |
-|getTicker      |                           |
+|Method         | Requires authentication |
+| ---	        |    :-:                  |
+|getRate        |     <sup>1</sup>        |
+|getTicker      |                         |
 |getOrderBook   |                           |    
 |getTrades      |                           |
-|getFee         |     x<sup>1</sup>         |
+|getFee         |     x<sup>2</sup>         |
 |getTransactions|     x                     |
 |getBalance     |     x                     |
 |getOpenOrders  |     x                     |
@@ -222,9 +224,58 @@ Following methods require authentication
 |placeBuyOrder  |     x                     |
 |cancelOrder    |     x                     |
 
-><sup>1</sup> BTC-e does not require authentication for `getFee`, since the fee is fixed amount
+><sup>1</sup> Open Exchange Rates (OXR) requires authentication  
+><sup>2</sup> BTC-e does not require authentication for `getFee` (since the fee is fixed amount)
 
 When calling a method that requires authentication, the object should have been constructed with parameters `key`, `secret` and (optional) `userId`.
+
+
+### getRate
+
+Returns the exchange rate.
+
+```js
+getRate(options, callback);
+```
+
+#### Example
+```js
+exchange.getRate({pair: "EURUSD"}, function (err, rate) {
+    if (!err)
+        console.log(rate);
+});
+```
+Example result:
+```js
+{
+    "timestamp": "2015-02-04T20:01:09+00:00",
+    "error": "",
+    "data": [
+        {
+            "pair": "USDEUR",
+            "rate": 1.149807,
+        }
+     ]
+}
+```
+
+#### Arguments
+
+* `options`
+
+Parameter  |  Type  | Required for | Description |
+ ---	   | ---    |   :-:        | ---         |
+`pair`     | string |   All        | trading pair|
+
+
+* `callback` see [Callbacks](#callbacks)
+
+#### Response
+
+Parameter   |  Type   | Description
+ ---	    | ---     | ---         
+`pair`      | String  | trading pair
+`rate`      | Number  | rate
 
 
 ### getTicker
@@ -280,15 +331,17 @@ Parameter   |  Type   | Description
 `ask`       | Number  | lowest sell order
 `volume`    | Number  | last 24 hours volume
 
-Additional (optional) response parameters
+Optional response parameters
 
-Parameter   |  Type   | Availability / Description 
- ---	    | ---     | ---
-`high`      | Number  | <sup>1</sup> last 24 hours price high
-`low`       | Number  | <sup>1</sup> last 24 hours price low
-`vwap`      | Number  | <sup>1</sup> last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
+Parameter / Availability |  Type   | Description 
+ ---	                 | ---     | ---
+`high`<sup>1</sup>       | Number  | last 24 hours price high
+`low`<sup>1</sup>        | Number  | last 24 hours price low
+`vwap`<sup>1</sup>       | Number  | last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
 
 > <sum>1</sup> Bitstamp
+
+
 
 ### getOrderBook
 

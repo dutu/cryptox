@@ -13,6 +13,12 @@ function Cryptox (exchangeSlug, options) {
 
     var exchange = new Exchange(options);
 
+    self.getRate = function (options, callback){
+        exchange.getRate(options, function (err, rate){
+            callback(err, rate);
+        });
+    }
+
     self.getTicker = function (options, callback){
         exchange.getTicker(options, function (err, ticker){
             callback(err, ticker);
