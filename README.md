@@ -81,7 +81,7 @@ Example result:
 
                                    |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR<sup>1</sup>| 
    ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
-[getPrice](#getprice)              |        |   FI         | FI | FI  |      |     FI        | 
+[getrate](#getrate)                |        |   FI         | FI | FI  |      |     FI        | 
 [getTicker](#getticker)            |        |   FI         | FI | FI  |      |      —        |
 [getOrderBook](#getorderbook)      |        |   FI         | FI | FI  |      |      —        |
 [getTrades](#gettrades)            |        |              |    |     |      |      —        |
@@ -132,11 +132,11 @@ Depending on the parameters used, two types of objects can be created
 
 #### Examples
 ```js
-var account = new Cryptox("bitstamp", {key: "yourKey", secret: "yourSecret", username: "yourUserId"});
+var account = new Cryptox("btce", {key: "yourKey", secret: "yourSecret"});
 ```
 
 ```js
-var exchange = new Cryptox("bitstamp");
+var exchange = new Cryptox("btce");
 ```
 
 #### Arguments
@@ -144,14 +144,15 @@ var exchange = new Cryptox("bitstamp");
 * `exchangeSlug` is required and should have one values in table below
 * `options` is used to pass parameters required for authentication, as indicated in table below
 
-|Exchange name  | `exchangeSlug` | Authentication              |
-| ---	        |    ---         |    ---                      |         
-| Bitstamp      | `"bitstamp"`   | `key`, `secret`, `username` |
-| BitX          | `"bitx"`       | `key`, `secret`             |
-| BTC-e         | `"btce"`       | `key`, `secret`             |
-| CEX.io        | `"cexio"`      | `key`, `secret`, `username` |
+|Exchange name        | `exchangeSlug` | Authentication              |
+| ---	              |    ---         |    ---                      |         
+| Bitstamp            | `"bitstamp"`   | `key`, `secret`, `username` |
+| BitX                | `"bitx"`       | `key`, `secret`             |
+| BTC-e               | `"btce"`       | `key`, `secret`             |
+| CEX.io              | `"cexio"`      | `key`, `secret`, `username` |
+| Open Exchange Rates | `"oxr"`        | `key`                       |
 
-`options' should be used when calling methods that require authentication. Missing or incorrect key causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
+`options` should be used when calling methods that require authentication. Missing or incorrect key causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
 
 
 ## Methods
@@ -339,7 +340,7 @@ Parameter / Availability |  Type   | Description
 `low`<sup>1</sup>        | Number  | last 24 hours price low
 `vwap`<sup>1</sup>       | Number  | last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
 
-> <sum>1</sup> Bitstamp
+> <sup>1</sup> Bitstamp
 
 
 
