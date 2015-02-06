@@ -16,8 +16,8 @@ cryptox API Documentation
     * [postBuyOrder](#postbuyorder)
     * [cancelOrder](#cancelorder)
 * [NOTES](#notes)
-    * [Currency Symbols](#currencysymbols)
-    * [Currency Pairs](#currencypairs)
+    * [Currency Symbols](#currency-symbols)
+    * [Currency Pairs](#currency-pairs)
 
 
 
@@ -120,13 +120,13 @@ Following methods require authentication
 |getTicker      |                        
 |getOrderBook   |                            
 |getTrades      |                        
-|getFee         |     x<sup>2</sup>      
-|getTransactions|     x                  
-|getBalance     |     x                  
-|getOpenOrders  |     x                  
-|postSellOrder  |     x                  
-|placeBuyOrder  |     x                  
-|cancelOrder    |     x                  
+|getFee         |     √<sup>2</sup>      
+|getTransactions|     √                  
+|getBalance     |     √                  
+|getOpenOrders  |     √                  
+|postSellOrder  |     √                  
+|placeBuyOrder  |     √                  
+|cancelOrder    |     √                  
 
 ><sup>1</sup> Open Exchange Rates (OXR) requires authentication  
 ><sup>2</sup> BTC-e does not require authentication for `getFee` (since the fee is fixed amount)
@@ -311,7 +311,7 @@ Returns a list of the most recent trades.
 ```js
 getFee(options, callback);
 ```
-Returns a fee, which is a float that represents the amount the exchange takes out of the orders. If an exchange has a fee of 0.2% this would be `0.002`.
+Returns the fee, which is a float that represents the amount the exchange takes out of the orders. 
 
 #### Example
 
@@ -339,11 +339,69 @@ Example result:
 * `options` parameter is not used at the moment and can have any value
 * `callback` see [Callbacks](#callbacks)
 
+#### Response
+
+Parameter                     |  Type  |Description                                                    |
+ ---	                      | ---    |---                                                            |
+`pair`                        | String |the trading pair or `""` if the fee is applicable for all pairs|
+`maker_fee` <sup>[1] [2]</sup>| Number |the amount (%) the exchange takes out of limit orders          |
+`taker_fee` <sup>[1] [2]</sup>| Number |the amount (%) the exchange takes out of orders that match immediately|
+
+><sup>[1]</sup> `"maker"` fees are paid when you add liquidity to the orderbook, by placing a limit order under the ticker price for buy and above the ticker price for sell. `"taker"` fees are paid when you remove liquidity from the orderbook, by placing any order that is executed against an order of the orderbook.  if `type` is `""`, the fee is applicable both for maker and taker  
+><sup>[2]</sup> If an exchange has a fee of 0.2% the fee would be `0.002`
+
+
+
 
 ### getTransactions
  
 
 ### getBalance
+
+```js
+getBalance(options, callback);
+```
+Returns the account balance.
+
+#### Example
+
+```js
+account.getBalance({}, function (err, balance) {
+    if (!err)
+	    console.log(balance);
+});
+```
+Example result:
+```js
+{
+    "timestamp": "2015-02-06T17:53:02+00:00",
+    "error": "",
+    "data": [
+        {
+            "balance": [
+                {"currency": "XBT", "amount": "4.86509177"},
+                {"currency": "USD", "amount": "100.44"}
+            ],
+            "available": [
+                {"currency": "XBT", "amount": "2.86709177"},
+            ]
+        }
+    ]
+}
+```
+
+#### Arguments
+
+* `options` argument is not used and it is ignored 
+ 
+* `callback` see [Callbacks](#callbacks)    
+
+#### Response
+
+Parameter   | Type  |Description                                                |
+ ---	    | ---   |---                                                        |
+`balance`   | Array | account balance |
+`available` | Array | funds available for trading (balance minus funds reserved in open orders)
 
 
 ### getOpenOrders
@@ -351,7 +409,7 @@ Example result:
 ```js
 getOpenOrders(options, callback);
 ```
-Returns the open orders
+Returns the open orders.
 
 #### Example
 

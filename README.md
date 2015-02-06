@@ -9,8 +9,8 @@ cryptox
 ### Contents
 * [Install](#install)
 * [Example](#example)
-* [Supported Exchanges and Implemented Methods](#supportedexchangesandimplementedmethods)
-* [Changelog](#changelog)
+* [Supported Exchanges and Implemented Methods](#supported-exchanges-and-implemented-methods)
+* [ChangeLog](#changelog)
 * [Documentation](#documentation)
 * [FAQ](#faq)
 * [License](#license) 
@@ -68,15 +68,15 @@ Example result:
 # Supported Exchanges and Implemented methods #
 *if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
 
-|                                   |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR<sup>1</sup>| 
+|                                   |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR <sup>[1]</sup>| 
 |   ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
 |[getRate](#getrate)                |        |   FI         | FI | FI  |      |     FI        | 
 |[getTicker](#getticker)            |        |   FI         | FI | FI  |      |      —        |
 |[getOrderBook](#getorderbook)      |        |   FI         | FI | FI  |      |      —        |
 |[getTrades](#gettrades)            |        |              |    |     |      |      —        |
-|[getFee](#getfee)                  |        |              |    | FI  |      |      —        |
+|[getFee](#getfee)                  |        |   FI         |    | FI  |      |      —        |
 |[getTransactions](#gettransactions)|        |              |    |     |      |      —        |
-|[getBalance](#getbalance)          |        |              |    |     |      |      —        |
+|[getBalance](#getbalance)          |        |   FI         |    |     |      |      —        |
 |[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |      —        |
 |[postSellOrder](#postsellorder)    |        |              |    |     |      |      —        |
 |[postBuyOrder](#postbuyorder)      |        |              |    |     |      |      —        |
@@ -86,15 +86,15 @@ Example result:
 > **FI** = Fully Implemented  
 > **FR** = Fully Implemented, but restrictions apply (refer to notes below)  
 > **PI** = Partially Implemented (refer to notes below)  
-> **—** = Not Supported  
+> **—** = Not Supported    
 
-><sup>1</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat currencies   
+><sup>[1]</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat currencies   
 
 
 
-# Changelog
+# ChangeLog
 
-> **cryptox** module uses semver (http://semver.org/) for versioning: MAJOR.MINOR.PATCH.  
+> cryptox module adheres to [Semantic Versioning] (http://semver.org/) for versioning: MAJOR.MINOR.PATCH.  
 > 1. MAJOR version increments when non-backwards compatible API changes are introduced  
 > 2. MINOR version increments when functionality in a backwards-compatible manner are introduced  
 > 3. PATCH version increments when backwards-compatible bug fixes are made  
@@ -102,7 +102,7 @@ Example result:
 
 **IMPORTANT NOTE**: Major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
 
-See detailed [Changelog](docs/changelog.md)
+See detailed [ChangeLog](CHANGELOG.md)
 
 
 # Documentation
