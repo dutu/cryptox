@@ -116,11 +116,11 @@ Following methods require authentication
 
 |Method         | Requires authentication
 | ---	        |    :-:                 
-|getRate        |     <sup>1</sup>       
+|getRate        |     <sup>[1]</sup>       
 |getTicker      |                        
 |getOrderBook   |                            
 |getTrades      |                        
-|getFee         |     √<sup>2</sup>      
+|getFee         |     √ <sup>[2]</sup>      
 |getTransactions|     √                  
 |getBalance     |     √                  
 |getOpenOrders  |     √                  
@@ -129,7 +129,7 @@ Following methods require authentication
 |cancelOrder    |     √                  
 
 ><sup>1</sup> Open Exchange Rates (OXR) requires authentication  
-><sup>2</sup> BTC-e does not require authentication for `getFee` (since the fee is fixed amount)
+><sup>2</sup> BTC-e and BitX does not require authentication (since the fee is fixed amount)
 
 When calling a method that requires authentication, the object should have been constructed with parameters `key`, `secret` and (optional) `userId`.
 
@@ -328,7 +328,8 @@ Example result:
 	data: [
 	   {
 		  pair: "XBTUSD",
-		  fee: 0.002
+		  maker_fee: 0
+		  taker_fee: 0.002
 	   }
 	]
 }
@@ -374,16 +375,17 @@ account.getBalance({}, function (err, balance) {
 Example result:
 ```js
 {
-    "timestamp": "2015-02-06T17:53:02+00:00",
-    "error": "",
-    "data": [
+    timestamp: "2015-02-06T17:53:02+00:00",
+    error: "",
+    data: [
         {
-            "balance": [
-                {"currency": "XBT", "amount": "4.86509177"},
-                {"currency": "USD", "amount": "100.44"}
+            account_id: "1224342323",
+            balance: [
+                {currency: "XBT", amount: "4.86509177"},
+                {currency: "USD", amount: "100.44"}
             ],
-            "available": [
-                {"currency": "XBT", "amount": "2.86709177"},
+            available: [
+                {currency: "XBT", amount: "2.86709177"},
             ]
         }
     ]
@@ -400,6 +402,7 @@ Example result:
 
 Parameter   | Type  |Description                                                |
  ---	    | ---   |---                                                        |
+`account_id`| String | account ID / name |
 `balance`   | Array | account balance |
 `available` | Array | funds available for trading (balance minus funds reserved in open orders)
 

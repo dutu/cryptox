@@ -74,9 +74,9 @@ Example result:
 |[getTicker](#getticker)            |        |   FI         | FI | FI  |      |      —        |
 |[getOrderBook](#getorderbook)      |        |   FI         | FI | FI  |      |      —        |
 |[getTrades](#gettrades)            |        |              |    |     |      |      —        |
-|[getFee](#getfee)                  |        |   FI         |    | FI  |      |      —        |
+|[getFee](#getfee)                  |        |   FI         | FI | FI  |      |      —        |
 |[getTransactions](#gettransactions)|        |              |    |     |      |      —        |
-|[getBalance](#getbalance)          |        |   FI         |    |     |      |      —        |
+|[getBalance](#getbalance)          |        |   FI         | FI |     |      |      —        |
 |[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |      —        |
 |[postSellOrder](#postsellorder)    |        |              |    |     |      |      —        |
 |[postBuyOrder](#postbuyorder)      |        |              |    |     |      |      —        |
