@@ -49,6 +49,7 @@ var exchange = new Cryptox("btce");
 
 |Exchange name        | `exchangeSlug` | Authentication              |
 | ---	              |    ---         |    ---                      |         
+| Bitfinex            | `"bitfinex"`   | `key`, `secret`             |
 | Bitstamp            | `"bitstamp"`   | `key`, `secret`, `username` |
 | BitX                | `"bitx"`       | `key`, `secret`             |
 | BTC-e               | `"btce"`       | `key`, `secret`             |
@@ -243,7 +244,7 @@ Parameter / Availability |  Type   | Description
 `low` <sup>[1] [2]</sup>        | Number  | Lowest trade price of the last 24 hours
 `vwap` <sup>[1]</sup>       | Number  | last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
 
-> <sup>[1]</sup> Bitstamp
+> <sup>[1]</sup> Bitstamp  
 > <sup>[2]</sup> Bitfinex
 
 
