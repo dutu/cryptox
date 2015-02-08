@@ -1,5 +1,7 @@
 cryptox
 =======
+[![Build Status](https://travis-ci.org/dutu/cryptox.svg)](https://travis-ci.org/dutu/cryptox/) ![Dependencies Status](https://david-dm.org/dutu/cryptox.svg)
+
 
 **cryptox** is a node.js wrapper for REST API for multiple crypto currency exchanges.
 

@@ -23,9 +23,10 @@
     "btce",
     "crypto",
     "exchange",
-    "open exchange rates"
+    "open exchange rates",
+    "api"
   ],
-  "author": "adrian.clinciu@outlook.com",
+  "author": "Adrian Clinciu <adrian.clinciu@outlook.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dutu/cryptox/issues"
@@ -41,7 +42,11 @@
     "strscan": "*",
     "bitx": ">=1.4.3",
     "open-exchange-rates" : ">=0.3.0",
-    "bitfinex": ">=0.3.3",
-    "mocha": ">=2.1.0"
+    "bitfinex": ">=0.3.3"
+  },
+  "devDependencies": {
+    "chai": ">=1.10.0",
+    "mocha": ">=2.1.0",
+    "sinon": ">=1.12.2"
   }
 }

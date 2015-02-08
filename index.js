@@ -2,16 +2,19 @@
 "use strict";
 
 function Cryptox (exchangeSlug, options) {
+    if (!(this instanceof Cryptox)){
+        return new Cryptox(exchangeSlug, options);
+    }
     var self = this;
     var Exchange = require("./lib/" + exchangeSlug);
     var locales = require("./lib/locales");
 
     self.properties = Exchange.prototype.properties;
-    self.options = options;
+    self.options = options || {};
     if (!self.options.hasOwnProperty("lang"))
         self.options["lang"]="en";            // set default language to "en" (english)
 
-    var exchange = new Exchange(options);
+    var exchange = new Exchange(self.options);
 
     self.getRate = function (options, callback){
         exchange.getRate(options, function (err, rate){
