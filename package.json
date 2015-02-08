@@ -16,6 +16,7 @@
   "keywords": [
     "bitcoin",
     "api",
+    "bitfinex",
     "bitstamp",
     "bitx",
     "btc-e",
@@ -38,7 +39,8 @@
     "lodash": "~2.4.1",
     "async": ">=0.9.0",
     "strscan": "*",
-    "bitx": ">=1.4.1",
-    "open-exchange-rates" : ">=0.3.0"
+    "bitx": ">=1.4.3",
+    "open-exchange-rates" : ">=0.3.0",
+    "bitfinex": ">=0.3.3"
   }
 }

@@ -70,13 +70,13 @@ Example result:
 
 |                                   |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR <sup>[1]</sup>| 
 |   ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
-|[getRate](#getrate)                |        |   FI         | FI | FI  |      |     FI        | 
-|[getTicker](#getticker)            |        |   FI         | FI | FI  |      |      —        |
-|[getOrderBook](#getorderbook)      |        |   FI         | FI | FI  |      |      —        |
+|[getRate](#getrate)                |   FI   |   FI         | FI | FI  |      |     FI        | 
+|[getTicker](#getticker)            |   FI   |   FI         | FI | FI  |      |      —        |
+|[getOrderBook](#getorderbook)      |   FI   |   FI         | FI | FI  |      |      —        |
 |[getTrades](#gettrades)            |        |              |    |     |      |      —        |
 |[getFee](#getfee)                  |        |   FI         | FI | FI  |      |      —        |
 |[getTransactions](#gettransactions)|        |              |    |     |      |      —        |
-|[getBalance](#getbalance)          |        |   FI         | FI |     |      |      —        |
+|[getBalance](#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
 |[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |      —        |
 |[postSellOrder](#postsellorder)    |        |              |    |     |      |      —        |
 |[postBuyOrder](#postbuyorder)      |        |              |    |     |      |      —        |

@@ -218,9 +218,9 @@ Example result:
 
 * `options`
 
-Parameter  |  Type  | Required for | Description |
- ---	   | ---    |   :-:        | ---         |
-`pair`     | string |   BTC-e      | trading pair|
+Parameter  |  Type  | Required for  | Description |
+ ---	   | ---    |   :-:         | ---         |
+`pair`     | string |BTC-e, Bitfinex| trading pair|
 
 
 * `callback` see [Callbacks](#callbacks)
@@ -230,20 +230,21 @@ Parameter  |  Type  | Required for | Description |
 Parameter   |  Type   | Description
  ---	    | ---     | ---         
 `pair`      | String  | trading pair
-`last`      | Number  | last price
+`last`      | Number  | the price at which the last order executed
 `bid`       | Number  | highest buy order 
 `ask`       | Number  | lowest sell order
-`volume`    | Number  | last 24 hours volume
+`volume`    | Number  | trading volume of the last 24 hours
 
 Optional response parameters
 
 Parameter / Availability |  Type   | Description 
  ---	                 | ---     | ---
-`high`<sup>1</sup>       | Number  | last 24 hours price high
-`low`<sup>1</sup>        | Number  | last 24 hours price low
-`vwap`<sup>1</sup>       | Number  | last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
+`high` <sup>[1] [2]</sup>       | Number  | Highest trade price of the last 24 hours
+`low` <sup>[1] [2]</sup>        | Number  | Lowest trade price of the last 24 hours
+`vwap` <sup>[1]</sup>       | Number  | last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
 
-> <sup>1</sup> Bitstamp
+> <sup>[1]</sup> Bitstamp
+> <sup>[2]</sup> Bitfinex
 
 
 
@@ -273,8 +274,8 @@ Example result:
     "data": [
         {
             "pair": "XBTUSD",
-            "asks": [[212.962,0.014],[213,1.46820994],[213.226,3.78630967]],
-            "bids": [[212.885,0.014],[212.827,0.00414864],[212.74,6.685]]
+            "asks": [{price: 212.962, volume: 0.014}, {price: 213, volume: 1.46820994}],
+            "bids": [{price: 212.885, volume: 0.014}, {price: 212.827, volume: 0.00414864]}
          }
     ]
 }
@@ -380,7 +381,7 @@ Example result:
     data: [
         {
             account_id: "1224342323",
-            balance: [
+            total: [
                 {currency: "XBT", amount: "4.86509177"},
                 {currency: "USD", amount: "100.44"}
             ],
@@ -403,7 +404,7 @@ Example result:
 Parameter   | Type  |Description                                                |
  ---	    | ---   |---                                                        |
 `account_id`| String | account ID / name |
-`balance`   | Array | account balance |
+`total`   | Array | account balance |
 `available` | Array | funds available for trading (balance minus funds reserved in open orders)
 
 
