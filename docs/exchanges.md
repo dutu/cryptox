@@ -25,7 +25,20 @@ It will run the methods on the exchange object as in example below:
     exchange.getTicker(options, callback)
 ```
 
-All methods need to be defined on exchange object, as detailed in [README.md](README.md#methods). If functionality of a method is not implemented the method needs to return an error with specific error message.
-
 The template file `newExchangeTemplate.js` is provided in the `lib` folder, which can be used as starting point. 
+
+
+Each exchange:
+
+* should have a `slug`, for example `bitfinex` for Bitfinex, `btce` for BTC-e, etc 
+
+* should be defined in `lib` folder in a filename slug.js (for example `lib/bitfinex.js`)
+
+* constructor should take optional parameter for authentication 
+
+* Should have all methods defined: `getRate`, `getTicker`, `getOrderBook`, `getTrades`, `getFee`, `getTransactions`, `getBalance`, `getOpenOrders`, `postSellOrder`, `postBuyOrder`, `cancelOrder`  
+  
+  If functionality of a method is not implemented the method needs to return an error with specific error message.
+
+* should have properties `property.name`, `property.slug`, `property.instruments`
 

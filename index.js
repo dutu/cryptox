@@ -1,6 +1,8 @@
 
 "use strict";
 
+var path = require("path");
+
 function Cryptox (exchangeSlug, options) {
     if (!(this instanceof Cryptox)){
         return new Cryptox(exchangeSlug, options);
