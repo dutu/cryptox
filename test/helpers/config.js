@@ -5,5 +5,4 @@ config.slug = ["bitfinex", "bitstamp", "bitx", "btce", "newExchangeTemplate", "o
 config.methods = ["getRate", "getTicker", "getOrderBook", "getTrades", "getFee", "getTransactions", "getBalance",
     "getOpenOrders", "postSellOrder", "postBuyOrder", "cancelOrder"];
 
-
 module.exports = config;

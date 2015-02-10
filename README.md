@@ -10,7 +10,7 @@ cryptox
 
 ### Contents
 * [Install](#install)
-* [Example](#example)
+* [Use](#use)
 * [Supported Exchanges and Implemented Methods](#supported-exchanges-and-implemented-methods)
 * [ChangeLog](#changelog)
 * [Documentation](#documentation)
@@ -25,7 +25,7 @@ cryptox
 
 
 
-# Example #
+# Use #
 
 ```js
 var Cryptox = require("cryptox");
@@ -79,7 +79,7 @@ Example result:
 |[getFee](#getfee)                  |        |   FI         | FI | FI  |      |      —        |
 |[getTransactions](#gettransactions)|        |              |    |     |      |      —        |
 |[getBalance](#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
-|[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |      —        |
+|[getOpenOrders](#getopenorders)    |        |              |    |     |      |      —        |
 |[postSellOrder](#postsellorder)    |        |              |    |     |      |      —        |
 |[postBuyOrder](#postbuyorder)      |        |              |    |     |      |      —        |
 |[cancelOrder](#cancelorder)        |        |              |    |     |      |      —        |
