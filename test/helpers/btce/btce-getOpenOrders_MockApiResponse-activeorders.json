@@ -1,0 +1,21 @@
+{
+  "success": 1,
+  "return": {
+    "577393337": {
+      "pair": "btc_usd",
+      "type": "buy",
+      "amount": 0.53,
+      "rate": 71,
+      "timestamp_created": 1423692678,
+      "status": 0
+    },
+    "577394351": {
+      "pair": "usd_rur",
+      "type": "sell",
+      "amount": 30,
+      "rate": 84,
+      "timestamp_created": 1423692751,
+      "status": 0
+    }
+  }
+}

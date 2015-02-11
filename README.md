@@ -79,7 +79,7 @@ Example result:
 |[getFee](#getfee)                  |        |   FI         | FI | FI  |      |      —        |
 |[getTransactions](#gettransactions)|        |              |    |     |      |      —        |
 |[getBalance](#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
-|[getOpenOrders](#getopenorders)    |        |              |    |     |      |      —        |
+|[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |      —        |
 |[postSellOrder](#postsellorder)    |        |              |    |     |      |      —        |
 |[postBuyOrder](#postbuyorder)      |        |              |    |     |      |      —        |
 |[cancelOrder](#cancelorder)        |        |              |    |     |      |      —        |

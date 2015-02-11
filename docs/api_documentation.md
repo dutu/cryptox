@@ -85,6 +85,7 @@ The arguments passed to the callback function for each method are:
 
 * `err` is an error object or `null` if no error occurred.
 * `result` is JSON object containing the response.
+     
 
     Example result:
     ```js
@@ -109,8 +110,12 @@ The arguments passed to the callback function for each method are:
     `error`     | string | error message or `""` if no error                         
     `data`      | array  | array of one or more JSON objects containig the API result 
     
-   
+
+### Results
+
+The format of API result (see `result` in  [Callbacks](#callbacks)) above for each method is described in this document and it complies with JSON schemas in [jsonSchemas.js](../test/helpers/jsonSchemas.js)
     
+
 ### Authentication
 
 Following methods require authentication
@@ -286,9 +291,9 @@ Example result:
 
 * `options` 
 
-Parameter  |  Type  | Required    | Description |
- ---	   | ---    |   :-:       | ---         |
-`pair`     | string |All exchanges| trading pair|
+    Parameter  |  Type  | Required    | Description |
+     ---	   | ---    |   :-:       | ---         |
+    `pair`     | string |All exchanges| trading pair|
 
 * `callback` see [Callbacks](#callbacks)
 
@@ -339,7 +344,12 @@ Example result:
 
 #### Arguments
 
-* `options` parameter is not used at the moment and can have any value
+* `options`
+
+    Parameter  |  Type  | Required    | Description |
+     ---	   | ---    |   :-:       | ---         |
+    `pair`     | string |All exchanges| trading pair|
+
 * `callback` see [Callbacks](#callbacks)
 
 #### Response

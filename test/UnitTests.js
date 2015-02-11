@@ -12,7 +12,7 @@ var expect = chai.expect;
 var cryptox, options;
 
 var eachConstructor = function (slug) {
-    describe(slug + ' -> Constructor', function () {
+    describe("Unit " + slug + " -> Constructor", function () {
 
         it('should create a new instance', function () {
             cryptox = new Cryptox(slug);
@@ -57,7 +57,7 @@ var eachConstructor = function (slug) {
 }
 
 var eachMethod = function (slug, method) {
-    var notImplemented, notSupported, nockServer;
+    var notImplemented, notSupported, mock;
 
     var callback = function() {};
 
@@ -65,7 +65,15 @@ var eachMethod = function (slug, method) {
         cryptox = new Cryptox(slug);
     });
 
-    describe(slug + ' -> ' + method, function () {
+    beforeEach(function() {
+        mock = sinon.mock(cryptox);
+    });
+
+    afterEach(function() {
+        mock.restore();
+    });
+
+    describe("Unit " + slug + " -> " + method, function () {
         it('should respond when called', function () {
             expect(cryptox).to.respondTo(method);
         });
@@ -95,7 +103,6 @@ var eachMethod = function (slug, method) {
 }
 
 
-
 config.slug.forEach(function (slug) {
     var implemented;
     eachConstructor(slug);
@@ -104,7 +111,4 @@ config.slug.forEach(function (slug) {
         eachMethod(slug, method);
     });
 });
-
-
-
 
