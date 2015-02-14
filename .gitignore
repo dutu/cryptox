@@ -3,3 +3,7 @@
 npm-debug.log
 node_modules/
 .idea/
+
+# Private data
+# ==========================
+test/helpers/private_key.js

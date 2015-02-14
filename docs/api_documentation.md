@@ -301,8 +301,6 @@ Example result:
 
 Parameter   |  Type   |Required| Description                       |
  ---	    | ---     | :-:    | ---                               |
-`timestamp` | String  |  Yes   | server time, ISO 8601 string      |
-`error`     | Boolean |  Yes   | error message or `""` if no error |
 `pair`      | String  |  Yes   | trading pair                      |
 `asks`      | Array   |  Yes   | list of asks in the order book    |
 `bids`      | Array   |  Yes   | list of bids in the order book    |
@@ -412,10 +410,10 @@ Example result:
 
 #### Response
 
-Parameter   | Type  |Description                                                |
- ---	    | ---   |---                                                        |
-`account_id`| String | account ID / name |
-`total`   | Array | account balance |
+Parameter   | Type  | Description|
+ ---	    | ---   |---        |
+`account_id`| String| account ID / name |
+`total`     | Array | account balance |
 `available` | Array | funds available for trading (balance minus funds reserved in open orders)
 
 
@@ -446,8 +444,9 @@ Example result:
             "type": "buy",
             "amount": 1,
             "rate": 0.1,
-            "status": 0,
-            "timestamp": "2015-02-01T19:23:15+00:00"
+            "created_at": "2015-02-01T19:23:15+00:00",
+            "status": 0
+
         },
         {
             "orderId": "563612426",
@@ -455,8 +454,9 @@ Example result:
             "type": "buy",
             "amount": 2,
             "rate": 0.5,
-            "status": 0,
-            "timestamp": "2015-02-01T20:59:53+00:00"
+            "created_at": "2015-02-01T20:59:53+00:00",
+            "status": 0
+
         }        
     ]
 }
@@ -465,13 +465,30 @@ Example result:
 #### Arguments
 
 * `options` 
-    
-Parameter  |  Type  | Required    | Description |
- ---	   | ---    |   :-:       | ---         |
-`pair`     | string |  No         | trading pair|
-
-    
+ 
 * `callback` see [Callbacks](#callbacks)    
+
+#### Response
+
+Parameter   | Type  | Description|
+ ---	    | ---   |---  
+`order_id`  | String| order ID
+`pair`      | String| trading pair
+`type`      | String| order type (`buy`, `sell`) 
+`amount`    | Number|
+`rate`      | Number| rate
+`created_at`| String|date&time when order was created, ISO 8601 string
+
+
+Optional response parameters
+
+Parameter / Availability |  Type   | Description 
+ ---	                 | ---     | ---
+`status` <sup>[1]</sup>  | Number  | order status <sup>[2]</sup>   
+
+> <sup>[1]</sup> BTC-e  
+> <sup>[2]</sup> BTC-e API description doesn't clarify what status value means 
+
 
 ### postSellOrder
 

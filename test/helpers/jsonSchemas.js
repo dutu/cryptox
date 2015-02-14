@@ -2,7 +2,8 @@
 var schema = {};
 
 schema.errorResult = {
-    "title": "Schema for results containing an error",
+    "title": "errorResult schema",
+    "description": "Schema for results containing an error",
     "type": "object",
     "required": ["timestamp", "error", "data"],
     "properties": {
@@ -21,7 +22,8 @@ schema.errorResult = {
 };
 
 schema.getRate = {
-    "title": "Schema for getRate() results",
+    "title": "getRate schema",
+    "description": "Schema for getRate() results",
     "type": "object",
     "required": ["timestamp", "error", "data"],
     "properties": {
@@ -52,7 +54,8 @@ schema.getRate = {
 };
 
 schema.getTicker = {
-    "title": "Schema for getTicker() results",
+    "title": "getTicker schema",
+    "description": "Schema for getTicker() results",
     "type": "object",
     "required": ["timestamp", "error", "data"],
     "properties": {
@@ -84,7 +87,7 @@ schema.getTicker = {
                     },
                     "volume": {
                         "type": "number",
-                    },
+                    }
                 }
             }
         }
@@ -92,7 +95,7 @@ schema.getTicker = {
 };
 
 schema.getOrderBook = {
-    "title": "getTicker schema",
+    "title": "getOrderBook schema",
     "description": "Schema for getTicker() results",
     "type": "object",
     "required": ["timestamp", "error", "data"],
@@ -153,7 +156,8 @@ schema.getOrderBook = {
 };
 
 schema.getFee = {
-    "title": "Schema for getFee() results",
+    "title": "getFee schema",
+    "description": "Schema for getFee() results",
     "type": "object",
     "required": ["timestamp", "error", "data"],
     "properties": {
@@ -179,6 +183,107 @@ schema.getFee = {
                     },
                     "taker_fee": {
                         "type": "number",
+                    }
+                }
+            }
+        }
+    }
+};
+
+schema.getBalance = {
+    "title": "getBalance schema",
+    "description": "Schema for getBalance() results",
+    "type": "object",
+    "required": ["timestamp", "error", "data"],
+    "properties": {
+        "timestamp": {
+            "type": "string",
+            "minLength": 1
+        },
+        "error": {
+            "type": "string"
+        },
+        "data": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "items": {
+                "type": "object",
+                "required": ["total", "available"],
+                "properties": {
+                    "total": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["currency", "amount"],
+                            "properties": {
+                                "currency": {
+                                    "type": "string",
+                                },
+                                "amount": {
+                                    "type": "number",
+                                }
+                            }
+                        }
+                    },
+                    "available": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["currency", "amount"],
+                            "properties": {
+                                "currency": {
+                                    "type": "string",
+                                },
+                                "amount": {
+                                    "type": "number",
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+schema.getOpenOrders = {
+    "title": "getOpenOrders schema",
+    "description": "Schema for getOpenOrders() results",
+    "type": "object",
+    "required": ["timestamp", "error", "data"],
+    "properties": {
+        "timestamp": {
+            "type": "string",
+            "minLength": 1
+        },
+        "error": {
+            "type": "string"
+        },
+        "data": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "required": ["order_id", "pair", "type", "amount", "rate", "created_at"],
+                "properties": {
+                    "order_id": {
+                        "type": "string"
+                    },
+                    "pair": {
+                        "type": "string",
+                    },
+                    "type": {
+                        "type": "string",
+                    },
+                    "amount": {
+                        "type": "number"
+                    },
+                    "rate": {
+                        "type": "number",
+                    },
+                    "created_at": {
+                        "type": "string",
                     }
                 }
             }

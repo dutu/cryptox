@@ -13,7 +13,7 @@ var schema = require("./helpers/jsonSchemas.js");
 var expect = chai.expect;
 chai.use(require("chai-json-schema"));
 
-var slug = "btce";
+var slug = "bitx";
 
 var apiURL = {
     privateAPIhost: "https://btc-e.com",
@@ -105,7 +105,7 @@ describe("Integration Test " + slug + ":", function () {
         it("should return expected mock result", function (done) {
             nockServer = nock(apiURL.publicAPIhost)
                 .get(apiURL.publicPath.ticker)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "btce-getRate_MockApiResponse-ticker.json");
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getRate_MockApiResponse-ticker.json");
             returnExpectedMock("getRate", {pair: "BTCUSD"}, done);
         });
         it("should return the rate with valid JSON schema", function (done) {
@@ -129,7 +129,7 @@ describe("Integration Test " + slug + ":", function () {
         it("should return expected mock result", function (done) {
             nockServer = nock(apiURL.publicAPIhost)
                 .get(apiURL.publicPath.ticker)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "btce-getTicker_MockApiResponse-ticker.json");
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getTicker_MockApiResponse-ticker.json");
             returnExpectedMock("getTicker", {pair: "BTCUSD"}, done);
         });
         it("should return the ticker with valid JSON schema", function (done) {
@@ -153,7 +153,7 @@ describe("Integration Test " + slug + ":", function () {
         it("should return expected mock result", function (done) {
             nockServer = nock(apiURL.publicAPIhost)
                 .get(apiURL.publicPath.depth)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "btce-getOrderBook_MockApiResponse-depth.json");
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getOrderBook_MockApiResponse-depth.json");
             returnExpectedMock("getOrderBook", {pair: "BTCUSD"}, done);
         });
         it("should return the order book with valid JSON schema", function (done) {
@@ -177,7 +177,7 @@ describe("Integration Test " + slug + ":", function () {
         it("should return expected mock result", function (done) {
             nockServer = nock(apiURL.publicAPIhost)
                 .get(apiURL.publicPath.fee)
-                .replyWithFile(200, __dirname + "/helpers/btce/" + "btce-getFee_MockApiResponse-fee.json");
+                .replyWithFile(200, __dirname + "/helpers/bitx/" + "bitx-getFee_MockApiResponse-fee.json");
             returnExpectedMock("getFee", {pair: "BTCUSD"}, done);
         });
         it("should return the fee with valid JSON schema", function (done) {
@@ -209,7 +209,7 @@ describe("Integration Test " + slug + ":", function () {
                 .post(apiURL.privatePath.all, function (body) {
                     return body.method === "ActiveOrders"
                 })
-                .replyWithFile(200, __dirname + "/helpers/btce/" + "btce-getOpenOrders_MockApiResponse-activeorders.json");
+                .replyWithFile(200, __dirname + "/helpers/bitx/" + "bitx-getOpenOrders_MockApiResponse-activeorders.json");
             returnExpectedMock("getOpenOrders", {pair: "BTCUSD"}, done);
         });
         it("should return the open orders" +((myKey === "dummy") ? " <- skipped (API key is dummy)" : "") , function (done) {
