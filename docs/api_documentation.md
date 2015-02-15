@@ -29,9 +29,9 @@ Creates an instance of `Cryptox` object type.
 Cryptox(exchangeSlug [, options])
 ```
 
-Depending on the parameters used, two types of objects can be created
-1. **public** (without authentication) - can be used for calling public API methods
-2. **private** (with authentication) - can be used for calling public and private API methods
+Depending on the parameters used, two types of objects can be created  
+1. **public** (without authentication) - can be used for calling public API methods  
+2. **private** (with authentication) - can be used for calling public and private API methods  
 
 #### Examples
 ```js

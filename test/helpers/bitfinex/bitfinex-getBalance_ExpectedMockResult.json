@@ -1,0 +1,44 @@
+{
+  "timestamp": "2015-02-15T21:49:23+00:00",
+  "error": "",
+  "data": [
+    {
+      "account_id": "deposit",
+      "total": [
+        {
+          "currency": "XBT",
+          "amount": 3.11
+        }
+      ],
+      "available": [
+        {
+          "currency": "XBT",
+          "amount": 2.12
+        }
+      ]
+    },
+    {
+      "account_id": "exchange",
+      "total": [
+        {
+          "currency": "XBT",
+          "amount": 11.16269692
+        },
+        {
+          "currency": "USD",
+          "amount": 181.315192
+        }
+      ],
+      "available": [
+        {
+          "currency": "XBT",
+          "amount": 1.86269792
+        },
+        {
+          "currency": "USD",
+          "amount": 18.33855192
+        }
+      ]
+    }
+  ]
+}

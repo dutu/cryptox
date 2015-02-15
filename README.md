@@ -70,19 +70,19 @@ Example result:
 # Supported Exchanges and Implemented methods #
 *if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
 
-|                                   |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR <sup>[1]</sup>| 
-|   ---                             |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
-|[getRate](#getrate)                |   FI   |   FI         | FI | FI  |      |     FI        | 
-|[getTicker](#getticker)            |   FI   |   FI         | FI | FI  |      |      —        |
-|[getOrderBook](#getorderbook)      |   FI   |   FI         | FI | FI  |      |      —        |
-|[getTrades](#gettrades)            |        |              |    |     |      |      —        |
-|[getFee](#getfee)                  |        |   FI         | FI | FI  |      |      —        |
-|[getTransactions](#gettransactions)|        |              |    |     |      |      —        |
-|[getBalance](#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
-|[getOpenOrders](#getopenorders)    |        |              |    | FI  |      |      —        |
-|[postSellOrder](#postsellorder)    |        |              |    |     |      |      —        |
-|[postBuyOrder](#postbuyorder)      |        |              |    |     |      |      —        |
-|[cancelOrder](#cancelorder)        |        |              |    |     |      |      —        |
+|                                                            |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR <sup>[1]</sup>| 
+|   ---                                                      |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
+|[getRate](docs/api_documentation.md#getrate)                |   FI   |   FI         | FI | FI  |      |     FI        | 
+|[getTicker](docs/api_documentation.md#getticker)            |   FI   |   FI         | FI | FI  |      |      —        |
+|[getOrderBook](docs/api_documentation.md#getorderbook)      |   FI   |   FI         | FI | FI  |      |      —        |
+|[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |      —        |
+|[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |      —        |
+|[getTransactions](docs/api_documentation.md#gettransactions)|        |              |    |     |      |      —        |
+|[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
+|[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              |    | FI  |      |      —        |
+|[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |      —        |
+|[postBuyOrder](docs/api_documentation.md#postbuyorder)      |        |              |    |     |      |      —        |
+|[cancelOrder](docs/api_documentation.md#cancelorder)        |        |              |    |     |      |      —        |
 
 
 > **FI** = Fully Implemented  

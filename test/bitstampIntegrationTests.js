@@ -219,9 +219,9 @@ describe("Integration Test bitstamp:", function () {
 
         it("should return an error with valid JSON schema", function (done) {
             nockServer = nock(api.public.host)
-                .get(api.public.path.depth)
+                .post(api.private.path.balance)
                 .reply(418, "I'm a teapot");
-            privateCryptox.getFee({pair: "XBTUSD"}, function (err, result) {
+            privateCryptox.getBalance({pair: "XBTUSD"}, function (err, result) {
                 expect(result).to.be.jsonSchema(schema.errorResult);
                 expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true; // to be a valid ISO 8601 date
                 done();

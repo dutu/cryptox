@@ -1,0 +1,36 @@
+{
+  "timestamp": "2015-02-15T18:37:23+00:00",
+  "error": "",
+  "data": [
+    {
+      "account_id": "977372115989463992",
+      "total": [
+        {
+          "currency": "XBT",
+          "amount": 4.7e-7
+        }
+      ],
+      "available": [
+        {
+          "currency": "XBT",
+          "amount": 4.7e-7
+        }
+      ]
+    },
+    {
+      "account_id": "5931992157756731884",
+      "total": [
+        {
+          "currency": "ZAR",
+          "amount": 0.009612
+        }
+      ],
+      "available": [
+        {
+          "currency": "ZAR",
+          "amount": 0.009612
+        }
+      ]
+    }
+  ]
+}
