@@ -19,7 +19,7 @@ var api = {
     private: {
         host: "https://api.mybitx.com",
         path: {
-            balance: "/api/balance/",
+            balance: "/api/1/balance",
             open_orders: "api/open_orders/",
             user_transactions: "api/user_transactions/"
         },
@@ -64,8 +64,8 @@ describe("Integration Test " + slug + ":", function () {
             expect(result).to.have.property("error").and.be.equal("");
             expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true;          // to be a valid ISO 8601 date
             mockResponseFilename = __dirname + "/helpers/" + slug + "/" + slug + "-" + method + "_ExpectedMockResult.json";
-            if (method === "getFee")
-                jf.writeFileSync(mockResponseFilename, result);
+            // if (method === "getBalance")
+            //     jf.writeFileSync(mockResponseFilename, result);
             expect(result).to.have.property("data").and.to.be.deep.equal(jf.readFileSync(mockResponseFilename).data);
             done();
         });
@@ -188,6 +188,47 @@ describe("Integration Test " + slug + ":", function () {
         });
         it("should return the fee with valid JSON schema", function (done) {
             returnValidSchema("getFee", {pair: "XBTZAR"}, done);
+        });
+    });
+
+    describe("getBalance", function () {
+
+        before(function() {
+            cryptox = new Cryptox("bitx", {key: myKey, secret: mySecret});
+            publicCryptox = new Cryptox(slug);
+
+        });
+        beforeEach(function () {
+            nock.cleanAll();
+        });
+        it("should return an error with valid JSON schema", function (done) {
+            nockServer = nock(api.private.host)
+                .get(api.private.path.balance)
+                .reply(418, "I'm a teapot");
+            cryptox.getBalance({}, function (err, result) {
+                expect(result).to.be.jsonSchema(schema.errorResult);
+                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true; // to be a valid ISO 8601 date
+                done();
+            });
+        });
+        it("should return an authorization error with valid JSON schema", function (done) {
+            returnAuthorizationError("getBalance", {}, done);
+        });
+        it("should return the balance" +((myKey === "dummy") ? " <- skipped (API key is dummy)" : "") , function (done) {
+            if (myKey === "dummy")
+                done();
+            else
+                returnValidSchema("getBalance", {}, done);
+        });
+        it("should return expected mock result", function (done) {
+            nockServer = nock(api.private.host)
+                .get(api.private.path.balance)
+                .replyWithFile(200, __dirname + "/helpers/bitx/" + "bitx-getBalance_MockApiResponse-balance.json");
+            returnExpectedMock("getBalance", {}, done);
+        });
+        it("should return API key error with valid JSON schema", function (done) {
+            cryptox = new Cryptox(slug, {key: "dummy", secret: "dummy"});
+            returnAnError("getBalance", {}, done);
         });
     });
 });
