@@ -1,0 +1,18 @@
+{
+  "balance": [
+    {
+      "account_id": "977372115989463992",
+      "asset": "XBT",
+      "balance": "0.00000047",
+      "reserved": "0.00",
+      "unconfirmed": "0.00"
+    },
+    {
+      "account_id": "5931992157756731884",
+      "asset": "ZAR",
+      "balance": "0.009612",
+      "reserved": "0.00",
+      "unconfirmed": "0.00"
+    }
+  ]
+}

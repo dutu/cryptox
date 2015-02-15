@@ -13,24 +13,24 @@ var schema = require("./helpers/jsonSchemas.js");
 var expect = chai.expect;
 chai.use(require("chai-json-schema"));
 
-var slug = "bitx";
+var slug = "bitfinex";
 
 var api = {
     private: {
-        host: "https://api.mybitx.com",
+        host: "https://api.bitfinex.com",
         path: {
-            balance: "/api/1/balance",
-            open_orders: "api/open_orders/",
-            user_transactions: "api/user_transactions/"
+            balances: "/v1/balances",
+            open_orders: "/v1/open_orders/",
+            user_transactions: "/v1/user_transactions/"
         },
     },
     public: {
-        host: "https://api.mybitx.com",
+        host: "https://api.bitfinex.com",
         path: {
-            orderbook: "/api/1/orderbook",
-            ticker: "/api/1/ticker",
-            transactions: "/api/transactions/",
-            alltickers: "/api/1/tickers"
+            orderbook: "/v1/book",
+            ticker: "/v1/pubticker",
+            transactions: "/v1/transactions/",
+            alltickers: "/v1/tickers"
         }
     },
 };
@@ -64,8 +64,8 @@ describe("Integration Test " + slug + ":", function () {
             expect(result).to.have.property("error").and.be.equal("");
             expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true;          // to be a valid ISO 8601 date
             mockResponseFilename = __dirname + "/helpers/" + slug + "/" + slug + "-" + method + "_ExpectedMockResult.json";
-            // if (method === "getBalance")
-            //     jf.writeFileSync(mockResponseFilename, result);
+//              if (method === "getBalance")
+//                 jf.writeFileSync(mockResponseFilename, result);
             expect(result).to.have.property("data").and.to.be.deep.equal(jf.readFileSync(mockResponseFilename).data);
             done();
         });
@@ -105,21 +105,21 @@ describe("Integration Test " + slug + ":", function () {
             nock.cleanAll();
         });
         it("should return specific error with valid JSON schema", function (done) {
-            options = {pair: "XBTZAR"};
+            options = {pair: "XBTUSD"};
             nockServer = nock(api.public.host)
-                .get(api.public.path.ticker + "?pair=" + options.pair)
+                .get(api.public.path.ticker + "/" + options.pair.replace("XBT", "BTC").toLowerCase())
                 .reply(418, "I'm a teapot");
             returnError418("getRate", options, done);
         });
         it("should return the rate with valid JSON schema", function (done) {
-            options = {pair: "XBTZAR"};
+            options = {pair: "XBTUSD"};
             returnValidSchema("getRate", options, done);
         });
         it("should return expected mock result", function (done) {
-            options = {pair: "XBTZAR"};
+            options = {pair: "XBTUSD"};
             nockServer = nock(api.public.host)
-                .get(api.public.path.ticker + "?pair=" + options.pair)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getRate_MockApiResponse-ticker.json");
+                .get(api.public.path.ticker + "/" + options.pair.replace("XBT", "BTC").toLowerCase())
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitfinex-getRate_MockApiResponse-ticker.json");
             returnExpectedMock("getRate", options, done);
         });
     });
@@ -132,20 +132,20 @@ describe("Integration Test " + slug + ":", function () {
             nock.cleanAll();
         });
         it("should return specific error with valid JSON schema", function (done) {
-            options = {pair: "XBTZAR"};
+            options = {pair: "XBTUSD"};
             nockServer = nock(api.public.host)
-                .get(api.public.path.ticker + "?pair=" + options.pair)
+                .get(api.public.path.ticker + "/" + options.pair.replace("XBT", "BTC").toLowerCase())
                 .reply(418, "I'm a teapot");
             returnError418("getTicker", options, done);
         });
         it("should return the ticker with valid JSON schema", function (done) {
-            returnValidSchema("getTicker", {pair: "XBTZAR"}, done);
+            returnValidSchema("getTicker", {pair: "XBTUSD"}, done);
         });
         it("should return expected mock result", function (done) {
-            options = {pair: "XBTZAR"};
+            options = {pair: "XBTUSD"};
             nockServer = nock(api.public.host)
-                .get(api.public.path.ticker + "?pair=" + options.pair)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getTicker_MockApiResponse-ticker.json");
+                .get(api.public.path.ticker + "/" + options.pair.replace("XBT", "BTC").toLowerCase())
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitfinex-getTicker_MockApiResponse-ticker.json");
             returnExpectedMock("getTicker", options, done);
         });
         it("should return the ticker with valid JSON schema", function (done) {
@@ -161,9 +161,12 @@ describe("Integration Test " + slug + ":", function () {
             nock.cleanAll();
         });
         it("should return specific error with valid JSON schema", function (done) {
-            options = {pair: "XBTZAR"};
+            options = {pair: "XBTUSD"};
             nockServer = nock(api.public.host)
-                .get(api.public.path.orderbook + "?pair=" + options.pair)
+                .filteringPath(function(path) {
+                    return api.public.path.orderbook + "/" + options.pair.replace("XBT", "BTC").toLowerCase();
+                })
+                .get(api.public.path.orderbook + "/" + options.pair.replace("XBT", "BTC").toLowerCase())
                 .reply(418, "I'm a teapot");
             returnError418("getOrderBook", options, done);
         });
@@ -171,30 +174,21 @@ describe("Integration Test " + slug + ":", function () {
             returnValidSchema("getOrderBook", options, done);
         });
         it("should return expected mock result", function (done) {
-            options = {pair: "XBTZAR"};
+            options = {pair: "XBTUSD"};
             nockServer = nock(api.public.host)
-                .get(api.public.path.orderbook + "?pair=" + options.pair)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getOrderBook_MockApiResponse-orderbook.json");
+                .filteringPath(function(path) {
+                    return api.public.path.orderbook + "/" + options.pair.replace("XBT", "BTC").toLowerCase();
+                })
+                .get(api.public.path.orderbook + "/" + options.pair.replace("XBT", "BTC").toLowerCase())
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitfinex-getOrderBook_MockApiResponse-book.json");
             returnExpectedMock("getOrderBook", options, done);
-        });
-    });
-
-    describe("getFee", function () {
-        before(function () {
-            cryptox = new Cryptox(slug);
-        });
-        beforeEach(function () {
-            nock.cleanAll();
-        });
-        it("should return the fee with valid JSON schema", function (done) {
-            returnValidSchema("getFee", {pair: "XBTZAR"}, done);
         });
     });
 
     describe("getBalance", function () {
 
         before(function() {
-            cryptox = new Cryptox("bitx", {key: myKey, secret: mySecret});
+            cryptox = new Cryptox("bitfinex", {key: myKey, secret: mySecret});
             publicCryptox = new Cryptox(slug);
 
         });
@@ -203,7 +197,7 @@ describe("Integration Test " + slug + ":", function () {
         });
         it("should return an error with valid JSON schema", function (done) {
             nockServer = nock(api.private.host)
-                .get(api.private.path.balance)
+                .post(api.private.path.balances)
                 .reply(418, "I'm a teapot");
             cryptox.getBalance({}, function (err, result) {
                 expect(result).to.be.jsonSchema(schema.errorResult);
@@ -222,8 +216,8 @@ describe("Integration Test " + slug + ":", function () {
         });
         it("should return expected mock result", function (done) {
             nockServer = nock(api.private.host)
-                .get(api.private.path.balance)
-                .replyWithFile(200, __dirname + "/helpers/bitx/" + "bitx-getBalance_MockApiResponse-balance.json");
+                .post(api.private.path.balances)
+                .replyWithFile(200, __dirname + "/helpers/bitfinex/" + "bitfinex-getBalance_MockApiResponse-balances.json");
             returnExpectedMock("getBalance", {}, done);
         });
         it("should return API key error with valid JSON schema", function (done) {

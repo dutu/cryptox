@@ -12,7 +12,7 @@ var expect = chai.expect;
 var cryptox, options;
 
 var eachConstructor = function (slug) {
-    describe("Unit Tests" + slug + " -> Constructor", function () {
+    describe("Constructor", function () {
 
         it('should create a new instance', function () {
             cryptox = new Cryptox(slug);
@@ -73,7 +73,7 @@ var eachMethod = function (slug, method) {
         mock.restore();
     });
 
-    describe("Unit Tests" + slug + " -> " + method, function () {
+    describe(method, function () {
         it('should respond when called', function () {
             expect(cryptox).to.respondTo(method);
         });
@@ -104,11 +104,13 @@ var eachMethod = function (slug, method) {
 
 
 config.slug.forEach(function (slug) {
-    var implemented;
-    eachConstructor(slug);
-    cryptox = new Cryptox(slug);
-    config.methods.forEach(function (method) {
-        eachMethod(slug, method);
+    describe("Unit Test " + slug + ":", function () {
+        var implemented;
+        eachConstructor(slug);
+        cryptox = new Cryptox(slug);
+        config.methods.forEach(function (method) {
+            eachMethod(slug, method);
+        });
     });
 });
 

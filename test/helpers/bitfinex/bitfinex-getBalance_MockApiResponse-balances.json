@@ -1,0 +1,20 @@
+[
+  {
+    "type": "deposit",
+    "currency": "btc",
+    "amount": "3.11",
+    "available": "2.12"
+  },
+  {
+    "type": "exchange",
+    "currency": "btc",
+    "amount": "11.16269692",
+    "available": "1.86269792"
+  },
+  {
+    "type": "exchange",
+    "currency": "usd",
+    "amount": "181.315192",
+    "available": "18.33855192"
+  }
+]

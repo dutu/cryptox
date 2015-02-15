@@ -3,12 +3,19 @@
 
 var apiKeys = {};
 
+apiKeys.bitfinex = {
+    key: "dummy",
+    secret: "dummy",
+}
 apiKeys.bitstamp = {
     key: "dummy",
     secret: "dummy",
     username: "dummy"
 }
-
+apiKeys.bitx = {
+    key: "dummy",
+    secret: "dummy",
+}
 apiKeys.btce = {
     key: "dummy",
     secret: "dummy",
