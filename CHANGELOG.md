@@ -3,9 +3,10 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.2.0] - unreleased
+## [0.2.0] - 2014-02-15
 ### Fixed
- 
+- Fix bitstamp.getFee() was not returning error when API keys invalid
+- 
 ### Added
 - Add parameter `account_id` to `getBalance()` response
 - Implement `getBalance()` method for Bitstamp
@@ -23,6 +24,4 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 - Change API response for `getFee()`. Parameter `fee` is replaced with `maker_fee` and `taker_fee` 
 - Change Bitcoin symbol from "BTC" to "XBT"
 - Update documentation
-
-### Removed
 
