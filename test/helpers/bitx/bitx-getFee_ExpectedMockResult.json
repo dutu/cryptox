@@ -1,0 +1,11 @@
+{
+  "timestamp": "2015-02-14T19:33:23+00:00",
+  "error": "",
+  "data": [
+    {
+      "pair": "",
+      "maker_fee": 0,
+      "taker_fee": 0.01
+    }
+  ]
+}

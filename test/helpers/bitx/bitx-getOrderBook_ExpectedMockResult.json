@@ -1,0 +1,797 @@
+{
+  "timestamp": "2015-02-15T09:30:45+00:00",
+  "error": "",
+  "data": [
+    {
+      "pair": "XBTZAR",
+      "asks": [
+        {
+          "price": 3069,
+          "volume": 0.261
+        },
+        {
+          "price": 3070,
+          "volume": 0.345631
+        },
+        {
+          "price": 3090,
+          "volume": 0.929512
+        },
+        {
+          "price": 3100,
+          "volume": 0.7425
+        },
+        {
+          "price": 3199,
+          "volume": 1.192
+        },
+        {
+          "price": 3200,
+          "volume": 0.762
+        },
+        {
+          "price": 3299,
+          "volume": 1.484459
+        },
+        {
+          "price": 3390,
+          "volume": 0.3
+        },
+        {
+          "price": 3450,
+          "volume": 1.23
+        },
+        {
+          "price": 3490,
+          "volume": 0.43
+        },
+        {
+          "price": 3499,
+          "volume": 1
+        },
+        {
+          "price": 3500,
+          "volume": 0.35451
+        },
+        {
+          "price": 3599,
+          "volume": 0.22572
+        },
+        {
+          "price": 3736,
+          "volume": 0.10237
+        },
+        {
+          "price": 3799,
+          "volume": 0.5
+        },
+        {
+          "price": 3800,
+          "volume": 0.304921
+        },
+        {
+          "price": 3800,
+          "volume": 0.102039
+        },
+        {
+          "price": 3875,
+          "volume": 1
+        },
+        {
+          "price": 3890,
+          "volume": 2
+        },
+        {
+          "price": 3899,
+          "volume": 0.1
+        },
+        {
+          "price": 3950,
+          "volume": 0.356181
+        },
+        {
+          "price": 3980,
+          "volume": 1.491321
+        },
+        {
+          "price": 3995,
+          "volume": 1.38
+        },
+        {
+          "price": 3998,
+          "volume": 0.1
+        },
+        {
+          "price": 3999,
+          "volume": 0.157304
+        },
+        {
+          "price": 4000,
+          "volume": 0.303
+        },
+        {
+          "price": 4099,
+          "volume": 0.1
+        },
+        {
+          "price": 4130,
+          "volume": 5.309747
+        },
+        {
+          "price": 4198,
+          "volume": 0.1
+        },
+        {
+          "price": 4199,
+          "volume": 0.810478
+        },
+        {
+          "price": 4200,
+          "volume": 0.152308
+        },
+        {
+          "price": 4244,
+          "volume": 0.5
+        },
+        {
+          "price": 4250,
+          "volume": 1.420366
+        },
+        {
+          "price": 4290,
+          "volume": 0.294
+        },
+        {
+          "price": 4298,
+          "volume": 0.1
+        },
+        {
+          "price": 4299,
+          "volume": 12.8702
+        },
+        {
+          "price": 4299,
+          "volume": 0.648426
+        },
+        {
+          "price": 4300,
+          "volume": 0.158489
+        },
+        {
+          "price": 4333.35,
+          "volume": 0.10016
+        },
+        {
+          "price": 4355,
+          "volume": 0.55
+        },
+        {
+          "price": 4370,
+          "volume": 0.163264
+        },
+        {
+          "price": 4399,
+          "volume": 0.5
+        },
+        {
+          "price": 4400,
+          "volume": 0.3
+        },
+        {
+          "price": 4400,
+          "volume": 4.95
+        },
+        {
+          "price": 4400,
+          "volume": 0.5
+        },
+        {
+          "price": 4411,
+          "volume": 13.251
+        },
+        {
+          "price": 4429,
+          "volume": 0.08698
+        },
+        {
+          "price": 4449,
+          "volume": 0.5
+        },
+        {
+          "price": 4490,
+          "volume": 4.678082
+        },
+        {
+          "price": 4600,
+          "volume": 1.5
+        },
+        {
+          "price": 4611,
+          "volume": 0.1287
+        },
+        {
+          "price": 4640,
+          "volume": 0.117022
+        },
+        {
+          "price": 4678.98,
+          "volume": 0.690575
+        },
+        {
+          "price": 4755,
+          "volume": 5.94
+        },
+        {
+          "price": 5000,
+          "volume": 0.136798
+        },
+        {
+          "price": 5000,
+          "volume": 1
+        },
+        {
+          "price": 5000,
+          "volume": 0.1
+        },
+        {
+          "price": 5200,
+          "volume": 0.5
+        },
+        {
+          "price": 5390,
+          "volume": 0.3
+        },
+        {
+          "price": 5500,
+          "volume": 0.396
+        },
+        {
+          "price": 5648,
+          "volume": 0.096014
+        },
+        {
+          "price": 5700,
+          "volume": 1.2
+        },
+        {
+          "price": 5800,
+          "volume": 0.4
+        },
+        {
+          "price": 5850,
+          "volume": 0.319713
+        },
+        {
+          "price": 5870,
+          "volume": 0.4
+        },
+        {
+          "price": 5899,
+          "volume": 0.5
+        },
+        {
+          "price": 5900,
+          "volume": 2
+        },
+        {
+          "price": 5972,
+          "volume": 0.058125
+        },
+        {
+          "price": 5990,
+          "volume": 0.1
+        },
+        {
+          "price": 6000,
+          "volume": 0.01
+        },
+        {
+          "price": 6000,
+          "volume": 0.042106
+        },
+        {
+          "price": 6090,
+          "volume": 0.1
+        },
+        {
+          "price": 6098,
+          "volume": 0.1
+        },
+        {
+          "price": 6100,
+          "volume": 1
+        },
+        {
+          "price": 6120,
+          "volume": 0.3
+        },
+        {
+          "price": 6150,
+          "volume": 2
+        },
+        {
+          "price": 6180,
+          "volume": 0.2
+        },
+        {
+          "price": 6200,
+          "volume": 2
+        },
+        {
+          "price": 6340,
+          "volume": 0.2
+        },
+        {
+          "price": 6499,
+          "volume": 2
+        },
+        {
+          "price": 6500,
+          "volume": 1.5
+        },
+        {
+          "price": 6600,
+          "volume": 0.19
+        },
+        {
+          "price": 6700,
+          "volume": 1
+        },
+        {
+          "price": 6700,
+          "volume": 0.14
+        },
+        {
+          "price": 6800,
+          "volume": 0.098262
+        },
+        {
+          "price": 6850,
+          "volume": 0.149378
+        },
+        {
+          "price": 6900,
+          "volume": 0.035046
+        },
+        {
+          "price": 6999.99,
+          "volume": 0.842269
+        },
+        {
+          "price": 7000,
+          "volume": 0.005238
+        },
+        {
+          "price": 7000,
+          "volume": 0.1
+        },
+        {
+          "price": 7100,
+          "volume": 0.05
+        },
+        {
+          "price": 7150,
+          "volume": 0.074766
+        },
+        {
+          "price": 7197.37,
+          "volume": 0.2
+        },
+        {
+          "price": 7200,
+          "volume": 0.099
+        },
+        {
+          "price": 7392,
+          "volume": 0.151
+        },
+        {
+          "price": 7598.99,
+          "volume": 0.174935
+        },
+        {
+          "price": 7600,
+          "volume": 1
+        },
+        {
+          "price": 7600,
+          "volume": 2.810497
+        },
+        {
+          "price": 7800,
+          "volume": 0.02869
+        },
+        {
+          "price": 7987,
+          "volume": 1.0989
+        },
+        {
+          "price": 8200,
+          "volume": 0.198
+        },
+        {
+          "price": 8462,
+          "volume": 0.094069
+        },
+        {
+          "price": 8977.49,
+          "volume": 0.001
+        },
+        {
+          "price": 9600,
+          "volume": 2.072863
+        },
+        {
+          "price": 9800,
+          "volume": 0.293625
+        },
+        {
+          "price": 9800,
+          "volume": 0.5
+        },
+        {
+          "price": 10000,
+          "volume": 3.923362
+        },
+        {
+          "price": 10000,
+          "volume": 10
+        }
+      ],
+      "bids": [
+        {
+          "price": 2952,
+          "volume": 0.2673
+        },
+        {
+          "price": 2951,
+          "volume": 5.307465
+        },
+        {
+          "price": 2950,
+          "volume": 4.297846
+        },
+        {
+          "price": 2911,
+          "volume": 0.2
+        },
+        {
+          "price": 2901,
+          "volume": 0.386075
+        },
+        {
+          "price": 2901,
+          "volume": 0.1
+        },
+        {
+          "price": 2882,
+          "volume": 2
+        },
+        {
+          "price": 2881,
+          "volume": 0.035
+        },
+        {
+          "price": 2845,
+          "volume": 0.104945
+        },
+        {
+          "price": 2705,
+          "volume": 2
+        },
+        {
+          "price": 2700,
+          "volume": 0.2
+        },
+        {
+          "price": 2600,
+          "volume": 0.00394
+        },
+        {
+          "price": 2560,
+          "volume": 0.000191
+        },
+        {
+          "price": 2550,
+          "volume": 2.12
+        },
+        {
+          "price": 2501,
+          "volume": 0.5
+        },
+        {
+          "price": 2500,
+          "volume": 0.032
+        },
+        {
+          "price": 2500,
+          "volume": 1
+        },
+        {
+          "price": 2500,
+          "volume": 0.4
+        },
+        {
+          "price": 2500,
+          "volume": 0.000784
+        },
+        {
+          "price": 2450,
+          "volume": 2.040816
+        },
+        {
+          "price": 2450,
+          "volume": 0.001
+        },
+        {
+          "price": 2400,
+          "volume": 0.001
+        },
+        {
+          "price": 2400,
+          "volume": 1
+        },
+        {
+          "price": 2350,
+          "volume": 0.001
+        },
+        {
+          "price": 2300,
+          "volume": 0.45
+        },
+        {
+          "price": 2300,
+          "volume": 0.001
+        },
+        {
+          "price": 2300,
+          "volume": 0.306421
+        },
+        {
+          "price": 2300,
+          "volume": 4
+        },
+        {
+          "price": 2250,
+          "volume": 1
+        },
+        {
+          "price": 2200,
+          "volume": 0.2
+        },
+        {
+          "price": 2200,
+          "volume": 0.225
+        },
+        {
+          "price": 2100,
+          "volume": 2.857142
+        },
+        {
+          "price": 2095,
+          "volume": 0.506
+        },
+        {
+          "price": 2060,
+          "volume": 5
+        },
+        {
+          "price": 2010,
+          "volume": 1.492537
+        },
+        {
+          "price": 2006,
+          "volume": 2
+        },
+        {
+          "price": 2001,
+          "volume": 0.5
+        },
+        {
+          "price": 2000,
+          "volume": 1
+        },
+        {
+          "price": 2000,
+          "volume": 0.25
+        },
+        {
+          "price": 2000,
+          "volume": 0.1
+        },
+        {
+          "price": 2000,
+          "volume": 0.5
+        },
+        {
+          "price": 1932,
+          "volume": 0.25
+        },
+        {
+          "price": 1920,
+          "volume": 0.4
+        },
+        {
+          "price": 1900,
+          "volume": 1.1
+        },
+        {
+          "price": 1800,
+          "volume": 0.25
+        },
+        {
+          "price": 1750,
+          "volume": 0.25
+        },
+        {
+          "price": 1732,
+          "volume": 0.25
+        },
+        {
+          "price": 1667,
+          "volume": 2.9994
+        },
+        {
+          "price": 1660,
+          "volume": 0.3
+        },
+        {
+          "price": 1501,
+          "volume": 0.0665
+        },
+        {
+          "price": 1501,
+          "volume": 0.3
+        },
+        {
+          "price": 1501,
+          "volume": 0.9335
+        },
+        {
+          "price": 1500,
+          "volume": 0.65
+        },
+        {
+          "price": 1500,
+          "volume": 1
+        },
+        {
+          "price": 1375,
+          "volume": 16
+        },
+        {
+          "price": 1001,
+          "volume": 1
+        },
+        {
+          "price": 1000,
+          "volume": 4
+        },
+        {
+          "price": 1000,
+          "volume": 2
+        },
+        {
+          "price": 1000,
+          "volume": 0.1
+        },
+        {
+          "price": 1000,
+          "volume": 0.1
+        },
+        {
+          "price": 800,
+          "volume": 0.9175
+        },
+        {
+          "price": 723.27,
+          "volume": 0.101884
+        },
+        {
+          "price": 501,
+          "volume": 2
+        },
+        {
+          "price": 155.77,
+          "volume": 0.02023
+        },
+        {
+          "price": 100,
+          "volume": 10
+        },
+        {
+          "price": 100,
+          "volume": 1
+        },
+        {
+          "price": 79.97,
+          "volume": 0.009998
+        },
+        {
+          "price": 50,
+          "volume": 20
+        },
+        {
+          "price": 32.1,
+          "volume": 0.004573
+        },
+        {
+          "price": 13,
+          "volume": 63
+        },
+        {
+          "price": 10,
+          "volume": 100
+        },
+        {
+          "price": 10,
+          "volume": 10
+        },
+        {
+          "price": 8.98,
+          "volume": 0.001
+        },
+        {
+          "price": 4.78,
+          "volume": 10
+        },
+        {
+          "price": 4,
+          "volume": 0.1
+        },
+        {
+          "price": 1.01,
+          "volume": 200
+        },
+        {
+          "price": 1,
+          "volume": 20
+        },
+        {
+          "price": 1,
+          "volume": 3.5
+        },
+        {
+          "price": 1,
+          "volume": 100
+        },
+        {
+          "price": 0.1,
+          "volume": 1
+        },
+        {
+          "price": 0.1,
+          "volume": 1000
+        },
+        {
+          "price": 0.03,
+          "volume": 500
+        },
+        {
+          "price": 0.03,
+          "volume": 2
+        },
+        {
+          "price": 0.02,
+          "volume": 200
+        },
+        {
+          "price": 0.01,
+          "volume": 24
+        },
+        {
+          "price": 0.01,
+          "volume": 51
+        },
+        {
+          "price": 0.01,
+          "volume": 10000
+        },
+        {
+          "price": 0.01,
+          "volume": 78
+        }
+      ]
+    }
+  ]
+}

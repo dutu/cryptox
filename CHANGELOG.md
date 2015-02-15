@@ -3,11 +3,10 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.1.3] - unreleased
+## [0.2.0] - unreleased
 ### Fixed
  
 ### Added
-- Add the CHANGELOG file
 - Add parameter `account_id` to `getBalance()` response
 - Implement `getBalance()` method for Bitstamp
 - Implement `getFee()` method for Bitstamp
@@ -16,6 +15,7 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 - Implement `getTicker()` method for Bitfinex
 - Implement `getOrderBook()` method for Bitfinex
 - Implement `getBalance()` method for Bitfinex
+- Add the CHANGELOG file
 
 ### Changed
 

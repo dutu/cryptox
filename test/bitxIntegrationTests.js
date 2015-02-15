@@ -15,18 +15,24 @@ chai.use(require("chai-json-schema"));
 
 var slug = "bitx";
 
-var apiURL = {
-    privateAPIhost: "https://btc-e.com",
-    privatePath: {
-        all: "/tapi"
+var api = {
+    private: {
+        host: "https://api.mybitx.com",
+        path: {
+            balance: "/api/balance/",
+            open_orders: "api/open_orders/",
+            user_transactions: "api/user_transactions/"
+        },
     },
-    publicAPIhost: "https://btc-e.com",
-    publicPath: {
-        depth: "/api/2/btc_usd/depth",
-        fee: "/api/2/btc_usd/fee",
-        ticker: "/api/2/btc_usd/ticker",
-        trades: "/api/2/btc_usd/trades",
-    }
+    public: {
+        host: "https://api.mybitx.com",
+        path: {
+            orderbook: "/api/1/orderbook",
+            ticker: "/api/1/ticker",
+            transactions: "/api/transactions/",
+            alltickers: "/api/1/tickers"
+        }
+    },
 };
 
 describe("Integration Test " + slug + ":", function () {
@@ -46,8 +52,8 @@ describe("Integration Test " + slug + ":", function () {
         cryptox[method](options, function (err, result) {
             expect(result).to.be.jsonSchema(schema.errorResult);
             expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true; // to be a valid ISO 8601 date
-            expect(err.message).to.be.equal("418");
-            expect(result.error).to.be.equal("418");
+            expect(err.message).to.contain("418");
+            expect(result.error).to.contain("418");
             done();
         });
     };
@@ -58,7 +64,8 @@ describe("Integration Test " + slug + ":", function () {
             expect(result).to.have.property("error").and.be.equal("");
             expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true;          // to be a valid ISO 8601 date
             mockResponseFilename = __dirname + "/helpers/" + slug + "/" + slug + "-" + method + "_ExpectedMockResult.json";
-            // jf.writeFileSync(mockResponseFilename, result);
+            if (method === "getFee")
+                jf.writeFileSync(mockResponseFilename, result);
             expect(result).to.have.property("data").and.to.be.deep.equal(jf.readFileSync(mockResponseFilename).data);
             done();
         });
@@ -90,6 +97,7 @@ describe("Integration Test " + slug + ":", function () {
 
 
     describe("getRate", function () {
+        var options;
         before(function () {
             cryptox = new Cryptox(slug);
         });
@@ -97,19 +105,22 @@ describe("Integration Test " + slug + ":", function () {
             nock.cleanAll();
         });
         it("should return specific error with valid JSON schema", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.ticker)
+            options = {pair: "XBTZAR"};
+            nockServer = nock(api.public.host)
+                .get(api.public.path.ticker + "?pair=" + options.pair)
                 .reply(418, "I'm a teapot");
-            returnError418("getRate", {pair: "BTCUSD"}, done);
-        });
-        it("should return expected mock result", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.ticker)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getRate_MockApiResponse-ticker.json");
-            returnExpectedMock("getRate", {pair: "BTCUSD"}, done);
+            returnError418("getRate", options, done);
         });
         it("should return the rate with valid JSON schema", function (done) {
-            returnValidSchema("getRate", {pair: "BTCUSD"}, done);
+            options = {pair: "XBTZAR"};
+            returnValidSchema("getRate", options, done);
+        });
+        it("should return expected mock result", function (done) {
+            options = {pair: "XBTZAR"};
+            nockServer = nock(api.public.host)
+                .get(api.public.path.ticker + "?pair=" + options.pair)
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getRate_MockApiResponse-ticker.json");
+            returnExpectedMock("getRate", options, done);
         });
     });
 
@@ -121,19 +132,24 @@ describe("Integration Test " + slug + ":", function () {
             nock.cleanAll();
         });
         it("should return specific error with valid JSON schema", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.ticker)
+            options = {pair: "XBTZAR"};
+            nockServer = nock(api.public.host)
+                .get(api.public.path.ticker + "?pair=" + options.pair)
                 .reply(418, "I'm a teapot");
-            returnError418("getTicker", {pair: "BTCUSD"}, done);
-        });
-        it("should return expected mock result", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.ticker)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getTicker_MockApiResponse-ticker.json");
-            returnExpectedMock("getTicker", {pair: "BTCUSD"}, done);
+            returnError418("getTicker", options, done);
         });
         it("should return the ticker with valid JSON schema", function (done) {
-            returnValidSchema("getTicker", {pair: "BTCUSD"}, done);
+            returnValidSchema("getTicker", {pair: "XBTZAR"}, done);
+        });
+        it("should return expected mock result", function (done) {
+            options = {pair: "XBTZAR"};
+            nockServer = nock(api.public.host)
+                .get(api.public.path.ticker + "?pair=" + options.pair)
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getTicker_MockApiResponse-ticker.json");
+            returnExpectedMock("getTicker", options, done);
+        });
+        it("should return the ticker with valid JSON schema", function (done) {
+            returnValidSchema("getTicker", options, done);
         });
     });
 
@@ -145,19 +161,21 @@ describe("Integration Test " + slug + ":", function () {
             nock.cleanAll();
         });
         it("should return specific error with valid JSON schema", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.depth)
+            options = {pair: "XBTZAR"};
+            nockServer = nock(api.public.host)
+                .get(api.public.path.orderbook + "?pair=" + options.pair)
                 .reply(418, "I'm a teapot");
-            returnError418("getOrderBook", {pair: "BTCUSD"}, done);
-        });
-        it("should return expected mock result", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.depth)
-                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getOrderBook_MockApiResponse-depth.json");
-            returnExpectedMock("getOrderBook", {pair: "BTCUSD"}, done);
+            returnError418("getOrderBook", options, done);
         });
         it("should return the order book with valid JSON schema", function (done) {
-            returnValidSchema("getOrderBook", {pair: "BTCUSD"}, done);
+            returnValidSchema("getOrderBook", options, done);
+        });
+        it("should return expected mock result", function (done) {
+            options = {pair: "XBTZAR"};
+            nockServer = nock(api.public.host)
+                .get(api.public.path.orderbook + "?pair=" + options.pair)
+                .replyWithFile(200, __dirname + "/helpers/" + slug + "/" + "bitx-getOrderBook_MockApiResponse-orderbook.json");
+            returnExpectedMock("getOrderBook", options, done);
         });
     });
 
@@ -168,59 +186,8 @@ describe("Integration Test " + slug + ":", function () {
         beforeEach(function () {
             nock.cleanAll();
         });
-        it("should return specific error with valid JSON schema", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.fee)
-                .reply(418, "I'm a teapot");
-            returnError418("getFee", {pair: "BTCUSD"}, done);
-        });
-        it("should return expected mock result", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .get(apiURL.publicPath.fee)
-                .replyWithFile(200, __dirname + "/helpers/bitx/" + "bitx-getFee_MockApiResponse-fee.json");
-            returnExpectedMock("getFee", {pair: "BTCUSD"}, done);
-        });
         it("should return the fee with valid JSON schema", function (done) {
-            returnValidSchema("getFee", {pair: "BTCUSD"}, done);
-        });
-    });
-
-    describe("getOpenOrders", function () {
-        before(function () {
-            cryptox = new Cryptox(slug, {key: myKey, secret: mySecret});
-            publicCryptox = new Cryptox(slug);
-        });
-        beforeEach(function () {
-            nock.cleanAll();
-        });
-        it("should return specific error with valid JSON schema", function (done) {
-            nockServer = nock(apiURL.publicAPIhost)
-                .post(apiURL.privatePath.all, function (body) {
-                    return body.method === "ActiveOrders"
-                })
-                .reply(418, "I'm a teapot");
-            returnError418("getOpenOrders", {pair: "BTCUSD"}, done);
-        });
-        it("should return an authorization error with valid JSON schema", function (done) {
-            returnAuthorizationError("getOpenOrders", {}, done);
-        });
-        it("should return expected mock result", function (done) {
-            nockServer = nock(apiURL.privateAPIhost)
-                .post(apiURL.privatePath.all, function (body) {
-                    return body.method === "ActiveOrders"
-                })
-                .replyWithFile(200, __dirname + "/helpers/bitx/" + "bitx-getOpenOrders_MockApiResponse-activeorders.json");
-            returnExpectedMock("getOpenOrders", {pair: "BTCUSD"}, done);
-        });
-        it("should return the open orders" +((myKey === "dummy") ? " <- skipped (API key is dummy)" : "") , function (done) {
-            if (myKey === "dummy")
-                done();
-            else
-                returnValidSchema("getOpenOrders", {pair: "BTCUSD"}, done);
-        });
-        it("should return API key error with valid JSON schema", function (done) {
-            cryptox = new Cryptox(slug, {key: "dummy", secret: "dummy"});
-            returnAnError("getOpenOrders", {pair: "BTCUSD"}, done);
+            returnValidSchema("getFee", {pair: "XBTZAR"}, done);
         });
     });
 });
