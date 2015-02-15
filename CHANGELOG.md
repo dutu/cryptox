@@ -6,18 +6,13 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 ## [0.2.1] - Unreleased
 
 ### Fixed
-- Fix JSON validation schema for `getBalance()` result
-- Fix: `bitfinex.getTicker()` now returns the result with correct JSON schema
-
-### Added
-
-### Changed
+- Fix `bitfinex.getTicker()` now returns the result with correct JSON schema
 
 
 ## [0.2.0] - 2014-02-15
 
 ### Fixed
-- Fix: `bitstamp.getFee()` now returns an error when invalid API keys 
+- Fix `bitstamp.getFee()` now returns an error when invalid API keys 
 
 ### Added
 - Add parameter `account_id` to `getBalance()` response
