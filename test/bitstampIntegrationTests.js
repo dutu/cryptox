@@ -47,7 +47,7 @@ describe("Integration Test bitstamp:", function () {
         myKey = mySecret = myUsername = "dummy";
     }
 
-/*      removed due to bug in bitfinex module, see https://github.com/gferrin/bitfinex/issues/9
+
     describe("getRate", function () {
 
         before(function() {
@@ -129,7 +129,7 @@ describe("Integration Test bitstamp:", function () {
         });
     });
 
-*/
+
     describe("getOrderBook", function () {
 
         before(function() {

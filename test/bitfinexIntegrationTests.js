@@ -28,7 +28,7 @@ var api = {
         host: "https://api.bitfinex.com",
         path: {
             orderbook: "/v1/book",
-            ticker: "/v1/pubticker",
+            ticker: "/v1/ticker",
             transactions: "/v1/transactions/",
             alltickers: "/v1/tickers"
         }
@@ -94,7 +94,6 @@ describe("Integration Test " + slug + ":", function () {
             done();
         });
     };
-
 
     describe("getRate", function () {
         var options;
