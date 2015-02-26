@@ -1,7 +1,6 @@
 'use strict';
 
 var Cryptox = require("../index.js");
-var https = require("https");
 var chai = require("chai");
 var nock = require("nock");
 var moment = require("moment");
@@ -22,7 +21,7 @@ var api = {
             balances: "/v1/balances",
             open_orders: "/v1/open_orders/",
             user_transactions: "/v1/user_transactions/"
-        },
+        }
     },
     public: {
         host: "https://api.bitfinex.com",
@@ -32,7 +31,7 @@ var api = {
             transactions: "/v1/transactions/",
             alltickers: "/v1/tickers"
         }
-    },
+    }
 };
 
 describe("Integration Test " + slug + ":", function () {

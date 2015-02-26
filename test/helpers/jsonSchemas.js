@@ -16,7 +16,7 @@ schema.errorResult = {
             "minLength": 1
         },
         "data": {
-            "type": "array",
+            "type": "array"
         }
     }
 };
@@ -45,7 +45,7 @@ schema.getRate = {
                         "type": "string"
                     },
                     "rate": {
-                        "type": "number",
+                        "type": "number"
                     }
                 }
             }
@@ -77,16 +77,16 @@ schema.getTicker = {
                         "type": "string"
                     },
                     "last": {
-                        "type": "number",
+                        "type": "number"
                     },
                     "bid": {
-                        "type": "number",
+                        "type": "number"
                     },
                     "ask": {
-                        "type": "number",
+                        "type": "number"
                     },
                     "volume": {
-                        "type": "number",
+                        "type": "number"
                     }
                 }
             }
@@ -125,10 +125,10 @@ schema.getOrderBook = {
                             "required": ["price", "volume"],
                             "properties": {
                                 "price": {
-                                    "type": "number",
+                                    "type": "number"
                                 },
                                 "volume": {
-                                    "type": "number",
+                                    "type": "number"
                                 }
                             }
                         }
@@ -141,10 +141,10 @@ schema.getOrderBook = {
                             "required": ["price", "volume"],
                             "properties": {
                                 "price": {
-                                    "type": "number",
+                                    "type": "number"
                                 },
                                 "volume": {
-                                    "type": "number",
+                                    "type": "number"
                                 }
                             }
                         }
@@ -179,10 +179,72 @@ schema.getFee = {
                         "type": "string"
                     },
                     "maker_fee": {
-                        "type": "number",
+                        "type": "number"
                     },
                     "taker_fee": {
-                        "type": "number",
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+};
+
+schema.getTransactions = {
+    "title": "getTransactions schema",
+    "description": "Schema for getTransactions() results",
+    "type": "object",
+    "required": ["timestamp", "error", "data"],
+    "properties": {
+        "timestamp": {
+            "type": "string",
+            "minLength": 1
+        },
+        "error": {
+            "type": "string"
+        },
+        "data": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["tx_id", "datetime", "type", "symbol", "amount_base", "amount_counter", "rate", "fee_base", "fee_counter", "order_id", "add_info"],
+                "properties": {
+                    "tx_id": {
+                        "type": "string"
+                    },
+                    "datetime": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "type": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "symbol": {
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 6
+                    },
+                    "amount_base": {
+                        "type": "number"
+                    },
+                    "amount_counter": {
+                        "type": "number"
+                    },
+                    "rate": {
+                        "type": "number"
+                    },
+                    "fee_base": {
+                        "type": "number"
+                    },
+                    "fee_counter": {
+                        "type": "number"
+                    },
+                    "order_id": {
+                        "type": "string"
+                    },
+                    "add_info": {
+                        "type": "string"
                     }
                 }
             }
@@ -217,10 +279,10 @@ schema.getBalance = {
                             "required": ["currency", "amount"],
                             "properties": {
                                 "currency": {
-                                    "type": "string",
+                                    "type": "string"
                                 },
                                 "amount": {
-                                    "type": "number",
+                                    "type": "number"
                                 }
                             }
                         }
@@ -232,10 +294,10 @@ schema.getBalance = {
                             "required": ["currency", "amount"],
                             "properties": {
                                 "currency": {
-                                    "type": "string",
+                                    "type": "string"
                                 },
                                 "amount": {
-                                    "type": "number",
+                                    "type": "number"
                                 }
                             }
                         }
@@ -270,19 +332,19 @@ schema.getOpenOrders = {
                         "type": "string"
                     },
                     "pair": {
-                        "type": "string",
+                        "type": "string"
                     },
                     "type": {
-                        "type": "string",
+                        "type": "string"
                     },
                     "amount": {
                         "type": "number"
                     },
                     "rate": {
-                        "type": "number",
+                        "type": "number"
                     },
                     "created_at": {
-                        "type": "string",
+                        "type": "string"
                     }
                 }
             }

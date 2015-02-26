@@ -1,7 +1,6 @@
 'use strict';
 
 var Cryptox = require("../index.js");
-var https = require("https");
 var chai = require("chai");
 var nock = require("nock");
 var moment = require("moment");
@@ -12,7 +11,9 @@ chai.use(require("chai-json-schema"));
 
 var config = require("./helpers/config.js");
 var schema = require("./helpers/jsonSchemas.js");
+var util = require("./helpers/util.js");
 
+var slug = "bitstamp";
 
 var api = {
     private: {
@@ -21,21 +22,21 @@ var api = {
             balance: "/api/balance/",
             open_orders: "api/open_orders/",
             user_transactions: "api/user_transactions/"
-        },
+        }
     },
     public: {
         host: "https://www.bitstamp.net",
         path: {
-            order_book: "/api/order_book/?",
-            ticker: "/api/ticker/?",
-            transactions: "/api/transactions/",
+            order_book: "/api/order_book/",
+            ticker: "/api/ticker/",
+            transactions: "/api/user_transactions/"
         }
-    },
+    }
 };
 
-describe("Integration Test bitstamp:", function () {
+describe("Integration Test " + slug + ":", function () {
     var nockServer, mockResponseFilename;
-    var privateCryptox, publicCryptox;
+    var privateCryptox, publicCryptox, cryptox;
     var myKey, mySecret, myUsername, apiKeys;
     try {       // load private keys (if exists)
         apiKeys = require("./helpers/private_keys.js");
@@ -46,7 +47,6 @@ describe("Integration Test bitstamp:", function () {
     catch(err) {
         myKey = mySecret = myUsername = "dummy";
     }
-
 
     describe("getRate", function () {
 
@@ -66,7 +66,7 @@ describe("Integration Test bitstamp:", function () {
         });
         it("should return expected mock result", function (done) {
             nockServer = nock("https://www.bitstamp.net")
-                .get("/api/ticker/?")
+                .get("/api/ticker/")
                 .replyWithFile(200, __dirname + "/helpers/bitstamp/" + "bitstamp-getRate_MockApiResponse-ticker.json");
             publicCryptox.getRate({}, function (err, result) {
                 expect(err).to.be.null;
@@ -138,7 +138,7 @@ describe("Integration Test bitstamp:", function () {
 
         it("should return an error with valid JSON schema", function (done) {
             nockServer = nock(api.public.host)
-                .get(api.public.path.depth)
+                .get(api.public.path.order_book)
                 .reply(418, "I'm a teapot");
             publicCryptox.getOrderBook({pair: "XBTUSD"}, function (err, result) {
                 expect(result).to.be.jsonSchema(schema.errorResult);
@@ -209,6 +209,76 @@ describe("Integration Test bitstamp:", function () {
                 expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true; // to be a valid ISO 8601 date
                 done();
             });
+        });
+    });
+
+    describe("getTransactions", function () {
+      var method  = "getTransactions";
+      var options = {};
+      before(function() {
+          cryptox = new Cryptox(slug, {key: myKey, secret: mySecret, username: myUsername});
+          publicCryptox = new Cryptox(slug);
+
+      });
+      beforeEach(function () {
+        nock.cleanAll();
+      });
+      it("should return an error with valid JSON schema", function (done) {
+            nockServer = nock(api.private.host)
+                .filteringPath(function(path) {
+                    return api.private.path.transactions;
+                })
+                .post(api.private.path.transactions)
+                .reply(418, "I'm a teapot");
+            options = {};
+            util.expectError(cryptox, method, options, done);
+        });
+        it("should return authorization error with valid JSON schema", function (done) {
+            options = {};
+            util.expectError(publicCryptox, method, options, done);
+        });
+        it("should return the transactions" +((myKey === "dummy") ? " <- skipped since API key is dummy" : "") , function (done) {
+            if (myKey === "dummy")
+                done();
+            else {
+                options = {};
+                util.expectValidSchema(cryptox, method, options, done);
+            }
+        });
+        it("should return expected mock result", function (done) {
+            var helpersDirname = __dirname + "/helpers/" + cryptox.properties.slug + "/";
+            nockServer = nock(api.private.host)
+                .filteringPath(function(path) {
+                    return api.private.path.transactions;
+                })
+                .post(api.private.path.transactions)
+                .replyWithFile(200, helpersDirname + "bitstamp-getTransactions_MockApiResponse-user_transactions.json");
+            options = {writeMockResponseFile: false};   // this option flag is only used for generating the mockResponseFile for the first time (set to true)
+            util.expectMockResult(cryptox, method, options, done);
+        });
+        it("should accept parameter 'limit' and return the transactions" +((myKey === "dummy") ? " <- skipped since API key is dummy" : "") , function (done) {
+            if (myKey === "dummy")
+              done();
+            else {
+              options = {limit: 10};
+              util.expectValidSchema(cryptox, method, options, done);
+            }
+        });
+        it("should accept parameter 'offset' and return the transactions" +((myKey === "dummy") ? " <- skipped since API key is dummy" : "") , function (done) {
+            if (myKey === "dummy")
+                done();
+            else {
+                options = {offset: 3};
+                util.expectValidSchema(cryptox, method, options, done);
+            }
+        });
+        it("should accept parameter 'sort' and return the transactions" +((myKey === "dummy") ? " <- skipped since API key is dummy" : "") , function (done) {
+            if (myKey === "dummy")
+                done();
+            else {
+                options = {sort: "asc", limit: 3};
+                util.expectValidSchema(cryptox, method, options, done);
+            }
         });
     });
 

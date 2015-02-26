@@ -36,7 +36,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getRate(options, function (err, rate){
             callback(err, rate);
         });
-    }
+    };
 
     self.getTicker = function (options, callback){
         var err;
@@ -46,7 +46,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getTicker(options, function (err, ticker){
             callback(err, ticker);
         });
-    }
+    };
 
     self.getOrderBook = function (options, callback){
         var err;
@@ -56,7 +56,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getOrderBook(options, function (err, orderBook){
             callback(err, orderBook);
         });
-    }
+    };
 
     self.getTrades = function (options, callback){
         var err;
@@ -66,7 +66,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getTrades(options, function (err, trades){
             callback(err, trades);
         });
-    }
+    };
 
     self.getFee = function (options, callback){
         var err;
@@ -76,7 +76,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getFee(options, function (err, fee){
             callback(err, fee);
         });
-    }
+    };
 
     self.getTransactions = function (options, callback){
         var err;
@@ -86,7 +86,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getTransactions(options, function (err, transactions){
             callback(err, transactions);
         });
-    }
+    };
 
     self.getBalance = function (options, callback){
         var err;
@@ -96,7 +96,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getBalance(options, function (err, balance){
             callback(err, balance);
         });
-    }
+    };
 
     self.getOpenOrders = function (options, callback){
         var err;
@@ -106,7 +106,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getOpenOrders(options, function (err, openOrders){
             callback(err, openOrders);
         });
-    }
+    };
 
     self.postSellOrder = function (options, callback){
         var err;
@@ -116,7 +116,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.postSellOrder(options, function (err, orderResult){
             callback(err, orderResult);
         });
-    }
+    };
 
     self.postBuyOrder = function (options, callback){
         var err;
@@ -126,7 +126,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.postBuyOrder(options, function (err, orderResult){
             callback(err, orderResult);
         });
-    }
+    };
 
     self.cancelOrder = function (options, callback){
         var err;
