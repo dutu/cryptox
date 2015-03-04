@@ -1,7 +1,7 @@
 
 "use strict";
 
-var path = require("path");
+var _ = require("lodash");
 
 var util = require("./lib/util"); //custom functions
 
@@ -12,8 +12,15 @@ function Cryptox (exchangeSlug, options) {
     var self = this;
     var Exchange = require("./lib/" + exchangeSlug);
     var locales = require("./lib/locales");
-
-    self.properties = Exchange.prototype.properties;
+    self.properties = {
+        defaults: {
+            getTransactions: {
+                limit: 50,
+                sort: "desc"
+            }
+        }
+    };
+    _.assign(self.properties, Exchange.prototype.properties);
     self.options = options || {};
     if (!self.options.hasOwnProperty("lang"))
         self.options["lang"]="en";            // set default language to "en" (english)
@@ -36,7 +43,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getRate(options, function (err, rate){
             callback(err, rate);
         });
-    }
+    };
 
     self.getTicker = function (options, callback){
         var err;
@@ -46,7 +53,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getTicker(options, function (err, ticker){
             callback(err, ticker);
         });
-    }
+    };
 
     self.getOrderBook = function (options, callback){
         var err;
@@ -56,7 +63,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getOrderBook(options, function (err, orderBook){
             callback(err, orderBook);
         });
-    }
+    };
 
     self.getTrades = function (options, callback){
         var err;
@@ -66,7 +73,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getTrades(options, function (err, trades){
             callback(err, trades);
         });
-    }
+    };
 
     self.getFee = function (options, callback){
         var err;
@@ -76,7 +83,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getFee(options, function (err, fee){
             callback(err, fee);
         });
-    }
+    };
 
     self.getTransactions = function (options, callback){
         var err;
@@ -86,7 +93,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getTransactions(options, function (err, transactions){
             callback(err, transactions);
         });
-    }
+    };
 
     self.getBalance = function (options, callback){
         var err;
@@ -96,7 +103,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getBalance(options, function (err, balance){
             callback(err, balance);
         });
-    }
+    };
 
     self.getOpenOrders = function (options, callback){
         var err;
@@ -106,7 +113,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.getOpenOrders(options, function (err, openOrders){
             callback(err, openOrders);
         });
-    }
+    };
 
     self.postSellOrder = function (options, callback){
         var err;
@@ -116,7 +123,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.postSellOrder(options, function (err, orderResult){
             callback(err, orderResult);
         });
-    }
+    };
 
     self.postBuyOrder = function (options, callback){
         var err;
@@ -126,7 +133,7 @@ function Cryptox (exchangeSlug, options) {
         exchange.postBuyOrder(options, function (err, orderResult){
             callback(err, orderResult);
         });
-    }
+    };
 
     self.cancelOrder = function (options, callback){
         var err;

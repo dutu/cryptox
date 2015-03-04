@@ -6,29 +6,34 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 ## [0.2.1] - Unreleased
 
 ### Fixed
-- Fix `bitfinex.getTicker()` now returns the result with correct JSON schema
+- Fix: `bitfinex.getTicker()` returns the result with invalid JSON schema
+- Fix: `btce.getFee()` requires `pair` as parameter
+- Fix: bitfinex methods return BTC instead of XBT
+
+### Added
+- Implement `bitstamp.getTransactions()` method; partially implemented (`to` and `from` parameters not yet supported)
 
 
 ## [0.2.0] - 2014-02-15
 
 ### Fixed
-- Fix `bitstamp.getFee()` now returns an error when invalid API keys 
+- Fix: `bitstamp.getFee()` does not return error when invalid API keys
 
 ### Added
 - Add parameter `account_id` to `getBalance()` response
-- Implement `getBalance()` method for Bitstamp
-- Implement `getFee()` method for Bitstamp
-- Implement `getBalance()` method for BitX
-- Implement `getFee()` method for BitX
-- Implement `getTicker()` method for Bitfinex
-- Implement `getOrderBook()` method for Bitfinex
-- Implement `getBalance()` method for Bitfinex
+- Implement `bitstamp.getBalance()` method
+- Implement `bitstamp.getFee()` method
+- Implement `bitx.getBalance()` method
+- Implement `bitx.getFee()` method
+- Implement `bitfinex.getTicker()` method
+- Implement `bitfinex.getOrderBook()` method
+- Implement `bitfinex.getBalance()` method
 - Add the CHANGELOG file
 
 ### Changed
 
-- Change API response for `getOrderbook()`. `asks` and `bids` are now arrays of JSON
-- Change API response for `getFee()`. Parameter `fee` is replaced with `maker_fee` and `taker_fee` 
-- Change Bitcoin symbol from "BTC" to "XBT"
+- Change: API response for `getOrderbook()`. `asks` and `bids` are now arrays of JSON
+- Change: API response for `getFee()`. Parameter `fee` is replaced with `maker_fee` and `taker_fee` 
+- Change: Bitcoin symbol from "BTC" to "XBT"
 - Update documentation
 

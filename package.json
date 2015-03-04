@@ -42,7 +42,7 @@
     "strscan": "*",
     "bitx": ">=1.4.3",
     "open-exchange-rates" : ">=0.3.0",
-    "bitfinex": ">=0.3.3"
+    "bitfinex": "0.3.5"
   },
   "devDependencies": {
     "chai": ">= 1.6.1 < 2",
