@@ -77,7 +77,7 @@ Example result:
 |[getOrderBook](docs/api_documentation.md#getorderbook)      |   FI   |   FI         | FI | FI  |      |      —        |
 |[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |      —        |
 |[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |      —        |
-|[getTransactions](docs/api_documentation.md#gettransactions)|        |              |    |     |      |      —        |
+|[getTransactions](docs/api_documentation.md#gettransactions)|        |   PI <sup>[2]</sup>         |    |     |      |      —        |
 |[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
 |[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              |    | FI  |      |      —        |
 |[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |      —        |
@@ -90,7 +90,8 @@ Example result:
 > **PI** = Partially Implemented (refer to notes below)  
 > **—** = Not Supported    
 
-><sup>[1]</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat currencies   
+><sup>[1]</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat currencies     
+><sup>[2]</sup> parameters `to` and `from` not yet implemented     
 
 
 
@@ -101,8 +102,6 @@ Example result:
 > 2. MINOR version increments when functionality in a backwards-compatible manner are introduced  
 > 3. PATCH version increments when backwards-compatible bug fixes are made  
 
-
-**IMPORTANT NOTE**: Major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
 
 See detailed [ChangeLog](CHANGELOG.md)
 
