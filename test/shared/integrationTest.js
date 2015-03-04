@@ -163,7 +163,9 @@ exports.integrationTest = function (contextIT) {
                     nock.enableNetConnect();
                 });
                 var shared = require("./" + method + ".js");
-                shared.shouldVerifyParameters();
+                if (!dummyApiKeys) {
+                    shared.shouldVerifyParameters();
+                }
             });
 
         });

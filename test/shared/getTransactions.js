@@ -12,7 +12,7 @@ chai.use(require("chai-json-schema"));
 var schema = require("../helpers/jsonSchemas.js");
 
 exports.shouldVerifyParameters = function() {
-    it("{limit: 2} should return 2 transactions" + (this.skipParamTests ? " <-- Skipped due to 'dummy' API key)" : ""), function (done) {
+    it("{limit: 2} should return 2 transactions", function (done) {
         var options = {limit: 2};
         if (this.skipParamTests) return done();
         var cryptox = this.context.cryptox;
@@ -24,7 +24,7 @@ exports.shouldVerifyParameters = function() {
             done();
         });
     });
-    it("{} should return the transactions with default 'limit' value" + (this.skipParamTests ? " <-- Skipped due to 'dummy' API key)" : ""), function (done) {
+    it("{} should return the transactions with default 'limit' value", function (done) {
         var options = {};
         if (this.skipParamTests) return done();
         var cryptox = this.context.cryptox;
@@ -36,7 +36,7 @@ exports.shouldVerifyParameters = function() {
             done();
         });
     });
-    it("{skip: 2} should skip 2 transactions" + (this.skipParamTests ? " <-- Skipped due to 'dummy' API key)" : ""), function (done) {
+    it("{skip: 2} should skip 2 transactions", function (done) {
         var options = {skip: 2};
         var skipTo = options.skip;
         if (this.skipParamTests) return done();
