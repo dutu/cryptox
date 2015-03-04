@@ -32,7 +32,8 @@ schema.getRate = {
             "minLength": 1
         },
         "error": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 0
         },
         "data": {
             "type": "array",
@@ -64,7 +65,8 @@ schema.getTicker = {
             "minLength": 1
         },
         "error": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 0
         },
         "data": {
             "type": "array",
@@ -105,7 +107,8 @@ schema.getOrderBook = {
             "minLength": 1
         },
         "error": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 0
         },
         "data": {
             "type": "array",
@@ -166,7 +169,8 @@ schema.getFee = {
             "minLength": 1
         },
         "error": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 0
         },
         "data": {
             "type": "array",
@@ -201,7 +205,8 @@ schema.getTransactions = {
             "minLength": 1
         },
         "error": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 0
         },
         "data": {
             "type": "array",
@@ -263,7 +268,8 @@ schema.getBalance = {
             "minLength": 1
         },
         "error": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 0
         },
         "data": {
             "type": "array",
@@ -319,7 +325,8 @@ schema.getOpenOrders = {
             "minLength": 1
         },
         "error": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 0
         },
         "data": {
             "type": "array",

@@ -365,6 +365,92 @@ Parameter                     |  Type  |Description                             
 
 
 ### getTransactions
+
+```js
+getTransactions(options, callback);
+```
+Returns user transaction history. Transactions are returned in descending order (newer transactions first).
+
+#### Example
+
+```js
+account.getTransactions({limit: 2, sort: "desc"}, function (err, transactions) {
+    if (!err)
+	    console.log(transactions);
+});
+```
+Example result:
+```js
+{
+    {
+    "timestamp": "2015-02-25T22:37:19+00:00",
+    "error": "",
+    "data": [
+        {
+            "tx_id": "7624780",
+            "datetime": "2015-02-24T12:02:27+00:00",
+            "type": "sell",
+            "symbol": "XBTUSD",
+            "amount_base": -0.30183411,
+            "amount_counter": 72.62,
+            "rate": 240.6,
+            "fee_base": 0,
+            "fee_counter": 0.15,
+            "order_id": "58025817",
+            "add_info": ""
+        },
+        {
+            "tx_id": "7624695",
+            "datetime": "2015-02-24T11:45:26+00:00",
+            "type": "deposit",
+            "symbol": "XBT",
+            "amount_base": 49.04253049,
+            "amount_counter": 0,
+            "rate": 0,
+            "fee_base": 0,
+            "fee_counter": 0,
+            "order_id": "",
+            "add_info": ""
+        }
+    ]
+}
+```
+
+#### Arguments
+
+* `options`
+
+    Parameter |  Type  | Required | Description |
+     ---	  | ---    |   :-:    | ---         |
+    `limit`   | Number |   no     | limit result to that many transactions. Default: `50`|
+    `skip`    | Number |   no     | skip that many transactions before beginning to return results. Default: `0`|
+    `from`    | String |   no     | return transactions from this date & time (ISO 8601 string)|
+    `to`      | String |   no     | return transactions to this date & time (ISO 8601 string)|
+    
+    
+ 
+* `callback` see [Callbacks](#callbacks)    
+
+#### Response
+
+Parameter       | Type | Description|
+ ---	        | ---  |---        |
+`tx_id`         |String| transaction ID |
+`datetime`      |String| ISO 8601 date & time of the transaction |
+`type`          |String| transaction type: `buy`, `sell`, `deposit`, `withdrawal` |  
+`symbol`        |String| currency symbol <sup>[1]</sup> or currency pair <sup>[2]</sup>|
+`amount_base`   |Number| currency amount <sup>[1]</sup> or base currency amount <sup>[3]</sup>|
+`amount_counter`|Number| counter currency amount <sup>[3]</sup>|
+`rate`          |Number| zero (`0`) <sup>[1]</sup> or the exchange rate <sup>[2] [3]</sup>|
+`fee_base`      |Number| amount of the fees debited |
+`fee_counter`   |Number| amount of the fees debited |
+`order_id`      |String| the id of the parent order of the trade. Can be `""` |
+`add_info`      |String| additional info. Can be `""` |
+
+
+><sup>[1]</sup> for single currency transaction (`deposit` or `withdrawal`)  
+><sup>[2]</sup> for trades / pair transaction (`buy` or `sell`)   
+><sup>[3]</sup> See [Currency Pairs](#currency-pairs)   
  
 
 ### getBalance
@@ -389,13 +475,13 @@ Example result:
     error: "",
     data: [
         {
-            account_id: "1224342323",
+            account_id: "8274332321",
             total: [
-                {currency: "XBT", amount: "4.86509177"},
-                {currency: "USD", amount: "100.44"}
+                {currency: "XBT", amount: 4.86509177},
+                {currency: "USD", amount: 100.44}
             ],
             available: [
-                {currency: "XBT", amount: "2.86709177"},
+                {currency: "XBT", amount: 2.86709177},
             ]
         }
     ]
@@ -439,7 +525,7 @@ Example result:
     "error": "",
     "data": [
         {
-            "orderId": "563489985",
+            "order_id": "563489985",
             "pair": "LTCUSD",
             "type": "buy",
             "amount": 1,
@@ -449,7 +535,7 @@ Example result:
 
         },
         {
-            "orderId": "563612426",
+            "order_id": "563612426",
             "pair": "LTCUSD",
             "type": "buy",
             "amount": 2,
@@ -530,7 +616,7 @@ Titcoin    | TIT
 ### Currency Pairs ##
 
 
-The first currency of a currency pair is called the "base currency", and the second currency is called the "quote currency". The currency pair shows how much of the quote currency is needed to purchase one unit of the base currency.
+The first currency of a currency pair is called the "base currency", and the second currency is called the "counter currency". The currency pair shows how much of the counter currency is needed to purchase one unit of the base currency.
 
 In example below the last price of the XBTUSD currency pair is 272.064.  
 

@@ -1,7 +1,7 @@
 
 "use strict";
 
-var path = require("path");
+var _ = require("lodash");
 
 var util = require("./lib/util"); //custom functions
 
@@ -12,8 +12,15 @@ function Cryptox (exchangeSlug, options) {
     var self = this;
     var Exchange = require("./lib/" + exchangeSlug);
     var locales = require("./lib/locales");
-
-    self.properties = Exchange.prototype.properties;
+    self.properties = {
+        defaults: {
+            getTransactions: {
+                limit: 50,
+                sort: "desc"
+            }
+        }
+    };
+    _.assign(self.properties, Exchange.prototype.properties);
     self.options = options || {};
     if (!self.options.hasOwnProperty("lang"))
         self.options["lang"]="en";            // set default language to "en" (english)
