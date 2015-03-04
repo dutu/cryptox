@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/dutu/cryptox",
   "dependencies": {
-    "bitstamp": "0.1.9",
+    "underscore": "1.4.4",
     "btc-e": "*",
     "moment": ">=2.9.0",
     "bignumber.js": ">=2.0.0",
