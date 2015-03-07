@@ -134,6 +134,12 @@ exports.integrationTest = function (contextIT) {
                             pair: privateCryptox.properties.instruments[0].pair
                         };
                         break;
+                    case "getTransactions":
+                        this.options = {
+                            type: "trades",
+	                        symbol: privateCryptox.properties.instruments[0].pair
+                        };
+                        break;
                     default:
                         this.options = {};
                 }

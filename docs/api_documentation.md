@@ -370,6 +370,7 @@ Parameter                     |  Type  |Description                             
 getTransactions(options, callback);
 ```
 Returns user transaction history. Transactions are returned in descending order (newer transactions first).
+> Note: Depending on the exchange used and parameter combination this method can require up to 10 API calls
 
 #### Example
 
@@ -423,11 +424,14 @@ Example result:
     Parameter |  Type  | Required | Description |
      ---	  | ---    |   :-:    | ---         |
     `limit`   | Number |   no     | limit result to that many transactions. Default: `50`|
-    `skip`    | Number |   no     | skip that many transactions before beginning to return results. Default: `0`|
-    `from`    | String |   no     | return transactions from this date & time (ISO 8601 string)|
-    `to`      | String |   no     | return transactions to this date & time (ISO 8601 string)|
+    `skip`    | Number |   no     | skip that many transactions before beginning to return results|
+    `after`   | String |   no     | return only transactions after or at the time specified here (ISO 8601 string)|
+    `before`  | String |   no     | return only transactions before or at the time specified here (ISO 8601 string)|
+    `type`    | String |   no     | return only transactions of this type <sup>[1]</sup>. Default return all transactions|
+    `symbol`  | String |   no     | return only transactions related to this curency symbol or curency pair |
     
-    
+    ><sup>[1]</sup> valid values are `"trades"` (for buys or sells) or `"movements"` (for deposits and withdrawals)       
+    ><sup>[2]</sup> valid values are currecny symbols (3 characters) or trading pair symbols (6 characters).       
  
 * `callback` see [Callbacks](#callbacks)    
 
@@ -437,7 +441,7 @@ Parameter       | Type | Description|
  ---	        | ---  |---        |
 `tx_id`         |String| transaction ID |
 `datetime`      |String| ISO 8601 date & time of the transaction |
-`type`          |String| transaction type: `buy`, `sell`, `deposit`, `withdrawal` |  
+`type`          |String| transaction type: `"buy"`, `"sell"`, `"deposit"`, `"withdrawal"` |  
 `symbol`        |String| currency symbol <sup>[1]</sup> or currency pair <sup>[2]</sup>|
 `amount_base`   |Number| currency amount <sup>[1]</sup> or base currency amount <sup>[3]</sup>|
 `amount_counter`|Number| counter currency amount <sup>[3]</sup>|
@@ -448,8 +452,8 @@ Parameter       | Type | Description|
 `add_info`      |String| additional info. Can be `""` |
 
 
-><sup>[1]</sup> for single currency transaction (`deposit` or `withdrawal`)  
-><sup>[2]</sup> for trades / pair transaction (`buy` or `sell`)   
+><sup>[1]</sup> for single currency transaction (`"deposit"` or `"withdrawal"`)  
+><sup>[2]</sup> for trades / pair transaction (`"buy"` or `"sell"`)   
 ><sup>[3]</sup> See [Currency Pairs](#currency-pairs)   
  
 

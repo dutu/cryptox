@@ -2,6 +2,7 @@
 "use strict";
 
 var _ = require("lodash");
+var moment = require("moment");
 
 var util = require("./lib/util"); //custom functions
 
@@ -33,6 +34,14 @@ function Cryptox (exchangeSlug, options) {
         if (self.properties.methods.notSupported.indexOf(methodName) > -1)
             return new Error("Method not supported");
         return null;
+    };
+
+    var addDefaults = function (method, options) {
+        _.forIn(self.properties.defaults[method], function (value, key) {
+            if (!options.hasOwnProperty(key)) {
+                options[key] = value;
+            }
+        });
     };
 
     self.getRate = function (options, callback){
@@ -86,10 +95,29 @@ function Cryptox (exchangeSlug, options) {
     };
 
     self.getTransactions = function (options, callback){
+        var method = "getTransactions";
         var err;
-        if (err = checkMethod("getTransactions"))
+        err = checkMethod(method);      // check is method is supported/implemented
+
+        if (!err && options.hasOwnProperty(("type") && options.type !== "trades" && options.type !== "movements"))
+            err = new Error("Invalid 'trades' argument");
+
+        if (!err && options.hasOwnProperty("before") && !moment(options.before, moment.ISO_8601).isValid())
+            err = new Error("Invalid 'before' argument (not ISO_8601 string)");
+
+        if (!err && options.hasOwnProperty("after") && !moment(options.after, moment.ISO_8601).isValid())
+            err = new Error("Invalid 'after' argument (not ISO_8601 string)");
+
+        if (!err && options.hasOwnProperty("before") && options.hasOwnProperty("after") && moment(options.before).isBefore(moment(options.after)))
+            err = new Error("Invalid 'after'/'before' arguments ('before' < 'after')");
+
+	    if (!err && options.hasOwnProperty("symbol") && !typeof options.symbol === "String")
+		    err = new Error("Invalid 'symbol' argument");
+
+	    if (err)
             return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
 
+        addDefaults(method, options);
         exchange.getTransactions(options, function (err, transactions){
             callback(err, transactions);
         });
