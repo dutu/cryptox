@@ -11,7 +11,7 @@ var apiHost = {
 
 var publicMethodsToTest = ["getTicker", "getRate", "getOrderBook"];
 var privateMethodsToTest = ["getFee", "getBalance", "getTransactions"];
-var writeMockResponseFileForMethod = "";
+var writeMockResponseFileForMethod = "getTransactions";
 
 // don't change below this line; only configure above this line
 
