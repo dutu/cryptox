@@ -12,27 +12,6 @@ chai.use(require("chai-json-schema"));
 var schema = require("../helpers/jsonSchemas.js");
 
 exports.shouldVerifyParameters = function() {
-	it('{type: "movements", symbol: "XBT"} should return only XBT related movements', function (done) {
-		var options = {type: "movements", symbol: "XBT"};
-		var mmt, valid;
-		mmt = moment (options.after);
-		if (this.skipParamTests) return done();
-		var cryptox = this.context.cryptox;
-		var method = this.context.method;
-		cryptox[method](options, function (err, result) {
-			expect(result).to.be.jsonSchema(schema[method]);
-			expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
-			result.data.forEach(function (element, index, array) {
-				var validType = ["deposit","withdrawal"].indexOf(element.type) >= 0;
-				var s = validType ? "movements" : "not all";
-				expect(s).to.be.equal("movements");
-				validType = element.symbol.indexOf(options.symbol) >= 0;
-				s = validType ? "symbol" : "not all include";
-				expect(s).to.be.equal("symbol");
-			});
-			done();
-		});
-	});
 	it("{type: 'trades', limit: 7} should return 7 buy/sell transactions", function (done) {
         var options = {type: 'trades', limit: 7};
 	    var validType;
@@ -195,8 +174,8 @@ exports.shouldVerifyParameters = function() {
 			done();
 		});
 	});
-	it("{type: 'movements', before: '2015-01-01', skip: 2, limit = 3} should return 3 movements before 2015-01-01 and skip 2", function (done) {
-		var options = {type: 'movements', before: '2015-01-01', skip: 2, limit: 3};
+	it("{type: 'movements', before: '2015-03-01', skip: 1, limit: 2} should return 2 movements before 2015-03-01 and skip 1", function (done) {
+		var options = {type: 'movements', before: '2015-03-01', skip: 1, limit: 2};
 		var skipTo = options.skip;
 		var mmt = moment (options.before);
 		if (this.skipParamTests) return done();
@@ -224,7 +203,7 @@ exports.shouldVerifyParameters = function() {
 			});
 		});
 	});
-	it("should be able to accumulate result from 3 successive API calls", function (done) {
+	it("should be able to return large results (possible with multiple successive API calls)", function (done) {
 		var options = {type: 'trades', limit: 3*10};
 		var max;
 		if (this.skipParamTests) return done();
@@ -235,14 +214,14 @@ exports.shouldVerifyParameters = function() {
 			expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
 			expect(result.data.length).to.be.equal(options.limit);
 			var resultJSON = JSON.stringify(result.data);
-			max = cryptox.properties.dictionary.user_transactions.limit.maximum;
-			cryptox.properties.dictionary.user_transactions.limit.maximum = options.limit / 3;
+			max = cryptox.properties.dictionary.getTransactions.limit.maximum;
+			cryptox.properties.dictionary.getTransactions.limit.maximum = options.limit / 3;
 			cryptox[method](options, function (err, result2) {
 				expect(result2).to.be.jsonSchema(schema[method]);
 				expect(moment(result2.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
 				expect(result.data.length).to.be.equal(options.limit);
 				expect(resultJSON).to.be.equal(JSON.stringify(result2.data));
-				cryptox.properties.dictionary.user_transactions.limit.maximum = max;
+				cryptox.properties.dictionary.getTransactions.limit.maximum = max;
 				done();
 			});
 		});
@@ -274,6 +253,27 @@ exports.shouldVerifyParameters = function() {
 		cryptox[method](options, function (err, result) {
 			expect(result).to.be.jsonSchema(schema.errorResult);
 			expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
+			done();
+		});
+	});
+	it('{type: "movements", symbol: "XBT"} should return only XBT related movements', function (done) {
+		var options = {type: "movements", symbol: "XBT"};
+		var mmt, valid;
+		mmt = moment (options.after);
+		if (this.skipParamTests) return done();
+		var cryptox = this.context.cryptox;
+		var method = this.context.method;
+		cryptox[method](options, function (err, result) {
+			expect(result).to.be.jsonSchema(schema[method]);
+			expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
+			result.data.forEach(function (element, index, array) {
+				var validType = ["deposit","withdrawal"].indexOf(element.type) >= 0;
+				var s = validType ? "movements" : "not all";
+				expect(s).to.be.equal("movements");
+				validType = element.symbol.indexOf(options.symbol) >= 0;
+				s = validType ? "symbol" : "not all include";
+				expect(s).to.be.equal("symbol");
+			});
 			done();
 		});
 	});

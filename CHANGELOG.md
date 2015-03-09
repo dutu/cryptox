@@ -3,7 +3,7 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.2.1] - Unreleased
+## [0.2.1] - 2014-03-10
 
 ### Fixed
 - Fix: `bitfinex.getTicker()` returns the result with invalid JSON schema

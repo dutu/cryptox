@@ -52,7 +52,7 @@ exports.integrationTest = function (contextIT) {
                 .reply(418, "I'm a teapot");
             cryptox[method](this.options, function (err, result) {
                 expect(result).to.be.jsonSchema(schema.errorResult);
-                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true; // to be a valid ISO 8601 date
+                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
                 expect(err.message).to.contain("418");
                 expect(result.error).to.contain("418");
                 done();
@@ -77,9 +77,9 @@ exports.integrationTest = function (contextIT) {
                 .post(apiPath)
                 .replyWithFile(200, replyFilename);
             cryptox[method](this.options, function (err, result) {
-                expect(err).to.be.null;
+                expect(err).to.be.equal(null);
                 expect(result).to.have.property("error").and.be.equal("");
-                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true;          // to be a valid ISO 8601 date
+                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true);          // to be a valid ISO 8601 date
                 if (contextIT.writeMockResponseFileForMethod === method)          // this option flag is only used for generating the mockResponseFile for the first time
                     jf.writeFileSync(mockResponseFilename, result);
                 expect(result).to.have.property("data").and.to.be.deep.equal(jf.readFileSync(mockResponseFilename).data);
@@ -108,7 +108,7 @@ exports.integrationTest = function (contextIT) {
             var options = {};
             publicCryptox[method](options, function (err, result) {
                 expect(result).to.be.jsonSchema(schema.errorResult);
-                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.true; // to be a valid ISO 8601 date
+                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
                 done();
             });
         });
