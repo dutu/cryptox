@@ -11,7 +11,7 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 - Fix: bitfinex methods return BTC instead of XBT
 
 ### Added
-- Implement `bitstamp.getTransactions()` method; partially implemented (`before` and `after` parameters not yet supported)
+- Implement `bitstamp.getTransactions()`
 - Implement `bitfinex.getTransactions()`
 
 

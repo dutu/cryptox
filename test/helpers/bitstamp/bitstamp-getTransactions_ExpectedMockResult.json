@@ -1,5 +1,5 @@
 {
-  "timestamp": "2015-03-08T11:52:58+00:00",
+  "timestamp": "2015-03-09T19:50:40+00:00",
   "error": "",
   "data": [
     {
@@ -289,15 +289,15 @@
       "add_info": ""
     },
     {
-      "tx_id": "7594379",
+      "tx_id": "7594381",
       "datetime": "2015-02-18T13:21:14+00:00",
       "type": "sell",
       "symbol": "XBTUSD",
-      "amount_base": -4.83711747,
-      "amount_counter": 1169.57,
-      "rate": 241.79,
+      "amount_base": -0.03167108,
+      "amount_counter": 7.65,
+      "rate": 241.7,
       "fee_base": 0,
-      "fee_counter": 2.34,
+      "fee_counter": 0.02,
       "order_id": "57421925",
       "add_info": ""
     },
@@ -315,15 +315,15 @@
       "add_info": ""
     },
     {
-      "tx_id": "7594381",
+      "tx_id": "7594379",
       "datetime": "2015-02-18T13:21:14+00:00",
       "type": "sell",
       "symbol": "XBTUSD",
-      "amount_base": -0.03167108,
-      "amount_counter": 7.65,
-      "rate": 241.7,
+      "amount_base": -4.83711747,
+      "amount_counter": 1169.57,
+      "rate": 241.79,
       "fee_base": 0,
-      "fee_counter": 0.02,
+      "fee_counter": 2.34,
       "order_id": "57421925",
       "add_info": ""
     },
@@ -419,6 +419,45 @@
       "add_info": ""
     },
     {
+      "tx_id": "7594357",
+      "datetime": "2015-02-18T13:15:10+00:00",
+      "type": "sell",
+      "symbol": "XBTUSD",
+      "amount_base": -0.5832,
+      "amount_counter": 141.13,
+      "rate": 241.99,
+      "fee_base": 0,
+      "fee_counter": 0.29,
+      "order_id": "57421715",
+      "add_info": ""
+    },
+    {
+      "tx_id": "7594356",
+      "datetime": "2015-02-18T13:15:10+00:00",
+      "type": "sell",
+      "symbol": "XBTUSD",
+      "amount_base": -0.1313,
+      "amount_counter": 31.77,
+      "rate": 241.99,
+      "fee_base": 0,
+      "fee_counter": 0.07,
+      "order_id": "57421715",
+      "add_info": ""
+    },
+    {
+      "tx_id": "7594355",
+      "datetime": "2015-02-18T13:15:10+00:00",
+      "type": "sell",
+      "symbol": "XBTUSD",
+      "amount_base": -0.4107,
+      "amount_counter": 99.39,
+      "rate": 241.99,
+      "fee_base": 0,
+      "fee_counter": 0.2,
+      "order_id": "57421715",
+      "add_info": ""
+    },
+    {
       "tx_id": "7594354",
       "datetime": "2015-02-18T13:15:10+00:00",
       "type": "sell",
@@ -454,45 +493,6 @@
       "rate": 241.99,
       "fee_base": 0,
       "fee_counter": 0.06,
-      "order_id": "57421715",
-      "add_info": ""
-    },
-    {
-      "tx_id": "7594356",
-      "datetime": "2015-02-18T13:15:10+00:00",
-      "type": "sell",
-      "symbol": "XBTUSD",
-      "amount_base": -0.1313,
-      "amount_counter": 31.77,
-      "rate": 241.99,
-      "fee_base": 0,
-      "fee_counter": 0.07,
-      "order_id": "57421715",
-      "add_info": ""
-    },
-    {
-      "tx_id": "7594355",
-      "datetime": "2015-02-18T13:15:10+00:00",
-      "type": "sell",
-      "symbol": "XBTUSD",
-      "amount_base": -0.4107,
-      "amount_counter": 99.39,
-      "rate": 241.99,
-      "fee_base": 0,
-      "fee_counter": 0.2,
-      "order_id": "57421715",
-      "add_info": ""
-    },
-    {
-      "tx_id": "7594357",
-      "datetime": "2015-02-18T13:15:10+00:00",
-      "type": "sell",
-      "symbol": "XBTUSD",
-      "amount_base": -0.5832,
-      "amount_counter": 141.13,
-      "rate": 241.99,
-      "fee_base": 0,
-      "fee_counter": 0.29,
       "order_id": "57421715",
       "add_info": ""
     },

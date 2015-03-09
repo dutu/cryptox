@@ -114,6 +114,20 @@ function Cryptox (exchangeSlug, options) {
 	    if (!err && options.hasOwnProperty("symbol") && !typeof options.symbol === "String")
 		    err = new Error("Invalid 'symbol' argument");
 
+	    if (!err && options.hasOwnProperty("symbol")) {
+		    // check if supported symbol
+		    var supported, pair;
+		    supported = [3, 6].indexOf(options.symbol.length) > -1;
+		    if (supported) {
+			    var validSymbol;
+			    self.properties.instruments.forEach(function (e, index, array) {
+				   validSymbol = validSymbol || e.pair.indexOf(options.symbol) > -1
+			    });
+			    supported = validSymbol;
+		    }
+		    if (!supported)
+			    err = new Error("Symbol value not supported by the exchange");
+	    }
 	    if (err)
             return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
 

@@ -89,7 +89,7 @@ exports.integrationTest = function (contextIT) {
     }
 
     function shouldReturnValidJSONSchema (method) {
-        it("should return the data with valid JSON schema" + (dummyApiKeys ? " <-- Skipped due to 'dummy' API key)" : ""), function (done) {
+        it("should return the data with valid JSON schema" + (dummyApiKeys ? " <-- Skipped; no API keys in '/test/helpers/private_key.js" : ""), function (done) {
             if (!this.options)
                 this.options = {};
             if (dummyApiKeys) {
