@@ -77,7 +77,7 @@ Example result:
 |[getOrderBook](docs/api_documentation.md#getorderbook)      |   FI   |   FI         | FI | FI  |      |      —        |
 |[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |      —        |
 |[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |      —        |
-|[getTransactions](docs/api_documentation.md#gettransactions)|        |   PI <sup>[2]</sup>         |    |     |      |      —        |
+|[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         |    |     |      |      —        |
 |[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
 |[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              |    | FI  |      |      —        |
 |[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |      —        |
@@ -91,7 +91,6 @@ Example result:
 > **—** = Not Supported    
 
 ><sup>[1]</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat currencies     
-><sup>[2]</sup> parameters `to` and `from` not yet implemented     
 
 
 
