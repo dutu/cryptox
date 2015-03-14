@@ -40,8 +40,7 @@ exports.shouldVerifyParameters = function() {
             expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
             expect(result.data.length).to.be.equal(options.limit);
 	        result.data.forEach(function (element, index, array) {
-		        validType = ["deposit","withdrawal"].indexOf(element.type) >= 0;
-		        expect(validType).to.be.equal(true);
+		        expect("deposit or withdrawal").to.have.string(element.type);
 	        });
             done();
         });
@@ -90,8 +89,8 @@ exports.shouldVerifyParameters = function() {
             });
         });
     });
-	it("{type: 'trades', skip: 23} should return trades and skip 23", function (done) {
-		var options = {skip: 23, type: 'trades'};
+	it("{type: 'trades', skip: 6} should return trades and skip 6", function (done) {
+		var options = {skip: 6, type: 'trades'};
 		var skipTo = options.skip;
 		if (this.skipParamTests) return done();
 		var cryptox = this.context.cryptox;
@@ -110,8 +109,8 @@ exports.shouldVerifyParameters = function() {
 			});
 		});
 	});
-	it("{type: 'movements', skip: 3} should return movements and skip 3", function (done) {
-		var options = {skip: 23, type: 'trades'};
+	it("{type: 'movements', skip: 2} should return movements and skip 2", function (done) {
+		var options = {skip: 2, type: 'trades'};
 		var skipTo = options.skip;
 		if (this.skipParamTests) return done();
 		var cryptox = this.context.cryptox;
@@ -148,7 +147,7 @@ exports.shouldVerifyParameters = function() {
         });
     });
     it('{after: "2015-03-04"} should return transactions, after 2015-03-04', function (done) {
-        var options = {after: "2015-03-04"};
+        var options = {after: "2015-02-04"};
         var mmt, valid;
 	    mmt = moment (options.after);
 	    if (this.skipParamTests) return done();

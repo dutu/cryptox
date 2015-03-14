@@ -128,10 +128,14 @@ function Cryptox (exchangeSlug, options) {
 		    if (!supported)
 			    err = new Error("Symbol value not supported by the exchange");
 	    }
+
+	    if (!err && options.hasOwnProperty("limit") && !(typeof options.limit === "number" && options.limit % 1 === 0)) // limit must be a number and integer
+		    err = new Error("Invalid 'limit' argument");
+
 	    if (err)
             return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
 
-        addDefaults(method, options);
+	            addDefaults(method, options);
         exchange.getTransactions(options, function (err, transactions){
             callback(err, transactions);
         });

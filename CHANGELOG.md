@@ -3,6 +3,15 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.2.2] - Unreleased
+
+### Fixed
+
+### Added
+- Implement `getTransactions()` check for argument `limit`; it needs to be an integer, otherwise an error is returned
+- Implement `bitx.getTransactions()`
+
+
 ## [0.2.1] - 2014-03-10
 
 ### Fixed

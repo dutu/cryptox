@@ -443,8 +443,8 @@ Parameter       | Type | Description|
 `datetime`      |String| ISO 8601 date & time of the transaction |
 `type`          |String| transaction type: `"buy"`, `"sell"`, `"deposit"`, `"withdrawal"` |  
 `symbol`        |String| currency symbol <sup>[1]</sup> or currency pair <sup>[2]</sup>|
-`amount_base`   |Number| currency amount <sup>[1]</sup> or base currency amount <sup>[3]</sup>|
-`amount_counter`|Number| counter currency amount <sup>[3]</sup>|
+`amount_base`   |Number| currency amount <sup>[1]</sup> or base currency amount <sup>[3] [4]</sup>|
+`amount_counter`|Number| counter currency amount <sup>[3] [4]</sup>|
 `rate`          |Number| zero (`0`) <sup>[1]</sup> or the exchange rate <sup>[2] [3]</sup>|
 `fee_base`      |Number| amount of the fees debited |
 `fee_counter`   |Number| amount of the fees debited |
@@ -455,7 +455,10 @@ Parameter       | Type | Description|
 ><sup>[1]</sup> for single currency transaction (`"deposit"` or `"withdrawal"`)  
 ><sup>[2]</sup> for trades / pair transaction (`"buy"` or `"sell"`)   
 ><sup>[3]</sup> See [Currency Pairs](#currency-pairs)   
+><sup>[3]</sup> The `amount_base` and `amount_counter` are the amounts that were traded after the fees were deducted. These are the amounts that were credited/debited from your account     
  
+ 
+
 
 ### getBalance
 
