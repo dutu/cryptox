@@ -189,6 +189,58 @@ function Cryptox (exchangeSlug, options) {
         exchange.cancelOrder(options, function (err, orderResult){
             callback(err, orderResult);
         });
-    }
+    };
+
+	self.getLendBook = function (options, callback){
+		var err;
+		err = checkMethod("getLendBook");
+
+		if (!err && !(typeof options.currency === "string"))
+			err = new Error("Invalid 'currency' argument");
+
+		if (err)
+			return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
+
+		exchange.getLendBook(options, function (err, orderBook){
+			callback(err, orderBook);
+		});
+	};
+
+	self.getActiveOffers = function (options, callback){
+		var err;
+		err = checkMethod("getActiveOffers");
+
+		if (err)
+			return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
+
+		exchange.getActiveOffers(options, function (err, orderBook){
+			callback(err, orderBook);
+		});
+	};
+
+	self.postOffer = function (options, callback){
+		var err;
+		err = checkMethod("postOffer");
+
+		if (err)
+			return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
+
+		exchange.getActiveOffers(options, function (err, orderBook){
+			callback(err, orderBook);
+		});
+	};
+
+	self.cancelOffer = function (options, callback){
+		var err;
+		err = checkMethod("cancelOffer");
+
+		if (err)
+			return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
+
+		exchange.getActiveOffers(options, function (err, orderBook){
+			callback(err, orderBook);
+		});
+	};
+
 }
 module.exports = Cryptox;

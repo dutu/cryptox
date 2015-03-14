@@ -77,13 +77,13 @@ Example result:
 |[getOrderBook](docs/api_documentation.md#getorderbook)      |   FI   |   FI         | FI | FI  |      |      —        |
 |[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |      —        |
 |[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |      —        |
-|[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         |    |     |      |      —        |
+|[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         | FI |     |      |      —        |
 |[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
 |[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              |    | FI  |      |      —        |
 |[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |      —        |
 |[postBuyOrder](docs/api_documentation.md#postbuyorder)      |        |              |    |     |      |      —        |
 |[cancelOrder](docs/api_documentation.md#cancelorder)        |        |              |    |     |      |      —        |
-
+|[getLendBook](docs/api_documentation.md#getlendbook)        |   FI   |    —         | —  |  —  |  —   |      —        |
 
 > **FI** = Fully Implemented  
 > **FR** = Fully Implemented, but restrictions apply (refer to notes below)  

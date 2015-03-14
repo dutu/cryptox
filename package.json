@@ -1,6 +1,6 @@
 {
   "name": "cryptox",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Common API wrapper for multiple crypto currency exchanges",
   "main": "index.js",
   "engines": {
@@ -42,7 +42,7 @@
     "strscan": "*",
     "bitx": ">=1.4.3",
     "open-exchange-rates" : ">=0.3.0",
-    "bitfinex": "0.4.0"
+    "bitfinex": "1.0.0"
   },
   "devDependencies": {
     "chai": ">= 1.6.1 < 2",

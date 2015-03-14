@@ -33,7 +33,7 @@ var eachConstructor = function (slug) {
             options = {
                 lang: "de",
                 key: "my_key",
-                secret: "my_secret",
+                secret: "my_secret"
             };
             cryptox = new Cryptox(slug, options);
             expect(cryptox.options.lang).to.equal("de");
@@ -54,7 +54,7 @@ var eachConstructor = function (slug) {
             expect(cryptox.properties.methods.notSupported).to.be.a("array");
         });
     });
-}
+};
 
 var eachMethod = function (slug, method) {
     var notImplemented, notSupported, mock;
@@ -100,7 +100,7 @@ var eachMethod = function (slug, method) {
                 mock.verify();
             });
     });
-}
+};
 
 
 config.slug.forEach(function (slug) {

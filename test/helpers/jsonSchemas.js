@@ -98,7 +98,7 @@ schema.getTicker = {
 
 schema.getOrderBook = {
     "title": "getOrderBook schema",
-    "description": "Schema for getTicker() results",
+    "description": "Schema for getOrderBook() results",
     "type": "object",
     "required": ["timestamp", "error", "data"],
     "properties": {
@@ -357,6 +357,85 @@ schema.getOpenOrders = {
             }
         }
     }
+};
+
+schema.getLendBook = {
+	"title": "getLendBook schema",
+	"description": "Schema for getLendBook() results",
+	"type": "object",
+	"required": ["timestamp", "error", "data"],
+	"properties": {
+		"timestamp": {
+			"type": "string",
+			"minLength": 1
+		},
+		"error": {
+			"type": "string",
+			"maxLength": 0
+		},
+		"data": {
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"type": "object",
+				"required": ["currency", "asks", "bids"],
+				"properties": {
+					"currency": {
+						"type": "string"
+					},
+					"asks": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"required": ["rate", "amount", "period", "created_at", "frr"],
+							"properties": {
+								"rate": {
+									"type": "string"
+								},
+								"amount": {
+									"type": "string"
+								},
+								"period": {
+									"type": "number"
+								},
+								"created_at": {
+									"type": "string"
+								},
+								"frr": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"bids": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"required": ["rate", "amount", "period", "created_at", "frr"],
+							"properties": {
+								"rate": {
+									"type": "string"
+								},
+								"amount": {
+									"type": "string"
+								},
+								"period": {
+									"type": "number"
+								},
+								"created_at": {
+									"type": "string"
+								},
+								"frr": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 };
 
 module.exports = schema;

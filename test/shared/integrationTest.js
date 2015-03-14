@@ -140,6 +140,11 @@ exports.integrationTest = function (contextIT) {
 	                        symbol: privateCryptox.properties.instruments[0].pair
                         };
                         break;
+	                case "getLendBook":
+		                this.options = {
+			                currency: "USD"
+		                };
+		                break;
                     default:
                         this.options = {};
                 }

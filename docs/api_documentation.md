@@ -592,6 +592,89 @@ Parameter / Availability |  Type   | Description
 ### cancelOrder
 
 
+### getLendBook
+
+Returns the lend book. 
+Note that multiple asks/bids at the same rate are not necessarily conflated.
+
+```js
+cryptox.getOrderBook(options, callback);
+```
+
+#### Example
+
+```js
+exchange.getLendBook({currency: "USD"}, function (err, orderBook) {
+    if (!err)
+        console.log(lendBook);
+});
+```
+Example result:
+```js
+{
+	"timestamp": "2015-03-14T16:49:12+00:00",
+	"error": "",
+	"data": [
+		{
+			"currency": "USD",
+			"asks": [
+				{
+					"rate": "36.5",
+					"amount": "1441.80137112",
+					"period": 2,
+					"frr": "yes"
+					"created_at": "2015-03-14T16:32:17+00:00",
+				}
+			],
+			"bids": [
+				{
+					"rate": "32.8573",
+					"amount": "6163.37130384",
+					"period": 30,
+					"frr": "no"
+					"created_at": "2015-03-14T15:27:38+00:00",
+				}
+	
+			]
+		}
+	]
+}
+```
+
+#### Arguments
+
+* `options` 
+
+    Parameter  |  Type  | Required    | Description |
+     ---	   | ---    |   :-:       | ---         |
+    `currency` | string |All exchanges| currecny    |
+
+* `callback` see [Callbacks](#callbacks)
+
+#### Response
+
+Parameter   | Type |Required| Description                  |
+ ---	    | ---  | :-:    | ---                          |
+`asks`      |Array |  Yes   | loan offers                  |
+`bids`      |Array |  Yes   | loan demands                 |
+`rate`      |String|  Yes   | rate in % **per 365 days**   |
+`amount`    |String|  Yes   | amount                       |
+`period`    |Number|  Yes   | maximum no of days for the loan offers or minimum no of days for the demand offers   |
+`frr`       |String|  Yes   | `"yes"` if the offer is at Flash Return Rate, `"no"` if the offer is at fixed rate |
+`created_at`|String|  Yes   | date&time when offer was created, ISO 8601 string    |
+
+
+### getActiveOffers
+
+
+### postOffer
+
+
+### cancelOffer
+
+
+
+
 ## Notes ##
 
 ### Currency Symbols ###

@@ -9,8 +9,10 @@ var apiHost = {
     public:  "https://api.bitfinex.com"
 };
 
-var publicMethodsToTest = ["getTicker", "getRate", "getOrderBook"];
+var publicMethodsToTest = ["getTicker", "getRate", "getOrderBook", "getLendBook"];
 var privateMethodsToTest = ["getBalance", "getTransactions"];
+//var publicMethodsToTest = ["getLendBook"];
+//var privateMethodsToTest = ["getActiveOffers"];
 var writeMockResponseFileForMethod = "";
 
 // don't change below this line; only configure above this line

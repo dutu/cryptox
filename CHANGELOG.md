@@ -8,8 +8,8 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 ### Added
-- Implement `getTransactions()` check for argument `limit`; it needs to be an integer, otherwise an error is returned
 - Implement `bitx.getTransactions()`
+- Implement `bitfinex.getLendBook()`
 
 
 ## [0.2.1] - 2014-03-10
