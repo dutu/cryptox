@@ -12,7 +12,7 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 - Implement `bitfinex.getLendBook()`
 
 
-## [0.2.1] - 2014-03-10
+## [0.2.1] - 2015-03-10
 
 ### Fixed
 - Fix: `bitfinex.getTicker()` returns the result with invalid JSON schema
@@ -24,7 +24,7 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 - Implement `bitfinex.getTransactions()`
 
 
-## [0.2.0] - 2014-02-15
+## [0.2.0] - 2015-02-15
 
 ### Fixed
 - Fix: `bitstamp.getFee()` does not return error when invalid API keys
