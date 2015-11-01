@@ -6,8 +6,8 @@
       "order_id": "577393337",
       "pair": "XBTUSD",
       "type": "buy",
-      "amount": 0.53,
-      "rate": 71,
+      "amount": "0.53",
+      "rate": "71",
       "status": "0",
       "created_at": "2015-02-11T22:11:18+00:00"
     },
@@ -15,8 +15,8 @@
       "order_id": "577394351",
       "pair": "USDRUR",
       "type": "sell",
-      "amount": 30,
-      "rate": 84,
+      "amount": "30",
+      "rate": "84",
       "status": "0",
       "created_at": "2015-02-11T22:12:31+00:00"
     }
