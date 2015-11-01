@@ -1,6 +1,6 @@
 {
   "name": "cryptox",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Common API wrapper for multiple crypto currency exchanges",
   "main": "index.js",
   "engines": {
@@ -14,8 +14,8 @@
     "url": "https://github.com/dutu/cryptox.git"
   },
   "keywords": [
-    "bitcoin",
     "api",
+    "bitcoin",
     "bitfinex",
     "bitstamp",
     "bitx",
@@ -25,8 +25,7 @@
     "crypto",
     "exchange",
     "open exchange rates",
-    "oxr",
-    "api"
+    "oxr"
   ],
   "author": "Adrian Clinciu <adrian.clinciu@outlook.com>",
   "license": "MIT",

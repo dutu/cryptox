@@ -3,6 +3,15 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.2.3] - not published
+
+### Fixed
+
+### Added
+
+### Changed
+
+
 ## [0.2.2] - 2015-11-01
 
 ### Added

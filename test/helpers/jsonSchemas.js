@@ -330,7 +330,6 @@ schema.getOpenOrders = {
         },
         "data": {
             "type": "array",
-            "minItems": 1,
             "items": {
                 "type": "object",
                 "required": ["order_id", "pair", "type", "amount", "rate", "created_at"],
@@ -345,10 +344,10 @@ schema.getOpenOrders = {
                         "type": "string"
                     },
                     "amount": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "rate": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "created_at": {
                         "type": "string"

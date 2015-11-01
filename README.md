@@ -79,15 +79,15 @@ Example result:
 |[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |        |      —           |
 |[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         | FI |     |      |        |      —           |
 |[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |   FI   |      —           |
-|[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              |    | FI  |      |        |      —           |
+|[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              | FI | FI  |      |        |      —           |
 |[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |        |      —           |
 |[postBuyOrder](docs/api_documentation.md#postbuyorder)      |        |              |    |     |      |        |      —           |
 |[cancelOrder](docs/api_documentation.md#cancelorder)        |        |              |    |     |      |        |      —           |
 |[getLendBook](docs/api_documentation.md#getlendbook)        |   FI   |    —         | —  |  —  |  —   |   —    |      —           |
 
 > **FI** = Fully Implemented  
-> **FR** = Fully Implemented, but restrictions apply (refer to notes below)  
-> **PI** = Partially Implemented (refer to notes below)  
+> **FR** = Fully Implemented, but restrictions apply; refer to notes below (if any)  
+> **PI** = Partially Implemented; refer to notes below (if any)  
 > **—** = Not Supported    
 
 ><sup>[1]</sup> OXR ([Open Exchange Rates](https://openexchangerates.org/)) is not a crypto exchange, however it provides exchange rates for world fiat currencies     

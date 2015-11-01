@@ -536,20 +536,20 @@ Example result:
             "order_id": "563489985",
             "pair": "LTCUSD",
             "type": "buy",
-            "amount": 1,
-            "rate": 0.1,
+            "amount": "1",
+            "rate": "0.1",
             "created_at": "2015-02-01T19:23:15+00:00",
-            "status": 0
+            "status": "0"
 
         },
         {
             "order_id": "563612426",
             "pair": "LTCUSD",
             "type": "buy",
-            "amount": 2,
-            "rate": 0.5,
+            "amount": "2",
+            "rate": "0.5",
             "created_at": "2015-02-01T20:59:53+00:00",
-            "status": 0
+            "status": "0"
 
         }        
     ]
@@ -569,19 +569,18 @@ Parameter   | Type  | Description|
 `order_id`  | String| order ID
 `pair`      | String| trading pair
 `type`      | String| order type (`buy`, `sell`) 
-`amount`    | Number|
-`rate`      | Number| rate
-`created_at`| String|date&time when order was created, ISO 8601 string
+`amount`    | String|
+`rate`      | String| rate
+`created_at`| String| date&time when order was created, ISO 8601 string
 
 
 Optional response parameters
 
 Parameter / Availability |  Type   | Description 
  ---	                 | ---     | ---
-`status` <sup>[1]</sup>  | Number  | order status <sup>[2]</sup>   
+`status`                 | Number  | order status <sup>[1]</sup>   
 
-> <sup>[1]</sup> BTC-e  
-> <sup>[2]</sup> BTC-e API description doesn't clarify what status value means 
+> <sup>[1]</sup> BTC-e API description doesn't clarify what status value means 
 
 
 ### postSellOrder
