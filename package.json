@@ -21,9 +21,11 @@
     "bitx",
     "btc-e",
     "btce",
+    "coinbase",
     "crypto",
     "exchange",
     "open exchange rates",
+    "oxr",
     "api"
   ],
   "author": "Adrian Clinciu <adrian.clinciu@outlook.com>",

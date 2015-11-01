@@ -75,7 +75,7 @@ Example result:
 |[getRate](docs/api_documentation.md#getrate)                |   FI   |   FI         | FI | FI  |      |   FI   |     FI           | 
 |[getTicker](docs/api_documentation.md#getticker)            |   FI   |   FI         | FI | FI  |      |   FI   |      —           |
 |[getOrderBook](docs/api_documentation.md#getorderbook)      |   FI   |   FI         | FI | FI  |      |   FI   |      —           |
-|[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |   FI    |      —           |
+|[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |   FI   |      —           |
 |[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |        |      —           |
 |[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         | FI |     |      |        |      —           |
 |[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |   FI   |      —           |
