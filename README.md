@@ -70,20 +70,20 @@ Example result:
 # Supported Exchanges and Implemented methods #
 *if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
 
-|                                                            |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|OXR <sup>[1]</sup>| 
-|   ---                                                      |  :-:   |  :-:         |:-: | :-: | :-:  |    :-:        |
-|[getRate](docs/api_documentation.md#getrate)                |   FI   |   FI         | FI | FI  |      |     FI        | 
-|[getTicker](docs/api_documentation.md#getticker)            |   FI   |   FI         | FI | FI  |      |      —        |
-|[getOrderBook](docs/api_documentation.md#getorderbook)      |   FI   |   FI         | FI | FI  |      |      —        |
-|[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |      —        |
-|[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |      —        |
-|[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         | FI |     |      |      —        |
-|[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |      —        |
-|[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              |    | FI  |      |      —        |
-|[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |      —        |
-|[postBuyOrder](docs/api_documentation.md#postbuyorder)      |        |              |    |     |      |      —        |
-|[cancelOrder](docs/api_documentation.md#cancelorder)        |        |              |    |     |      |      —        |
-|[getLendBook](docs/api_documentation.md#getlendbook)        |   FI   |    —         | —  |  —  |  —   |      —        |
+|                                                            |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io|Coinbase|OXR <sup>[1]</sup>|
+|   ---                                                      |  :-:   |  :-:         |:-: | :-: | :-:  |   :-:  |    :-:           |
+|[getRate](docs/api_documentation.md#getrate)                |   FI   |   FI         | FI | FI  |      |   FI   |     FI           | 
+|[getTicker](docs/api_documentation.md#getticker)            |   FI   |   FI         | FI | FI  |      |   FI   |      —           |
+|[getOrderBook](docs/api_documentation.md#getorderbook)      |   FI   |   FI         | FI | FI  |      |   FI   |      —           |
+|[getTrades](docs/api_documentation.md#gettrades)            |        |              |    |     |      |   FI    |      —           |
+|[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |        |      —           |
+|[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         | FI |     |      |        |      —           |
+|[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |   FI   |      —           |
+|[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              |    | FI  |      |        |      —           |
+|[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |        |      —           |
+|[postBuyOrder](docs/api_documentation.md#postbuyorder)      |        |              |    |     |      |        |      —           |
+|[cancelOrder](docs/api_documentation.md#cancelorder)        |        |              |    |     |      |        |      —           |
+|[getLendBook](docs/api_documentation.md#getlendbook)        |   FI   |    —         | —  |  —  |  —   |   —    |      —           |
 
 > **FI** = Fully Implemented  
 > **FR** = Fully Implemented, but restrictions apply (refer to notes below)  

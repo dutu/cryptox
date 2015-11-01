@@ -10,6 +10,11 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Implement `bitx.getTransactions()`
 - Implement `bitfinex.getLendBook()`
+- Implement `coinbase.getRate()`
+- Implement `coinbase.getTicker()`
+- Implement `coinbase.getOrderBook()`
+- Implement `coinbase.getTrades()`
+- Implement `coinbase.getBalance()`
 
 
 ## [0.2.1] - 2015-03-10
