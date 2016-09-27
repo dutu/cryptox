@@ -4,7 +4,7 @@
   "description": "Common API wrapper for multiple crypto currency exchanges",
   "main": "index.js",
   "engines": {
-    "node": ">= 4.x"
+    "node": ">= 4.5"
   },
   "scripts": {
     "test": "mocha"
