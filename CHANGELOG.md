@@ -3,9 +3,10 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.2.3] - not published
+## [1.0.0] - not published
 
 ### Fixed
+- Using "gdax-node" module instead of deprecated "coinbase-node"
 
 ### Added
 
