@@ -96,10 +96,10 @@ The arguments passed to the callback function for each method are:
         "data": [
             {
                 "pair": "XBTUSD",
-                "last": 272.064,
-                "bid": 272.064,
-                "ask": 273.395,
-                "volume": 7087.93047
+                "last": "272.064",
+                "bid": "272.064",
+                "ask": "273.395",
+                "volume": "7087.93047"
             }
          ]
     }
@@ -164,7 +164,7 @@ Example result:
     "data": [
         {
             "pair": "EURUSD",
-            "rate": 1.149807,
+            "rate": "1.149807",
         }
      ]
 }
@@ -186,7 +186,7 @@ Parameter  |  Type  | Required for | Description  |
 Parameter   |  Type   | Description
  ---	    | ---     | ---         
 `pair`      | String  | currency pair
-`rate`      | Number  | rate
+`rate`      | String  | rate
 
 
 ### getTicker
@@ -212,10 +212,10 @@ Example result:
     "data": [
         {
             "pair": "XBTUSD",
-            "last": 272.064,
-            "bid": 272.064,
-            "ask": 273.395,
-            "volume": 7087.93047
+            "last": "272.064",
+            "bid": "272.064",
+            "ask": "273.395",
+            "volume": "7087.93047"
         }
      ]
 }
@@ -237,18 +237,18 @@ Parameter  |  Type  | Required for  | Description |
 Parameter   |  Type   | Description
  ---	    | ---     | ---         
 `pair`      | String  | trading pair
-`last`      | Number  | the price at which the last order executed
-`bid`       | Number  | highest buy order 
-`ask`       | Number  | lowest sell order
-`volume`    | Number  | trading volume of the last 24 hours
+`last`      | String  | the price at which the last order executed
+`bid`       | String  | highest buy order 
+`ask`       | String  | lowest sell order
+`volume`    | String  | trading volume of the last 24 hours
 
 Optional response parameters
 
 Parameter / Availability |  Type   | Description 
  ---	                 | ---     | ---
-`high` <sup>[1] [2]</sup>       | Number  | Highest trade price of the last 24 hours
-`low` <sup>[1] [2]</sup>        | Number  | Lowest trade price of the last 24 hours
-`vwap` <sup>[1]</sup>       | Number  | last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
+`high` <sup>[1] [2]</sup>       | String  | Highest trade price of the last 24 hours
+`low` <sup>[1] [2]</sup>        | String  | Lowest trade price of the last 24 hours
+`vwap` <sup>[1]</sup>       | String  | last 24 hours [volume weighted average price](http://en.wikipedia.org/wiki/Volume-weighted_average_price)
 
 > <sup>[1]</sup> Bitstamp  
 > <sup>[2]</sup> Bitfinex
@@ -281,8 +281,8 @@ Example result:
     "data": [
         {
             "pair": "XBTUSD",
-            "asks": [{price: 212.962, volume: 0.014}, {price: 213, volume: 1.46820994}],
-            "bids": [{price: 212.885, volume: 0.014}, {price: 212.827, volume: 0.00414864]}
+            "asks": [{price: "212.962", volume: "0.014"}, {price: "213", volume: "1.46820994"}],
+            "bids": [{price: "212.885", volume: "0.014"}, {price: "212.827", volume: "0.00414864"]}
          }
     ]
 }
@@ -334,8 +334,8 @@ Example result:
 	data: [
 	   {
 		  pair: "XBTUSD",
-		  maker_fee: 0
-		  taker_fee: 0.002
+		  maker_fee: "0",
+		  taker_fee: "0.002"
 	   }
 	]
 }
@@ -356,8 +356,8 @@ Example result:
 Parameter                     |  Type  |Description                                                    |
  ---	                      | ---    |---                                                            |
 `pair`                        | String |the trading pair or `""` if the fee is applicable for all pairs|
-`maker_fee` <sup>[1] [2]</sup>| Number |the amount (%) the exchange takes out of limit orders          |
-`taker_fee` <sup>[1] [2]</sup>| Number |the amount (%) the exchange takes out of orders that match immediately|
+`maker_fee` <sup>[1] [2]</sup>| String |the amount (%) the exchange takes out of limit orders          |
+`taker_fee` <sup>[1] [2]</sup>| String |the amount (%) the exchange takes out of orders that match immediately|
 
 ><sup>[1]</sup> `"maker"` fees are paid when you add liquidity to the orderbook, by placing a limit order under the ticker price for buy and above the ticker price for sell. `"taker"` fees are paid when you remove liquidity from the orderbook, by placing any order that is executed against an order of the orderbook.  if `type` is `""`, the fee is applicable both for maker and taker  
 ><sup>[2]</sup> If an exchange has a fee of 0.2% the fee would be `0.002`
@@ -393,11 +393,11 @@ Example result:
             "datetime": "2015-02-24T12:02:27+00:00",
             "type": "sell",
             "symbol": "XBTUSD",
-            "amount_base": -0.30183411,
-            "amount_counter": 72.62,
-            "rate": 240.6,
-            "fee_base": 0,
-            "fee_counter": 0.15,
+            "amount_base": "-0.30183411",
+            "amount_counter": "72.62",
+            "rate": "240.6",
+            "fee_base": "0",
+            "fee_counter": "0.15",
             "order_id": "58025817",
             "add_info": ""
         },
@@ -406,11 +406,11 @@ Example result:
             "datetime": "2015-02-24T11:45:26+00:00",
             "type": "deposit",
             "symbol": "XBT",
-            "amount_base": 49.04253049,
-            "amount_counter": 0,
-            "rate": 0,
-            "fee_base": 0,
-            "fee_counter": 0,
+            "amount_base": "49.04253049",
+            "amount_counter": "0",
+            "rate": "0",
+            "fee_base": "0",
+            "fee_counter": "0",
             "order_id": "",
             "add_info": ""
         }
@@ -444,11 +444,11 @@ Parameter       | Type | Description|
 `datetime`      |String| ISO 8601 date & time of the transaction |
 `type`          |String| transaction type: `"buy"`, `"sell"`, `"deposit"`, `"withdrawal"` |  
 `symbol`        |String| currency symbol <sup>[1]</sup> or currency pair <sup>[2]</sup>|
-`amount_base`   |Number| currency amount <sup>[1]</sup> or base currency amount <sup>[3] [4]</sup>|
-`amount_counter`|Number| counter currency amount <sup>[3] [4]</sup>|
-`rate`          |Number| zero (`0`) <sup>[1]</sup> or the exchange rate <sup>[2] [3]</sup>|
-`fee_base`      |Number| amount of the fees debited |
-`fee_counter`   |Number| amount of the fees debited |
+`amount_base`   |String| currency amount <sup>[1]</sup> or base currency amount <sup>[3] [4]</sup>|
+`amount_counter`|String| counter currency amount <sup>[3] [4]</sup>|
+`rate`          |String| zero (`0`) <sup>[1]</sup> or the exchange rate <sup>[2] [3]</sup>|
+`fee_base`      |String| amount of the fees debited |
+`fee_counter`   |String| amount of the fees debited |
 `order_id`      |String| the id of the parent order of the trade. Can be `""` |
 `add_info`      |String| additional info. Can be `""` |
 
@@ -485,11 +485,11 @@ Example result:
         {
             account_id: "8274332321",
             total: [
-                {currency: "XBT", amount: 4.86509177},
-                {currency: "USD", amount: 100.44}
+                {currency: "XBT", amount: "4.86509177"},
+                {currency: "USD", amount: "100.44"}
             ],
             available: [
-                {currency: "XBT", amount: 2.86709177},
+                {currency: "XBT", amount: "2.86709177"},
             ]
         }
     ]
