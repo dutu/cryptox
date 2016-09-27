@@ -1,25 +1,25 @@
-var chai = require("chai");
-var sharedTests = require("./shared/integrationTest.js");
+const chai = require("chai");
+const sharedTests = require("./shared/integrationTest.js");
 
 // configure Integration tests variables below this line
 
-var slug = "bitx";
-var apiHost = {
+const slug = "bitx";
+const apiHost = {
     private: "https://api.mybitx.com",
     public:  "https://api.mybitx.com"
 };
 
-//var publicMethodsToTest = ["getTicker", "getRate", "getOrderBook"];
-//var privateMethodsToTest = ["getBalance"];
-var publicMethodsToTest = ["getTicker"];
-var privateMethodsToTest = ["getOpenOrders"];
-var writeMockResponseFileForMethod = "";
+//const publicMethodsToTest = ["getTicker", "getRate", "getOrderBook"];
+//const privateMethodsToTest = ["getBalance"];
+const publicMethodsToTest = ["getTicker"];
+const privateMethodsToTest = ["getOpenOrders"];
+const writeMockResponseFileForMethod = "";
 
 // don't change below this line; only configure above this line
 
 
 describe("Integration Test " + slug + ":", function () {
-    var contextIT = {                     // set context for Integration Testing
+    let contextIT = {                     // set context for Integration Testing
         slug: slug,
         apiHost: apiHost,
         publicMethodsToTest: publicMethodsToTest,

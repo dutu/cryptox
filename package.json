@@ -25,7 +25,8 @@
     "crypto",
     "exchange",
     "open exchange rates",
-    "oxr"
+    "oxr",
+    "gdax"
   ],
   "author": "Adrian Clinciu <adrian.clinciu@outlook.com>",
   "license": "MIT",
@@ -34,7 +35,6 @@
   },
   "homepage": "https://github.com/dutu/cryptox",
   "dependencies": {
-    "underscore": "1.4.4",
     "btc-e": "*",
     "moment": ">=2.9.0",
     "bignumber.js": ">=2.0.0",
@@ -44,7 +44,8 @@
     "bitx": ">=1.4.3",
     "open-exchange-rates" : ">=0.3.0",
     "bitfinex": ">=1.0.3",
-    "gdax-node": "^0.2.0"
+    "gdax": "^0.2.0",
+    "bitstamp": "0.*.*"
   },
   "devDependencies": {
     "chai": ">= 1.6.1 < 2",

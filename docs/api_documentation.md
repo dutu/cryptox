@@ -54,7 +54,7 @@ var exchange = new Cryptox("btce");
 | BitX                | `"bitx"`       | `key`, `secret`             |
 | BTC-e               | `"btce"`       | `key`, `secret`             |
 | CEX.io              | `"cexio"`      | `key`, `secret`, `username` |
-| Coinbase            | `"coinbase"`   | `key`, `secret`, `passphrase`|
+| Gdax                | `"gdax"`       | `key`, `secret`, `passphrase`|
 | Open Exchange Rates | `"oxr"`        | `key`                       |
 
 `options` should be used when calling methods that require authentication. Missing or incorrect key/secret causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   

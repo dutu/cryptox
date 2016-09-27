@@ -1,5 +1,5 @@
 
-var schema = {};
+let schema = {};
 
 schema.errorResult = {
     "title": "errorResult schema",
@@ -46,7 +46,7 @@ schema.getRate = {
                         "type": "string"
                     },
                     "rate": {
-                        "type": "number"
+                        "type": "string"
                     }
                 }
             }
@@ -79,16 +79,16 @@ schema.getTicker = {
                         "type": "string"
                     },
                     "last": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "bid": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "ask": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "volume": {
-                        "type": "number"
+                        "type": "string"
                     }
                 }
             }
@@ -128,10 +128,10 @@ schema.getOrderBook = {
                             "required": ["price", "volume"],
                             "properties": {
                                 "price": {
-                                    "type": "number"
+                                    "type": "string"
                                 },
                                 "volume": {
-                                    "type": "number"
+                                    "type": "string"
                                 }
                             }
                         }
@@ -144,10 +144,10 @@ schema.getOrderBook = {
                             "required": ["price", "volume"],
                             "properties": {
                                 "price": {
-                                    "type": "number"
+                                    "type": "string"
                                 },
                                 "volume": {
-                                    "type": "number"
+                                    "type": "string"
                                 }
                             }
                         }
@@ -183,10 +183,10 @@ schema.getFee = {
                         "type": "string"
                     },
                     "maker_fee": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "taker_fee": {
-                        "type": "number"
+                        "type": "string"
                     }
                 }
             }
@@ -231,19 +231,19 @@ schema.getTransactions = {
                         "maxLength": 6
                     },
                     "amount_base": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "amount_counter": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "rate": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "fee_base": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "fee_counter": {
-                        "type": "number"
+                        "type": "string"
                     },
                     "order_id": {
                         "type": "string"
@@ -288,7 +288,7 @@ schema.getBalance = {
                                     "type": "string"
                                 },
                                 "amount": {
-                                    "type": "number"
+                                    "type": "string"
                                 }
                             }
                         }
@@ -303,7 +303,7 @@ schema.getBalance = {
                                     "type": "string"
                                 },
                                 "amount": {
-                                    "type": "number"
+                                    "type": "string"
                                 }
                             }
                         }
@@ -395,7 +395,7 @@ schema.getLendBook = {
 									"type": "string"
 								},
 								"period": {
-									"type": "number"
+									"type": "string"
 								},
 								"created_at": {
 									"type": "string"
@@ -420,7 +420,7 @@ schema.getLendBook = {
 									"type": "string"
 								},
 								"period": {
-									"type": "number"
+									"type": "string"
 								},
 								"created_at": {
 									"type": "string"

@@ -1,25 +1,25 @@
-var chai = require("chai");
-var sharedTests = require("./shared/integrationTest.js");
+const chai = require("chai");
+const sharedTests = require("./shared/integrationTest.js");
 
 // configure Integration tests variables below this line
 
-var slug = "bitfinex";
-var apiHost = {
+const slug = "bitfinex";
+const apiHost = {
     private: "https://api.bitfinex.com",
     public:  "https://api.bitfinex.com"
 };
 
-var publicMethodsToTest = ["getTicker", "getRate", "getOrderBook", "getLendBook"];
-var privateMethodsToTest = ["getBalance", "getTransactions"];
+const publicMethodsToTest = ["getTicker", "getRate", "getOrderBook", "getLendBook"];
+const privateMethodsToTest = ["getBalance", "getTransactions"];
 //var publicMethodsToTest = ["getLendBook"];
 //var privateMethodsToTest = ["getActiveOffers"];
-var writeMockResponseFileForMethod = "";
+const writeMockResponseFileForMethod = "";
 
 // don't change below this line; only configure above this line
 
 
 describe("Integration Test " + slug + ":", function () {
-    var contextIT = {                     // set context for Integration Testing
+    let contextIT = {                     // set context for Integration Testing
         slug: slug,
         apiHost: apiHost,
         publicMethodsToTest: publicMethodsToTest,

@@ -6,12 +6,11 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.0] - not published
 
 ### Fixed
-- Using "gdax-node" module instead of deprecated "coinbase-node"
 
 ### Added
 
 ### Changed
-
+- Coinbase changed to Gdax
 
 ## [0.2.2] - 2015-11-01
 
