@@ -5,12 +5,14 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - not published
 
+### Changed
+- Coinbase changed to Gdax
+- All numeric response parameters are now returned as string
+
 ### Fixed
 
 ### Added
 
-### Changed
-- Coinbase changed to Gdax
 
 ## [0.2.2] - 2015-11-01
 
