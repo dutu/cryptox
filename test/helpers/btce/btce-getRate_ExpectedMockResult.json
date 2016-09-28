@@ -1,10 +1,1 @@
-{
-  "timestamp": "2015-02-11T19:35:55+00:00",
-  "error": "",
-  "data": [
-    {
-      "pair": "XBTUSD",
-      "rate": 217.92
-    }
-  ]
-}
+{"timestamp":"2015-02-11T19:35:55Z","error":"","data":[{"pair":"XBTUSD","rate":"217.92"}]}

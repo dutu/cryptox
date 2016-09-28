@@ -19,15 +19,15 @@ apiKeys.bitstamp = {
 
 };
 apiKeys.bitx = {
-    key: "dummy",
-    secret: "dummy",
-    key_noPermission: "dummy",
-    secret_noPermission: "dummy"
+    key: "k89drathygx6k",
+    secret: "e6GLar90V8_5bG5Elf9PpGZRcPbXik9uFq_0yldvvTI",
+    key_noPermission: "cbs98fcxyddzr",
+    secret_noPermission: "YEoIwpVRWIMPJXt2_2fShkOdoxZvraAHRkVjGippH8U"
 };
 apiKeys.btce = {
-    key: "dummy",
-    secret: "dummy",
-    key_noPermission: "dummy",
-    secret_noPermission: "dummy"
+    key: "P1DJK47A-2KB0KNJI-1Q9CID8I-1P46WMSZ-RGHHQU36",
+    secret: "a2dfc2600f2112f8a2efd0108cc078bf3c7d5b3f152e96025007396745dd45ee",
+    key_noPermission: "6LGUDLJ0-QW4ZXFOB-VEYY0BRE-UPTFN0QS-B5A0O7LE",
+    secret_noPermission: "aec16fac1cd98e8b73026fda6e760de83ac8b21161ff72c1f369192a7589d45d"
 };
 module.exports = apiKeys;
