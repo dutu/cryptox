@@ -2,4 +2,4 @@
 .travis.yml
 test/
 examples/
-test/helpers/private_keys.js
+
