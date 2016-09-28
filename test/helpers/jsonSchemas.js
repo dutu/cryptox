@@ -395,7 +395,7 @@ schema.getLendBook = {
 									"type": "string"
 								},
 								"period": {
-									"type": "string"
+									"type": "number"
 								},
 								"created_at": {
 									"type": "string"
@@ -420,7 +420,7 @@ schema.getLendBook = {
 									"type": "string"
 								},
 								"period": {
-									"type": "string"
+									"type": "number"
 								},
 								"created_at": {
 									"type": "string"

@@ -142,7 +142,7 @@ function Cryptox (exchangeSlug, options) {
     };
 
     self.getBalance = function (options, callback){
-        var err;
+        let err;
         if (err = checkMethod("getBalance"))
             return callback(err, {timestamp: util.timestampNow(), error: err.message, data: []});
 
