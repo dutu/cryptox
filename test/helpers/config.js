@@ -1,4 +1,4 @@
-var config = {};
+let config = {};
 
 config.slug = ["bitfinex", "bitstamp", "bitx", "btce", "newExchangeTemplate", "oxr"];
 

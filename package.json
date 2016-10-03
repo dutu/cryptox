@@ -16,6 +16,8 @@
   "keywords": [
     "api",
     "bitcoin",
+    "btc",
+    "eth",
     "bitfinex",
     "bitstamp",
     "bitx",
@@ -26,7 +28,8 @@
     "exchange",
     "open exchange rates",
     "oxr",
-    "gdax"
+    "gdax",
+    "poloniex"
   ],
   "author": "Adrian Clinciu <adrian.clinciu@outlook.com>",
   "license": "MIT",
@@ -45,7 +48,9 @@
     "open-exchange-rates" : ">=0.3.0",
     "bitfinex": ">=1.0.3",
     "gdax": "^0.2.0",
-    "bitstamp": "0.*.*"
+    "bitstamp": "0.*.*",
+    "poloniex-api-node": "1.*.*",
+    "big.js": "3.*.*"
   },
   "devDependencies": {
     "chai": ">= 1.6.1 < 2",

@@ -1,17 +1,17 @@
 'use strict';
 
-var Cryptox = require("../index.js");
-var https = require("https");
-var sinon = require("sinon");
-var chai = require("chai");
-var nock = require("nock");
+const Cryptox = require("../index.js");
+const https = require("https");
+const sinon = require("sinon");
+const chai = require("chai");
+const nock = require("nock");
 
-var config = require("./helpers/config.js");
+const config = require("./helpers/config.js");
 
-var expect = chai.expect;
-var cryptox, options;
+const expect = chai.expect;
+let cryptox, options;
 
-var eachConstructor = function (slug) {
+let eachConstructor = function (slug) {
     describe("Constructor", function () {
 
         it('should create a new instance', function () {
@@ -56,10 +56,10 @@ var eachConstructor = function (slug) {
     });
 };
 
-var eachMethod = function (slug, method) {
-    var notImplemented, notSupported, mock;
+let eachMethod = function (slug, method) {
+    let notImplemented, notSupported, mock;
 
-    var callback = function() {};
+    let callback = function() {};
 
     before(function() {
         cryptox = new Cryptox(slug);
@@ -105,7 +105,7 @@ var eachMethod = function (slug, method) {
 
 config.slug.forEach(function (slug) {
     describe("Unit Test " + slug + ":", function () {
-        var implemented;
+        let implemented;
         eachConstructor(slug);
         cryptox = new Cryptox(slug);
         config.methods.forEach(function (method) {

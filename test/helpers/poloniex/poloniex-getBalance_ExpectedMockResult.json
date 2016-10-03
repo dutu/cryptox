@@ -1,0 +1,92 @@
+{
+  "timestamp": "2016-10-03T14:31:35Z",
+  "error": "",
+  "data": [
+    {
+      "account_id": "exchange",
+      "total": [
+        {
+          "currency": "XBT",
+          "amount": "0.001"
+        },
+        {
+          "currency": "XMR",
+          "amount": "0.001"
+        }
+      ],
+      "available": [
+        {
+          "currency": "XBT",
+          "amount": "0.00000001"
+        },
+        {
+          "currency": "XMR",
+          "amount": "0.00000000"
+        }
+      ]
+    },
+    {
+      "account_id": "margin",
+      "total": [
+        {
+          "currency": "XBT",
+          "amount": "0.01100000"
+        },
+        {
+          "currency": "XMR",
+          "amount": "0.00600000"
+        }
+      ],
+      "available": [
+        {
+          "currency": "XBT",
+          "amount": "0.00620429"
+        },
+        {
+          "currency": "BTS",
+          "amount": "765.01726263"
+        },
+        {
+          "currency": "CLAM",
+          "amount": "4.68287178"
+        },
+        {
+          "currency": "DASH",
+          "amount": "0.31140359"
+        },
+        {
+          "currency": "DOGE",
+          "amount": "15908.43589743"
+        },
+        {
+          "currency": "LTC",
+          "amount": "0.98967076"
+        },
+        {
+          "currency": "MAID",
+          "amount": "43.59394322"
+        },
+        {
+          "currency": "STR",
+          "amount": "1378.73111111"
+        },
+        {
+          "currency": "XMR",
+          "amount": "0.46600584"
+        },
+        {
+          "currency": "XRP",
+          "amount": "458.21935007"
+        },
+        {
+          "currency": "ETH",
+          "amount": "1.28467881"
+        },
+        {
+          "currency": "FCT",
+          "amount": "1.61156249"
+        }
+      ]
+    }
+  ]
+}

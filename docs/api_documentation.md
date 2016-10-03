@@ -47,15 +47,16 @@ var exchange = new Cryptox("btce");
 * `exchangeSlug` is required and should have one values in table below
 * `options` is used to pass parameters required for authentication, as indicated in table below
 
-|Exchange name        | `exchangeSlug` | Authentication              |
-| ---	              |    ---         |    ---                      |         
-| Bitfinex            | `"bitfinex"`   | `key`, `secret`             |
-| Bitstamp            | `"bitstamp"`   | `key`, `secret`, `username` |
-| BitX                | `"bitx"`       | `key`, `secret`             |
-| BTC-e               | `"btce"`       | `key`, `secret`             |
-| CEX.io              | `"cexio"`      | `key`, `secret`, `username` |
+|Exchange name        | `exchangeSlug` | Authentication               |
+| ---	              |    ---         |    ---                       |         
+| Bitfinex            | `"bitfinex"`   | `key`, `secret`              |
+| Bitstamp            | `"bitstamp"`   | `key`, `secret`, `username`  |
+| BitX                | `"bitx"`       | `key`, `secret`              |
+| BTC-e               | `"btce"`       | `key`, `secret`              |
+| CEX.io              | `"cexio"`      | `key`, `secret`, `username`  |
 | Gdax                | `"gdax"`       | `key`, `secret`, `passphrase`|
-| Open Exchange Rates | `"oxr"`        | `key`                       |
+| Poloniex            | `"poloniex"`   | `key`, `secret`              |
+| Open Exchange Rates | `"oxr"`        | `key`                        |
 
 `options` should be used when calling methods that require authentication. Missing or incorrect key/secret causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
 
@@ -508,7 +509,7 @@ Parameter   | Type  | Description|
  ---	    | ---   |---        |
 `account_id`| String| account ID / name |
 `total`     | Array | account balance |
-`available` | Array | funds available for trading (balance minus funds reserved in open orders)
+`available` | Array | funds available for trading (balance minus funds reserved in open orders. For margin accounts the leverage is taken into consideration, hence `available` can be higher than `total`) 
 
 
 ### getOpenOrders

@@ -1,15 +1,17 @@
 "use strict";
 
-var chai = require("chai");
-var moment = require("moment");
-var nock = require("nock");
-var jf = require("jsonfile");
+const chai = require("chai");
+const moment = require("moment");
+const nock = require("nock");
+const jf = require("jsonfile");
+const fs = require('fs');
+const _ = require('lodash');
 
-var expect = chai.expect;
+let expect = chai.expect;
 chai.use(require("chai-json-schema"));
 
-var Cryptox = require("../../index.js");
-var schema = require("../helpers/jsonSchemas.js");
+const Cryptox = require("../../index.js");
+const schema = require("../helpers/jsonSchemas.js");
 
 exports.integrationTest = function (contextIT) {
     var slug = contextIT.slug;
@@ -63,7 +65,7 @@ exports.integrationTest = function (contextIT) {
             var slug = cryptox.properties.slug;
             var helpersDirname = __dirname + "/../helpers/" + slug + "/";
             var mockResponseFilename = helpersDirname + slug + "-" + method + "_ExpectedMockResult.json";
-            var replyFilename        = helpersDirname + slug + "-" + method + "_MockApiResponse.json";
+            var replyFilename = helpersDirname + slug + "-" + method + "_MockApiResponse.json";
             var nockServerGet = nock(apiHost)
                 .filteringPath(function(path) {
                     return apiPath;
@@ -75,13 +77,25 @@ exports.integrationTest = function (contextIT) {
                     return apiPath;
                 })
                 .post(apiPath)
-                .replyWithFile(200, replyFilename);
+                .times(3)
+                .reply(200, function(uri, requestBody) {
+                    let params = requestBody.split('&');
+                    let command = null;
+                    _.forEach(params, function (value) {
+                       let param = value.split('=');
+                       if (param[0].toLocaleLowerCase() === 'command') {
+                           command = param[1];
+                       }
+                    });
+                    if (command) replyFilename = `${helpersDirname}${slug}-${method}-${command}_MockApiResponse.json`;
+                    return fs.createReadStream(replyFilename)
+                });
             cryptox[method](this.options, function (err, result) {
                 expect(err).to.be.equal(null);
                 expect(result).to.have.property("error").and.be.equal("");
                 expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true);          // to be a valid ISO 8601 date
                 if (contextIT.writeMockResponseFileForMethod === method)          // this option flag is only used for generating the mockResponseFile for the first time
-                    jf.writeFileSync(mockResponseFilename, result);
+                    jf.writeFileSync(mockResponseFilename, result, {spaces: 2});
                 expect(result).to.have.property("data").and.to.be.deep.equal(jf.readFileSync(mockResponseFilename).data);
                 done();
             });
