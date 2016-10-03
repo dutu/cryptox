@@ -14,8 +14,8 @@ const Cryptox = require("../../index.js");
 const schema = require("../helpers/jsonSchemas.js");
 
 exports.integrationTest = function (contextIT) {
-    var slug = contextIT.slug;
-    var myApiKeys, apiKeysFromFile;
+    const slug = contextIT.slug;
+    let myApiKeys, apiKeysFromFile;
     try {                                                       // load private keys if exists, else set to "dummy"
         apiKeysFromFile = require("../helpers/private_keys.js");
         myApiKeys = {
@@ -32,21 +32,21 @@ exports.integrationTest = function (contextIT) {
         }
     }
 
-    var dummyApiKeys = myApiKeys.key === "dummy";
-    var cryptox, apiHost;
-    var publicCryptox = new Cryptox(contextIT.slug);
-    var privateCryptox = new Cryptox(contextIT.slug, myApiKeys);
+    let dummyApiKeys = myApiKeys.key === "dummy";
+    let cryptox, apiHost;
+    let publicCryptox = new Cryptox(contextIT.slug);
+    let privateCryptox = new Cryptox(contextIT.slug, myApiKeys);
 
     function shouldVerifyMockResults (method) {
         it("should return HTTP error 418 'I'm a teapot'", function (done) {
-            var apiPath = "dummy/path/";
-            var nockServerGet = nock(apiHost)
+            let apiPath = "dummy/path/";
+            let nockServerGet = nock(apiHost)
                 .filteringPath(function (path) {
                     return apiPath;
                 })
                 .get(apiPath)
                 .reply(418, "I'm a teapot");
-            var nockServerPost = nock(apiHost)
+            let nockServerPost = nock(apiHost)
                 .filteringPath(function (path) {
                     return apiPath;
                 })
@@ -61,18 +61,29 @@ exports.integrationTest = function (contextIT) {
             });
         });
         it("should return expected data", function (done) {
-            var apiPath = "dummy/path/";
-            var slug = cryptox.properties.slug;
-            var helpersDirname = __dirname + "/../helpers/" + slug + "/";
-            var mockResponseFilename = helpersDirname + slug + "-" + method + "_ExpectedMockResult.json";
-            var replyFilename = helpersDirname + slug + "-" + method + "_MockApiResponse.json";
-            var nockServerGet = nock(apiHost)
+            let apiPath = "dummy/path/";
+            let slug = cryptox.properties.slug;
+            let helpersDirname = __dirname + "/../helpers/" + slug + "/";
+            let mockResponseFilename = helpersDirname + slug + "-" + method + "_ExpectedMockResult.json";
+            let replyFilename = helpersDirname + slug + "-" + method + "_MockApiResponse.json";
+            let nockServerGet = nock(apiHost)
                 .filteringPath(function(path) {
                     return apiPath;
                 })
                 .get(apiPath)
-                .replyWithFile(200, replyFilename);
-            var nockServerPost = nock(apiHost)
+                .reply(200, function(uri, requestBody) {
+                    let params = requestBody.split('&');
+                    let command = null;
+                    _.forEach(params, function (value) {
+                        let param = value.split('=');
+                        if (param[0].toLocaleLowerCase() === 'command') {
+                            command = param[1];
+                        }
+                    });
+                    if (command) replyFilename = `${helpersDirname}${slug}-${method}-${command}_MockApiResponse.json`;
+                    return fs.createReadStream(replyFilename)
+                });
+            let nockServerPost = nock(apiHost)
                 .filteringPath(function(path) {
                     return apiPath;
                 })
@@ -119,7 +130,7 @@ exports.integrationTest = function (contextIT) {
 
     function shouldReturnAuthorizationError (method) {
         it("should return error when no authorization", function (done) {
-            var options = {};
+            let options = {};
             publicCryptox[method](options, function (err, result) {
                 expect(result).to.be.jsonSchema(schema.errorResult);
                 expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
@@ -159,6 +170,11 @@ exports.integrationTest = function (contextIT) {
 			                currency: "USD"
 		                };
 		                break;
+                    case "getOpenOrders":
+                        this.options = {
+                            pair: "BTC_ETH",
+                        };
+                        break;
                     default:
                         this.options = {};
                 }
@@ -187,7 +203,7 @@ exports.integrationTest = function (contextIT) {
                 before(function () {
                     nock.enableNetConnect();
                 });
-                var shared = require("./" + method + ".js");
+                let shared = require("./" + method + ".js");
                 if (!dummyApiKeys) {
                     shared.shouldVerifyParameters();
                 }

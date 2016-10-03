@@ -11,7 +11,7 @@ const apiHost = {
 };
 
 const publicMethodsToTest = ['getTicker', 'getRate', 'getOrderBook'];
-const privateMethodsToTest = ['getBalance'];
+const privateMethodsToTest = ['getBalance', 'getOpenOrders'];
 const writeMockResponseFileForMethod = '';
 
 // don't change below this line; only configure above this line

@@ -12,6 +12,7 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 ### Added
+- parameter `margin` added to `getOpenOrder` result
 
 
 ## [0.2.2] - 2015-11-01

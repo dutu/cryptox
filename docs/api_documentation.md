@@ -70,7 +70,7 @@ getTicker(options, callback);
 ```
 
 ```js
-getTicker({pair: "XBTUSD"}, function (err, result) {
+getTicker({pair: "XBT_USD"}, function (err, result) {
     if (!err)
         console.log(result);
 });
@@ -96,7 +96,7 @@ The arguments passed to the callback function for each method are:
         "error": "",
         "data": [
             {
-                "pair": "XBTUSD",
+                "pair": "XBT_USD",
                 "last": "272.064",
                 "bid": "272.064",
                 "ask": "273.395",
@@ -164,7 +164,7 @@ Example result:
     "error": "",
     "data": [
         {
-            "pair": "EURUSD",
+            "pair": "EUR_USD",
             "rate": "1.149807",
         }
      ]
@@ -522,7 +522,7 @@ Returns the open orders.
 #### Example
 
 ```js
-account.getOpenOrders({pair: "LTCUSD"}, function (err, openOrders) {
+account.getOpenOrders({pair: "LTC_USD"}, function (err, openOrders) {
     if (!err)
 	    console.log(openOrders);
 });
@@ -535,20 +535,22 @@ Example result:
     "data": [
         {
             "order_id": "563489985",
-            "pair": "LTCUSD",
+            "pair": "LTC_USD",
             "type": "buy",
             "amount": "1",
             "rate": "0.1",
+			"margin": true,
             "created_at": "2015-02-01T19:23:15+00:00",
             "status": "0"
 
         },
         {
             "order_id": "563612426",
-            "pair": "LTCUSD",
+            "pair": "LTC_USD",
             "type": "buy",
             "amount": "2",
             "rate": "0.5",
+			"margin": false,
             "created_at": "2015-02-01T20:59:53+00:00",
             "status": "0"
 
@@ -570,8 +572,9 @@ Parameter   | Type  | Description|
 `order_id`  | String| order ID
 `pair`      | String| trading pair
 `type`      | String| order type (`buy`, `sell`) 
-`amount`    | String|
+`amount`    | String| trading amount
 `rate`      | String| rate
+`margin`    | Boolean| margin trading order
 `created_at`| String| date&time when order was created, ISO 8601 string
 
 
@@ -709,7 +712,7 @@ Titcoin    | TIT
 
 The first currency of a currency pair is called the "base currency", and the second currency is called the "counter currency". The currency pair shows how much of the counter currency is needed to purchase one unit of the base currency.
 
-In example below the last price of the XBTUSD currency pair is 272.064.  
+In example below the last price of the XBT_USD currency pair is 272.064.  
 
 ```js
 
@@ -717,7 +720,7 @@ In example below the last price of the XBTUSD currency pair is 272.064.
     "error": "",
     "data": [
         {
-            "pair": "XBTUSD",
+            "pair": "XBT_USD",
             "last": 272.064,
             "bid": 272.064,
             "ask": 273.395,
