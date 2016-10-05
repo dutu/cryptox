@@ -1,4 +1,4 @@
-cryptox API Documentation
+	cryptox API Documentation
 =======
 
 ### Contents
@@ -588,10 +588,61 @@ Parameter / Availability |  Type   | Description
 
 
 ### postSellOrder
+```js
+postSellOrder(options, callback);
+```
+Posts a sell order.
+
+#### Example
+
+```js
+account.postSellOrder({pair: "ETH_BTC"}, function (err, order) {
+    if (!err)
+	    console.log(openOrders);
+});
+```
+Example result:
+```js
+{
+    "timestamp": "2015-02-03T00:03:27+00:00",
+    "error": "",
+    "data": [
+        {
+            "order_id": "563489985",
+            "created_at": "2015-02-01T19:23:15+00:00",
+
+        }
+    ]
+}
+```
+
+#### Arguments
+
+* `options` 
+ 
+* `callback` see [Callbacks](#callbacks)    
+
+#### Response
+
+Parameter   | Type  | Description|
+ ---	    | ---   |---  
+`pair`      | String| trading pair
+`amount`    | String| trading amount
+`rate`      | String| rate
+`margin`    | Boolean| margin trading order
+
+
+Optional response parameters
+
+Parameter / Availability |  Type   | Description 
+ ---	                 | ---     | ---
+`order_id`               | String  | order ID
+`created_at`             | String  | date&time when order was created, ISO 8601 string
 
 
 ### postBuyOrder
 
+Same as for `postSellOrder()` method
 
 ### cancelOrder
 

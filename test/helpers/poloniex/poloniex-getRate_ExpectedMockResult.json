@@ -1,1 +1,10 @@
-{"timestamp":"2016-09-29T17:35:16Z","error":"","data":[{"pair":"XBTETH","rate":"0.02167999"}]}
+{
+  "timestamp": "2016-10-03T20:52:23Z",
+  "error": "",
+  "data": [
+    {
+      "pair": "BTC_ETH",
+      "rate": "0.02167999"
+    }
+  ]
+}

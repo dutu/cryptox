@@ -359,6 +359,70 @@ schema.getOpenOrders = {
     }
 };
 
+schema.postSellOrder = {
+    "title": "postSellOrder schema",
+    "description": "Schema for postSellOrder() results",
+    "type": "object",
+    "required": ["timestamp", "error", "data"],
+    "properties": {
+        "timestamp": {
+            "type": "string",
+            "minLength": 1
+        },
+        "error": {
+            "type": "string",
+            "maxLength": 0
+        },
+        "data": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["order_id", "created_at"],
+                "properties": {
+                    "order_id": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+};
+
+schema.postBuyOrder = {
+    "title": "postBuyOrder schema",
+    "description": "Schema for postBuyOrder() results",
+    "type": "object",
+    "required": ["timestamp", "error", "data"],
+    "properties": {
+        "timestamp": {
+            "type": "string",
+            "minLength": 1
+        },
+        "error": {
+            "type": "string",
+            "maxLength": 0
+        },
+        "data": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["order_id", "created_at"],
+                "properties": {
+                    "order_id": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+};
+
 schema.getLendBook = {
 	"title": "getLendBook schema",
 	"description": "Schema for getLendBook() results",

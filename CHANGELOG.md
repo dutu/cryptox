@@ -13,6 +13,8 @@ cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - parameter `margin` added to `getOpenOrder` result
+- implement `poloniex.postSellOrder()`
+- implement `poloniex.postBuyOrder()`
 
 
 ## [0.2.2] - 2015-11-01

@@ -1,6 +1,6 @@
 'use strict';
 
-const Cryptox = require("../index.js");
+const Cryptox = require("../lib/index.js");
 const https = require("https");
 const sinon = require("sinon");
 const chai = require("chai");

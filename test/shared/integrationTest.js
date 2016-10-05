@@ -10,7 +10,7 @@ const _ = require('lodash');
 let expect = chai.expect;
 chai.use(require("chai-json-schema"));
 
-const Cryptox = require("../../index.js");
+const Cryptox = require("../../lib/index.js");
 const schema = require("../helpers/jsonSchemas.js");
 
 exports.integrationTest = function (contextIT) {
@@ -170,6 +170,22 @@ exports.integrationTest = function (contextIT) {
 			                currency: "USD"
 		                };
 		                break;
+                    case "postSellOrder":
+                        this.options = {
+                            pair: privateCryptox.properties.instruments[0].pair,
+                            rate: '0.03',
+                            amount: '0.01',
+                            margin: false,
+                        };
+                        break;
+                    case "postBuyOrder":
+                        this.options = {
+                            pair: privateCryptox.properties.instruments[0].pair,
+                            rate: '0.01',
+                            amount: '0.01',
+                            margin: false,
+                        };
+                        break;
                     case "getOpenOrders":
                         this.options = {
                             pair: "BTC_ETH",
