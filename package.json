@@ -7,7 +7,6 @@
     "node": ">= 4.5.x"
   },
   "scripts": {
-    "prepublish": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
     "test": "mocha"
   },
   "repository": {
@@ -38,9 +37,6 @@
     "url": "https://github.com/dutu/cryptox/issues"
   },
   "homepage": "https://github.com/dutu/cryptox",
-  "babel": {
-    "presets": ["es2015"]
-  },
   "dependencies": {
     "btc-e": "*",
     "moment": ">=2.15.1",
@@ -50,7 +46,7 @@
     "strscan": "*",
     "bitx": ">=1.4.3",
     "open-exchange-rates": ">=0.3.0",
-    "bitfinex": ">=1.0.3",
+    "bitfinex-api-node": ">=0.2.9",
     "gdax": "^0.2.0",
     "bitstamp": "0.*.*",
     "poloniex-api-node": "1.*.*",

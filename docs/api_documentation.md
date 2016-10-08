@@ -393,7 +393,7 @@ Example result:
             "tx_id": "7624780",
             "datetime": "2015-02-24T12:02:27+00:00",
             "type": "sell",
-            "symbol": "XBTUSD",
+            "symbol": "XBT_USD",
             "amount_base": "-0.30183411",
             "amount_counter": "72.62",
             "rate": "240.6",
@@ -619,6 +619,63 @@ Example result:
 #### Arguments
 
 * `options` 
+
+	Parameter   | Type  | Description|
+	 ---	    | ---   |---  
+	`pair`      | String| trading pair
+	`amount`    | String| trading amount
+	`rate`      | String| rate
+	`margin`    | Boolean| margin trading order
+ 
+
+
+* `callback` see [Callbacks](#callbacks)    
+
+#### Response
+
+
+Parameter    |  Type   | Description 
+---	         | ---     | ---
+`order_id`   | String  | order ID
+`created_at` | String  | date&time when order was created, ISO 8601 string
+ 
+
+### postBuyOrder
+
+Same as for `postSellOrder()` method
+
+### cancelOrder
+
+```js
+cancelOrder(options, callback);
+```
+Posts a sell order.
+
+#### Example
+
+```js
+account.cancelOrder({order_id: "123456789"}, function (err, order) {
+    if (!err)
+	    console.log(openOrders);
+});
+```
+Example result:
+```js
+{
+    "timestamp": "2015-02-03T00:03:27+00:00",
+    "error": "",
+    "data": []
+}
+```
+
+#### Arguments
+
+* `options` 
+
+    Parameter  |  Type  | Required    | Description |
+     ---	   | ---    |   :-:       | ---         |
+    `order_id` | string |All exchanges| currecny    |
+
  
 * `callback` see [Callbacks](#callbacks)    
 
@@ -626,25 +683,6 @@ Example result:
 
 Parameter   | Type  | Description|
  ---	    | ---   |---  
-`pair`      | String| trading pair
-`amount`    | String| trading amount
-`rate`      | String| rate
-`margin`    | Boolean| margin trading order
-
-
-Optional response parameters
-
-Parameter / Availability |  Type   | Description 
- ---	                 | ---     | ---
-`order_id`               | String  | order ID
-`created_at`             | String  | date&time when order was created, ISO 8601 string
-
-
-### postBuyOrder
-
-Same as for `postSellOrder()` method
-
-### cancelOrder
 
 
 ### getLendBook

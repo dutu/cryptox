@@ -1,24 +1,24 @@
 'use strict';
 
-const chai = require("chai");
-const sharedTests = require("./shared/integrationTest.js");
+const chai = require('chai');
+const sharedTests = require('./shared/integrationTest.js');
 
 // configure Integration tests variables below this line
 
-const slug = "btce";
+const slug = 'btce';
 const apiHost = {
-    private: "https://btc-e.com",
-    public:  "https://btc-e.com"
+    private: 'https://btc-e.com',
+    public:  'https://btc-e.com'
 };
 
-const publicMethodsToTest = ["getTicker", "getRate", "getOrderBook", "getFee"];
-const privateMethodsToTest = ["getOpenOrders"];
-const writeMockResponseFileForMethod = "";
+const publicMethodsToTest = ['getRate', 'getTicker', 'getOrderBook'];
+const privateMethodsToTest = ['getFee', 'getOpenOrders'];
+const writeMockResponseFileForMethod = '';
 
 // don't change below this line; only configure above this line
 
 
-describe("Integration Test " + slug + ":", function () {
+describe('Integration Test ' + slug + ':', function () {
     let contextIT = {                     // set context for Integration Testing
         slug: slug,
         apiHost: apiHost,

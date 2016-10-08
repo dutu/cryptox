@@ -32,7 +32,6 @@ exports.integrationTest = function (contextIT) {
         }
     }
 
-    let dummyApiKeys = myApiKeys.key === "dummy";
     let cryptox, apiHost;
     let publicCryptox = new Cryptox(contextIT.slug);
     let privateCryptox = new Cryptox(contextIT.slug, myApiKeys);
@@ -113,56 +112,29 @@ exports.integrationTest = function (contextIT) {
         });
     }
 
-    function shouldReturnValidJSONSchema (method) {
-        it("should return the data with valid JSON schema" + (dummyApiKeys ? " <-- Skipped; no API keys in '/test/helpers/private_key.js" : ""), function (done) {
-            if (!this.options)
-                this.options = {};
-            if (dummyApiKeys) {
-                return done();
-            }
-            cryptox[method](this.options, function (err, result) {
-                expect(result).to.be.jsonSchema(schema[method]);
-                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
-                done();
-            });
-        });
-    }
-
-    function shouldReturnAuthorizationError (method) {
-        it("should return error when no authorization", function (done) {
-            let options = {};
-            publicCryptox[method](options, function (err, result) {
-                expect(result).to.be.jsonSchema(schema.errorResult);
-                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
-                done();
-            });
-        });
-    }
-
     function testMethod (private_public, method) {
         describe(method, function () {
             beforeEach(function () {
                 if (private_public === "private") {
                     apiHost = contextIT.apiHost.private;
                     cryptox = privateCryptox;
-                    this.skipPrivateMethodTest = dummyApiKeys;
                 } else {
                     apiHost = contextIT.apiHost.public;
                     cryptox = publicCryptox;
-                    this.skipPrivateMethodTest = false;
                 }
                 switch (method) {           // set options
+                    case "getFee":
                     case "getTicker":
                     case "getRate":
                     case "getOrderBook":
                         this.options = {
-                            pair: privateCryptox.properties.instruments[0].pair
+                            pair: publicCryptox.properties.instruments[0].pair
                         };
                         break;
                     case "getTransactions":
                         this.options = {
                             type: "trades",
-	                        symbol: privateCryptox.properties.instruments[0].pair
+	                        symbol: publicCryptox.properties.instruments[0].pair
                         };
                         break;
 	                case "getLendBook":
@@ -172,7 +144,7 @@ exports.integrationTest = function (contextIT) {
 		                break;
                     case "postSellOrder":
                         this.options = {
-                            pair: privateCryptox.properties.instruments[0].pair,
+                            pair: publicCryptox.properties.instruments[0].pair,
                             rate: '0.03',
                             amount: '0.01',
                             margin: false,
@@ -180,7 +152,7 @@ exports.integrationTest = function (contextIT) {
                         break;
                     case "postBuyOrder":
                         this.options = {
-                            pair: privateCryptox.properties.instruments[0].pair,
+                            pair: publicCryptox.properties.instruments[0].pair,
                             rate: '0.01',
                             amount: '0.01',
                             margin: false,
@@ -210,26 +182,14 @@ exports.integrationTest = function (contextIT) {
                 before(function () {
                     nock.enableNetConnect();
                 });
-                shouldReturnValidJSONSchema(method);
-                if (private_public === "private") {
-                    shouldReturnAuthorizationError(method);
-                }
-            });
-            describe("Parameter tests", function () {
-                before(function () {
-                    nock.enableNetConnect();
-                });
                 let shared = require("./" + method + ".js");
-                if (!dummyApiKeys) {
-                    shared.shouldVerifyParameters();
-                }
+                shared.shouldVerifyAPI(publicCryptox, privateCryptox);
             });
-
         });
     }
 
     contextIT.publicMethodsToTest.forEach(function (method, index, array) {
-        testMethod( "public", method);
+        testMethod("public", method);
     });
 
     contextIT.privateMethodsToTest.forEach(function (method, index, array) {

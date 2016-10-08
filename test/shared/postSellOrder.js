@@ -1,23 +1,35 @@
 'use strict';
 
-// See https://github.com/mochajs/mocha/wiki/Shared-Behaviours
-
-const chai = require('chai');
-const moment = require('moment');
 const _ = require('lodash');
+const moment = require('moment');
+const path = require('path');
+const chai = require('chai');
 
 const expect = chai.expect;
 chai.use(require('chai-json-schema'));
 
 const schema = require('../helpers/jsonSchemas.js');
+const method = path.basename(__filename).split('.')[0];
+const isMethodPrivate = true;
 
-exports.shouldVerifyParameters = function() {
-	it('Should post the order', function (done) {
-	    let validType;
-        if (this.skipParamTests) return done();
-        let cryptox = this.context.cryptox;
-        let method = this.context.method;
-        let options = {pair: cryptox.properties.instruments[0].pair};
+exports.shouldVerifyAPI = function(publicCryptox, privateCryptox) {
+    let skipMessage = isMethodPrivate && privateCryptox.options.key === 'dummy' && "<-- Skipped; pls set API keys in '/test/helpers/private_key.js" || '';
+    let cryptox = privateCryptox;
+
+    it("should return error when no authorization", function (done) {
+        let options = {};
+        publicCryptox[method](options, function (err, result) {
+            expect(result).to.be.jsonSchema(schema.errorResult);
+            expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
+            done();
+        });
+    });
+
+    it(`should post order ${skipMessage}`, function (done) {
+        if (skipMessage !== '' && isMethodPrivate) return done();
+        let options = {
+            pair: publicCryptox.properties.instruments[0].pair
+        };
 
         cryptox.getRate(options, function(err, result) {
             options.rate = (parseFloat(result.data[0].rate)*1.15).toFixed(8);
@@ -31,34 +43,16 @@ exports.shouldVerifyParameters = function() {
             });
         });
     });
-    it('Should post margin order', function (done) {
-        let validType;
-        if (this.skipParamTests) return done();
-        let cryptox = this.context.cryptox;
-        let method = this.context.method;
-        let options = {pair: cryptox.properties.instruments[0].pair};
 
-        cryptox.getRate(options, function(err, result) {
-            options.rate = (parseFloat(result.data[0].rate)*1.15).toFixed(8);
-            options.amount = '0.05';
-            options.margin = true;
-            cryptox[method](options, function (err, result) {
-                expect(result).to.be.jsonSchema(schema[method]);
-                expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
-                expect(result.data.length).to.be.equal(1);
-                expect(typeof result.data[0].order_id).to.be.equal('string');
-                done();
-            });
+    it(`should post margin order ${skipMessage}`, function (done) {
+        let options = {
+        };
+        if (skipMessage !== '' && isMethodPrivate) return done();
+        cryptox[method](options, function (err, result) {
+            expect(result).to.be.jsonSchema(schema.errorResult);
+            expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
+            done();
         });
     });
-	it('{} should return an error)', function (done) {
-		let options = {};
-		let cryptox = this.context.cryptox;
-		let method = this.context.method;
-		cryptox[method](options, function (err, result) {
-			expect(result).to.be.jsonSchema(schema.errorResult);
-			expect(moment(result.timestamp, moment.ISO_8601).isValid()).to.be.equal(true); // to be a valid ISO 8601 date
-			done();
-		});
-	});
+
 };

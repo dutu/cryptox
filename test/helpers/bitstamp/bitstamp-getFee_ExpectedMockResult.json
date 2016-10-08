@@ -1,1 +1,11 @@
-{"timestamp":"2016-09-28T18:01:38Z","error":"","data":[{"pair":"XBTUSD","maker_fee":"0.0025","taker_fee":"0.0025"},{"pair":"EURUSD","maker_fee":"0.002","taker_fee":"0.002"},{"pair":"XBTEUR","maker_fee":"0.0025","taker_fee":"0.0025"}]}
+{
+  "timestamp": "2016-10-06T11:44:42Z",
+  "error": "",
+  "data": [
+    {
+      "pair": "XBT_USD",
+      "maker_fee": "0.0025",
+      "taker_fee": "0.0025"
+    }
+  ]
+}

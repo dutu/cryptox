@@ -31,7 +31,7 @@ cryptox
 var Cryptox = require("cryptox");
 var account = new Cryptox("btce", {key: "your_key", secret: "your_secret"});
 	
-account.getOpenOrders({pair: "LTCUSD"}, function (err, openOrders) {
+account.getOpenOrders({pair: "LTC_USD"}, function (err, openOrders) {
     if (!err)
 	    console.log(openOrders);
 });
@@ -45,7 +45,7 @@ Example result:
     "data": [
         {
             "order_id": "563489985",
-            "pair": "LTCUSD",
+            "pair": "LTC_USD",
             "type": "buy",
             "amount": "1",
             "rate": "0.1",
@@ -54,7 +54,7 @@ Example result:
         },
         {
             "order_id": "563612426",
-            "pair": "LTCUSD",
+            "pair": "LTC_USD",
             "type": "buy",
             "amount": "2",
             "rate": "0.5",

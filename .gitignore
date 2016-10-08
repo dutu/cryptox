@@ -8,3 +8,4 @@ node_modules/
 # ==========================
 
 /test/helpers/private_keys.js
+src/

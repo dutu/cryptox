@@ -44,10 +44,12 @@ schema.getRate = {
                 "required": ["pair", "rate"],
                 "properties": {
                     "pair": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[A-Z0-9]{3,4}_[A-Z0-9]{3,4}",
                     },
                     "rate": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     }
                 }
             }
@@ -77,19 +79,24 @@ schema.getTicker = {
                 "required": ["pair", "last", "bid", "ask", "volume"],
                 "properties": {
                     "pair": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[A-Z0-9]{3,4}_[A-Z0-9]{3,4}",
                     },
                     "last": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "bid": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "ask": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "volume": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     }
                 }
             }
@@ -119,7 +126,8 @@ schema.getOrderBook = {
                 "required": ["pair", "asks", "bids"],
                 "properties": {
                     "pair": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[A-Z0-9]{3,4}_[A-Z0-9]{3,4}",
                     },
                     "asks": {
                         "type": "array",
@@ -129,10 +137,12 @@ schema.getOrderBook = {
                             "required": ["price", "volume"],
                             "properties": {
                                 "price": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
                                 },
                                 "volume": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
                                 }
                             }
                         }
@@ -145,10 +155,12 @@ schema.getOrderBook = {
                             "required": ["price", "volume"],
                             "properties": {
                                 "price": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
                                 },
                                 "volume": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
                                 }
                             }
                         }
@@ -181,13 +193,16 @@ schema.getFee = {
                 "required": ["pair", "maker_fee", "taker_fee"],
                 "properties": {
                     "pair": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[A-Z0-9]{3,4}_[A-Z0-9]{3,4}",
                     },
                     "maker_fee": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "taker_fee": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     }
                 }
             }
@@ -228,23 +243,27 @@ schema.getTransactions = {
                     },
                     "symbol": {
                         "type": "string",
-                        "minLength": 3,
-                        "maxLength": 6
+                        "pattern": "^([A-Z0-9]{3,4}(_[A-Z0-9]{3,4})?)$",
                     },
                     "amount_base": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "amount_counter": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "rate": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "fee_base": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "fee_counter": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
                     },
                     "order_id": {
                         "type": "string"
@@ -286,10 +305,12 @@ schema.getBalance = {
                             "required": ["currency", "amount"],
                             "properties": {
                                 "currency": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[A-Z0-9]{3,4}",
                                 },
                                 "amount": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
                                 }
                             }
                         }
@@ -301,10 +322,12 @@ schema.getBalance = {
                             "required": ["currency", "amount"],
                             "properties": {
                                 "currency": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[A-Z0-9]{3,4}",
                                 },
                                 "amount": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
                                 }
                             }
                         }
@@ -339,7 +362,8 @@ schema.getOpenOrders = {
                         "type": "string"
                     },
                     "pair": {
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "[A-Z0-9]{3,4}_[A-Z0-9]{3,4}",
                     },
                     "type": {
                         "type": "string"
@@ -445,7 +469,8 @@ schema.getLendBook = {
 				"required": ["currency", "asks", "bids"],
 				"properties": {
 					"currency": {
-						"type": "string"
+						"type": "string",
+                        "pattern": "[A-Z0-9]{3,4}",
 					},
 					"asks": {
 						"type": "array",
@@ -454,19 +479,22 @@ schema.getLendBook = {
 							"required": ["rate", "amount", "period", "created_at", "frr"],
 							"properties": {
 								"rate": {
-									"type": "string"
+									"type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
 								},
 								"amount": {
-									"type": "string"
+									"type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
 								},
 								"period": {
-									"type": "number"
+									"type": "number",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
 								},
 								"created_at": {
 									"type": "string"
 								},
 								"frr": {
-									"type": "string"
+                                    "enum": ["yes", "no"],
 								}
 							}
 						}
@@ -479,19 +507,22 @@ schema.getLendBook = {
 							"required": ["rate", "amount", "period", "created_at", "frr"],
 							"properties": {
 								"rate": {
-									"type": "string"
+									"type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
 								},
 								"amount": {
-									"type": "string"
+									"type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
 								},
 								"period": {
-									"type": "number"
+									"type": "number",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
 								},
 								"created_at": {
 									"type": "string"
 								},
 								"frr": {
-									"type": "string"
+                                    "enum": ["yes", "no"],
 								}
 							}
 						}
