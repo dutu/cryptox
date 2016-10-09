@@ -127,6 +127,7 @@ exports.integrationTest = function (contextIT) {
                     case "getTicker":
                     case "getRate":
                     case "getOrderBook":
+                    case "getTrades":
                         this.options = {
                             pair: publicCryptox.properties.instruments[0].pair
                         };

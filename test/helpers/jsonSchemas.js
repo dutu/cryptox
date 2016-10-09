@@ -171,6 +171,64 @@ schema.getOrderBook = {
     }
 };
 
+schema.getTrades = {
+    "title": "getTrades schema",
+    "description": "Schema for getTrades() results",
+    "type": "object",
+    "required": ["timestamp", "error", "data"],
+    "properties": {
+        "timestamp": {
+            "type": "string",
+            "minLength": 1
+        },
+        "error": {
+            "type": "string",
+            "maxLength": 0
+        },
+        "data": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "required": ["pair", "trades"],
+                "properties": {
+                    "pair": {
+                        "type": "string",
+                        "pattern": "[A-Z0-9]{3,4}_[A-Z0-9]{3,4}",
+                    },
+                    "trades": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "object",
+                            "required": ["timestamp", "trade_id", "price", "amount", "type"],
+                            "properties": {
+                                "timestamp": {
+                                    "type": "string",
+                                },
+                                "trade_id": {
+                                    "type": "string",
+                                },
+                                "price": {
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
+                                },
+                                "amount": {
+                                    "type": "string",
+                                    "pattern": "[0-9]+(\.[0-9]+)?",
+                                },
+                                "type" : {
+                                    "enum": ["buy", "sell"],
+                                }
+                            }
+                        }
+                    },
+                }
+            }
+        }
+    }
+};
+
 schema.getFee = {
     "title": "getFee schema",
     "description": "Schema for getFee() results",
