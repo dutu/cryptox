@@ -1,5 +1,5 @@
 
-// if you need to test the modules with realy apiKeys, rename this file to private_keys.js and add the necessary keys
+// if you need to test the modules with realy apiKeys, rename this file to private_keys_old.js and add the necessary keys
 
 let apiKeys = {};
 apiKeys.bitfinex = {

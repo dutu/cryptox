@@ -7,5 +7,5 @@ node_modules/
 # Private data
 # ==========================
 
-/test/helpers/private_keys.js
+/test/helpers/private_keys_old.js
 src/
