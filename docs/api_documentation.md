@@ -281,7 +281,7 @@ Example result:
     "error": "",
     "data": [
         {
-            "pair": "XBTUSD",
+            "pair": "BTC_USD",
             "asks": [{price: "212.962", volume: "0.014"}, {price: "213", volume: "1.46820994"}],
             "bids": [{price: "212.885", volume: "0.014"}, {price: "212.827", volume: "0.00414864"]}
          }
@@ -312,6 +312,66 @@ Parameter   |  Type   |Required| Description                       |
 
 Returns a list of the most recent trades.
 
+```js
+cryptox.getTrades(options, callback);
+```
+
+#### Example
+
+```js
+exchange.getTrades({pair: "BTC_USD"}, function (err, trades) {
+    if (!err)
+        console.log(trades);
+});
+```
+
+Example result:
+```js
+{
+  timestamp: "2016-10-09T08:06:30Z",
+  error: "",
+  data: [
+    {
+      pair: "BTC_USD",
+      trades: [
+        {
+          timestamp: "2016-10-09T08:05:17Z",
+          trade_id: "11298830",
+          price: "618.34000000",
+          amount: "0.01000000",
+          type: "buy"
+        },
+        {
+          timestamp: "2016-10-09T07:31:16Z",
+          trade_id: "11298732",
+          price: "618.26000000",
+          amount: "0.87449356",
+          type: "sell"
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### Arguments
+
+* `options` 
+
+    Parameter  |  Type  | Required    | Description |
+     ---	   | ---    |   :-:       | ---         |
+    `pair`     | string |All exchanges| trading pair|
+
+* `callback` see [Callbacks](#callbacks)
+
+#### Response
+
+Parameter   |  Type   |Required| Description                       |
+ ---	    | ---     | :-:    | ---                               |
+`pair`      | String  |  Yes   | trading pair                      |
+`trades`    | Array   |  Yes   | list of asks in the order book    |
+
+
 
 ### getFee
 
@@ -323,7 +383,7 @@ Returns the fee, which is a float that represents the amount the exchange takes 
 #### Example
 
 ```js
-account.getFee({pair: "XBTUSD"}, function (err, fee) {
+account.getFee({pair: "XBT_USD"}, function (err, fee) {
     if (!err)
 	    console.log(fee);
 });
@@ -334,7 +394,7 @@ Example result:
 	timestamp: "2015-02-01T20:59:53+00:00",
 	data: [
 	   {
-		  pair: "XBTUSD",
+		  pair: "XBT_USD",
 		  maker_fee: "0",
 		  taker_fee: "0.002"
 	   }
