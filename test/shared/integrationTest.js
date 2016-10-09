@@ -17,7 +17,7 @@ exports.integrationTest = function (contextIT) {
     const slug = contextIT.slug;
     let myApiKeys, apiKeysFromFile;
     try {                                                       // load private keys if exists, else set to "dummy"
-        apiKeysFromFile = require("../helpers/private_keys_old.js");
+        apiKeysFromFile = require("../helpers/private_keys.js");
         myApiKeys = {
             key: apiKeysFromFile[contextIT.slug].key || "dummy",
             secret: apiKeysFromFile[contextIT.slug].secret || "dummy",
