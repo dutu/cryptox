@@ -1,0 +1,94 @@
+{
+  "timestamp": "2016-10-14T11:14:22Z",
+  "error": "",
+  "data": [
+    {
+      "pair": "BTC_BTS",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_CLAM",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_DASH",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_DOGE",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_LTC",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_MAID",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_STR",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_XMR",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_XRP",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    },
+    {
+      "pair": "BTC_ETH",
+      "type": "short",
+      "contract_type": "",
+      "base_price": "0.01870090",
+      "amount": "1.46153805",
+      "pl": "-0.00016942"
+    },
+    {
+      "pair": "BTC_FCT",
+      "type": "none",
+      "contract_type": "",
+      "base_price": "0.00000000",
+      "amount": "0",
+      "pl": "0.00000000"
+    }
+  ]
+}

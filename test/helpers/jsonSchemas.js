@@ -396,6 +396,55 @@ schema.getBalance = {
     }
 };
 
+schema.getMarginPositions = {
+    "title": "getMarginPositions schema",
+    "description": "Schema for getMarginPositions() results",
+    "type": "object",
+    "required": ["timestamp", "error", "data"],
+    "properties": {
+        "timestamp": {
+            "type": "string",
+            "minLength": 1
+        },
+        "error": {
+            "type": "string",
+            "maxLength": 0
+        },
+        "data": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "type": "object",
+                "required": ["pair", "type", "contract_type", "base_price", "amount", "pl"],
+                "properties": {
+                    "pair": {
+                        "type": "string",
+                        "pattern": "[A-Z0-9]{3,4}_[A-Z0-9]{3,4}",
+                    },
+                    "type": {
+                        "enum": ["none", "long", "short"],
+                    },
+                    "contract_type": {
+                        "type": "string",
+                    },
+                    "base_price": {
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
+                    },
+                    "amount": {
+                        "type": "string",
+                        "pattern": "[0-9]+(\.[0-9]+)?",
+                        },
+                    "pl": {
+                        "type": "string",
+                        "pattern": "[-+]?[0-9]+(\.[0-9]+)?",
+                    },
+                }
+            }
+        }
+    }
+};
+
 schema.getOpenOrders = {
     "title": "getOpenOrders schema",
     "description": "Schema for getOpenOrders() results",

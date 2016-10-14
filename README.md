@@ -79,6 +79,7 @@ Example result:
 |[getFee](docs/api_documentation.md#getfee)                  |        |   FI         | FI | FI  |      |        |        |      —           |
 |[getTransactions](docs/api_documentation.md#gettransactions)|   FI   |   FI         | FI |     |      |        |        |      —           |
 |[getBalance](docs/api_documentation.md#getbalance)          |   FI   |   FI         | FI |     |      |   FI   |   FI   |      —           |
+|[getMarginPositions](docs/api_documentation.md#getbalance)  |        |              |    |     |      |        |   FI   |      —           |
 |[getOpenOrders](docs/api_documentation.md#getopenorders)    |        |              | FI | FI  |      |        |        |      —           |
 |[postSellOrder](docs/api_documentation.md#postsellorder)    |        |              |    |     |      |        |        |      —           |
 |[postBuyOrder](docs/api_documentation.md#postbuyorder)      |        |              |    |     |      |        |        |      —           |

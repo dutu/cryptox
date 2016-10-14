@@ -11,6 +11,7 @@
     * [getFee](#getfee)
     * [getTransactions](#gettransactions)
     * [getBalance](#getbalance)
+    * [getMarginPositions](#getMarginPositions)
     * [getOpenOrders](#getopenorders)
     * [postSellOrder](#postsellorder)
     * [postBuyOrder](#postbuyorder)
@@ -568,6 +569,52 @@ Example result:
 Parameter   | Type  | Description|
  ---	    | ---   |---        |
 `account_id`| String| account ID / name |
+`total`     | Array | account balance |
+`available` | Array | funds available for trading (balance minus funds reserved in open orders. For margin accounts the leverage is taken into consideration, hence `available` can be higher than `total`) 
+
+
+### getMarginPositions
+
+```js
+getMarginPositions(options, callback);
+```
+Returns the account balance.
+
+#### Example
+
+```js
+account.getMarginPositions({pair: BTC_USD}, function (err, marginPositions) {
+    if (!err)
+	    console.log(balance);
+});
+```
+Example result:
+```js
+{
+    timestamp: "2015-02-06T17:53:02+00:00",
+    error: "",
+    data: [
+        {
+        }
+    ]
+}
+```
+
+#### Arguments
+
+* `options` 
+
+	Parameter   | Type  | Description|
+	 ---	    | ---   |---  
+	`pair`      | String| trading pair (optional)
+
+* `callback` see [Callbacks](#callbacks)    
+
+#### Response
+
+Parameter   | Type  | Description|
+ ---	    | ---   |---        |
+`pair`| String| account ID / name |
 `total`     | Array | account balance |
 `available` | Array | funds available for trading (balance minus funds reserved in open orders. For margin accounts the leverage is taken into consideration, hence `available` can be higher than `total`) 
 

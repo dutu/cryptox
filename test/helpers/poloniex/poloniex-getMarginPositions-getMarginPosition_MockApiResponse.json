@@ -1,0 +1,101 @@
+{
+  "BTC_BTS": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_CLAM": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_DASH": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_DOGE": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_LTC": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_MAID": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_STR": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_XMR": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_XRP": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  },
+  "BTC_ETH": {
+    "amount": "-1.46153805",
+    "total": "0.02733208",
+    "basePrice": "0.01870090",
+    "liquidationPrice": "0.02191503",
+    "pl": "-0.00016942",
+    "lendingFees": "0.00000000",
+    "type": "short"
+  },
+  "BTC_FCT": {
+    "type": "none",
+    "amount": "0.00000000",
+    "total": "0.00000000",
+    "basePrice": "0.00000000",
+    "liquidationPrice": -1,
+    "pl": "0.00000000",
+    "lendingFees": "0.00000000"
+  }
+}
