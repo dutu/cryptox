@@ -10,7 +10,7 @@ chai.use(require('chai-json-schema'));
 
 const schema = require('../helpers/jsonSchemas.js');
 const method = path.basename(__filename).split('.')[0];
-const isMethodPrivate = false;
+const isMethodPrivate = true;
 
 exports.shouldVerifyAPI = function(publicCryptox, privateCryptox) {
     let skipMessage = isMethodPrivate && privateCryptox.options.key === 'dummy' && "<-- Skipped; pls set API keys in '/test/helpers/private_key.js" || '';
