@@ -11,8 +11,10 @@ const apiHost = {
     public:  "https://www.bitstamp.net"
 };
 
-const publicMethodsToTest = ["getTicker", "getRate", "getOrderBook"];
-const privateMethodsToTest = ["getFee", "getTransactions", "getBalance"];
+const publicMethodsToTest = [];
+const privateMethodsToTest = [];
+//const publicMethodsToTest = ["getTicker", "getRate", "getOrderBook"];
+//const privateMethodsToTest = ["getFee", "getTransactions", "getBalance"];
 const writeMockResponseFileForMethod = '';
 
 // don't change below this line; only configure above this line
