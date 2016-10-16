@@ -49,7 +49,8 @@
     "gdax": "^0.2.0",
     "bitstamp": "0.*.*",
     "poloniex-api-node": "1.*.*",
-    "big.js": "3.*.*"
+    "big.js": "3.*.*",
+    "http-agent": "0.*.*"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
