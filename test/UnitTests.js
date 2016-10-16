@@ -40,19 +40,12 @@ let eachConstructor = function (slug) {
             expect(cryptox).to.be.an.instanceOf(Cryptox);
         });
 
-        it('should have default options', function () {
-            cryptox = new Cryptox(slug);
-            expect(cryptox.options.lang).to.equal("en");
-        });
-
         it('should accept options', function () {
             options = {
-                lang: "de",
                 key: "my_key",
                 secret: "my_secret"
             };
             cryptox = new Cryptox(slug, options);
-            expect(cryptox.options.lang).to.equal("de");
             expect(cryptox.options.key).to.equal("my_key");
             expect(cryptox.options.secret).to.equal("my_secret");
         });
