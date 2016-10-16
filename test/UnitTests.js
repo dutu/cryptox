@@ -9,6 +9,22 @@ const nock = require("nock");
 const config = require("./helpers/config.js");
 
 const expect = chai.expect;
+
+const allMethods = [
+    'getRate',
+    'getTicker',
+    'getOrderBook',
+    'getTrades',
+    'getFee',
+    'getTransactions',
+    'getBalance',
+    'getMarginPositions',
+    'getOpenOrders',
+    'postSellOrder',
+    'postBuyOrder',
+    'cancelOrder'
+];
+
 let cryptox, options;
 
 let eachConstructor = function (slug) {
@@ -48,8 +64,8 @@ let eachConstructor = function (slug) {
             expect(cryptox).to.have.deep.property("properties.slug", slug);
             expect(cryptox).to.have.deep.property("properties.instruments");
             expect(cryptox.properties.instruments).to.be.a("array");
-            expect(cryptox).to.have.deep.property("properties.methods.notImplemented");
-            expect(cryptox.properties.methods.notImplemented).to.be.a("array");
+            expect(cryptox).to.have.deep.property("properties.methods.implemented");
+            expect(cryptox.properties.methods.implemented).to.be.a("array");
             expect(cryptox).to.have.deep.property("properties.methods.notSupported");
             expect(cryptox.properties.methods.notSupported).to.be.a("array");
         });
@@ -57,7 +73,7 @@ let eachConstructor = function (slug) {
 };
 
 let eachMethod = function (slug, method) {
-    let notImplemented, notSupported, mock;
+    let mock;
 
     let callback = function() {};
 
@@ -77,23 +93,24 @@ let eachMethod = function (slug, method) {
         it('should respond when called', function () {
             expect(cryptox).to.respondTo(method);
         });
-        notImplemented = cryptox.properties.methods.notImplemented.indexOf(method);
-        if (notImplemented > -1) {
+        let isNotImplemented = cryptox.properties.methods.implemented.indexOf(method) === -1 && cryptox.properties.methods.notSupported.indexOf(method) === -1 ;
+        if (isNotImplemented) {
             it('should respond "Method not implemented"', function () {
                 cryptox[method]({}, function (err, result) {
                     expect(err.message).to.be.eql("Method not implemented");
                 });
             });
         }
-        notSupported = cryptox.properties.methods.notSupported.indexOf(method);
-        if (notSupported > -1) {
+        let isNotSupported = cryptox.properties.methods.notSupported.indexOf(method) > -1;
+        if (isNotSupported) {
             it('should respond "Method not supported"', function () {
                 cryptox[method]({}, function (err, result) {
                     expect(err.message).to.be.eql("Method not supported");
                 });
             });
         }
-        if (notImplemented === -1 && notSupported === -1)
+        let isImplemented = cryptox.properties.methods.implemented.indexOf(method) > -1;
+        if (isImplemented)
             it('should call ' + slug + '.' + method + ' with the correct parameters', function() {
                 mock.expects(method).once().withArgs(options, callback);
                 cryptox[method](options, callback);
@@ -108,7 +125,7 @@ config.slug.forEach(function (slug) {
         let implemented;
         eachConstructor(slug);
         cryptox = new Cryptox(slug);
-        config.methods.forEach(function (method) {
+        allMethods.forEach(function (method) {
             eachMethod(slug, method);
         });
     });
