@@ -3,13 +3,12 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0.0] - not published
+## [1.0.0] - 2016-10-17
 
 ### Changed
-- Coinbase changed to Gdax
-- All numeric response parameters are now returned as string
-
-### Fixed
+- name Coinbase changed to Gdax
+- all numeric response parameters are now returned as string
+- parameter `pair` is represented with `_` between curency symbols (eg `USD_BTC` instead of `USDBTC`) 
 
 ### Added
 - parameter `margin` added to `getOpenOrder` result

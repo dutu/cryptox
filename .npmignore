@@ -1,6 +1,6 @@
 .gitignore
 .travis.yml
 test/
-examples/
+docs/
 
 /src/

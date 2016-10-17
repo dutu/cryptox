@@ -48,6 +48,7 @@ var exchange = new Cryptox("btce");
 * `exchangeSlug` is required and should have one values in table below
 * `options` is used to pass parameters required for authentication, as indicated in table below
 
+
 |Exchange name        | `exchangeSlug` | Authentication               |
 | ---	              |    ---         |    ---                       |         
 | Bitfinex            | `"bitfinex"`   | `key`, `secret`              |
@@ -58,6 +59,7 @@ var exchange = new Cryptox("btce");
 | Gdax                | `"gdax"`       | `key`, `secret`, `passphrase`|
 | Poloniex            | `"poloniex"`   | `key`, `secret`              |
 | Open Exchange Rates | `"oxr"`        | `key`                        |
+
 
 `options` should be used when calling methods that require authentication. Missing or incorrect key/secret causes an error to be returned when calling a method that requires authentication (see [Authentication](#authentication)).   
 
@@ -123,19 +125,20 @@ The format of API result (see `result` in  [Callbacks](#callbacks)) above for ea
 
 Following methods require authentication
 
-|Method         | Requires authentication
-| ---	        |    :-:                 
-|getRate        |     <sup>[1]</sup>       
-|getTicker      |                        
-|getOrderBook   |                            
-|getTrades      |                        
-|getFee         |     √ <sup>[2]</sup>      
-|getTransactions|     √                  
-|getBalance     |     √                  
-|getOpenOrders  |     √                  
-|postSellOrder  |     √                  
-|placeBuyOrder  |     √                  
-|cancelOrder    |     √                  
+|Method             | Requires authentication
+| ---	            |    :-:                 
+|getRate            |     <sup>[1]</sup>       
+|getTicker          |                        
+|getOrderBook       |                            
+|getTrades          |                        
+|getFee             |     √ <sup>[2]</sup>      
+|getTransactions    |     √                  
+|getBalance         |     √                  
+|getMarginPositions |     √                  
+|getOpenOrders      |     √                  
+|postSellOrder      |     √                  
+|placeBuyOrder      |     √                  
+|cancelOrder        |     √                  
 
 ><sup>1</sup> Open Exchange Rates (OXR) requires authentication  
 ><sup>2</sup> BTC-e and BitX does not require authentication (since the fee is fixed amount)
@@ -153,7 +156,7 @@ getRate(options, callback);
 
 #### Example
 ```js
-exchange.getRate({pair: "EURUSD"}, function (err, rate) {
+exchange.getRate({pair: "EUR_USD"}, function (err, rate) {
     if (!err)
         console.log(rate);
 });
@@ -161,14 +164,14 @@ exchange.getRate({pair: "EURUSD"}, function (err, rate) {
 Example result:
 ```js
 {
-    "timestamp": "2015-02-04T20:01:09+00:00",
-    "error": "",
-    "data": [
-        {
-            "pair": "EUR_USD",
-            "rate": "1.149807",
-        }
-     ]
+  "timestamp": "2016-10-16T15:00:07Z",
+  "error": "",
+  "data": [
+    {
+      "pair": "EUR_USD",
+      "rate": "1.09727328"
+    }
+  ]
 }
 ```
 
@@ -201,7 +204,7 @@ getTicker(options, callback);
 
 #### Example
 ```js
-exchange.getTicker({pair: "XBTUSD"}, function (err, ticker) {
+exchange.getTicker({pair: "XBT_USD"}, function (err, ticker) {
     if (!err)
         console.log(ticker);
 });
@@ -213,7 +216,7 @@ Example result:
     "error": "",
     "data": [
         {
-            "pair": "XBTUSD",
+            "pair": "XBT_USD",
             "last": "272.064",
             "bid": "272.064",
             "ask": "273.395",
@@ -270,7 +273,7 @@ cryptox.getOrderBook(options, callback);
 #### Example
 
 ```js
-exchange.getOrderBook({pair: "BTCUSD"}, function (err, orderBook) {
+exchange.getOrderBook({pair: "BTC_USD"}, function (err, orderBook) {
     if (!err)
         console.log(orderBook);
 });
