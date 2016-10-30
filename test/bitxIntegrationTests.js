@@ -14,6 +14,9 @@ const apiHost = {
 const publicMethodsToTest = ['getRate', 'getTicker', 'getOrderBook'];
 const privateMethodsToTest = ['getOpenOrders', ];
 const writeMockResponseFileForMethod = '';
+const nativeCalls = [
+    ['getTicker']
+];
 
 // don't change below this line; only configure above this line
 
@@ -24,7 +27,8 @@ describe('Integration Test ' + slug + ':', function () {
         apiHost: apiHost,
         publicMethodsToTest: publicMethodsToTest,
         privateMethodsToTest: privateMethodsToTest,
-        writeMockResponseFileForMethod: writeMockResponseFileForMethod
+        writeMockResponseFileForMethod: writeMockResponseFileForMethod,
+        nativeCalls: nativeCalls,
     };
     sharedTests.integrationTest(contextIT);
 });

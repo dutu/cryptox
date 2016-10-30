@@ -16,6 +16,7 @@
     * [postSellOrder](#postsellorder)
     * [postBuyOrder](#postbuyorder)
     * [cancelOrder](#cancelorder)
+    * [Native API calls](#nativeapicalls)
 * [NOTES](#notes)
     * [Currency Symbols](#currency-symbols)
     * [Currency Pairs](#currency-pairs)
@@ -876,7 +877,29 @@ Parameter   | Type |Required| Description                  |
 ### cancelOffer
 
 
+### Native API calls
 
+cryptox supports native API methods.
+The parameter and callback results are as described in the follwoing packages:
+
+* Bitfinex: https://github.com/bitfinexcom/bitfinex-api-node
+* Bitstamp: https://github.com/askmike/bitstamp
+* BitX: https://github.com/bausmeier/node-bitx
+* BTC-e: https://github.com/pskupinski/node-btc-e
+* Gdax: https://github.com/coinbase/gdax-node
+* Poloniex: https://github.com/dutu/poloniex-api-node
+
+#### Example
+
+```js
+exchange.native.getLendBook({currency: "USD"}, function (err, orderBook) {
+    if (!err)
+        console.log(lendBook);
+});
+```
+
+
+ 
 
 ## Notes ##
 

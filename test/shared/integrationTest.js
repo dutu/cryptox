@@ -1,40 +1,49 @@
-"use strict";
+'use strict';
 
 const chai = require("chai");
-const moment = require("moment");
+const moment = require('moment');
 const nock = require("nock");
-const jf = require("jsonfile");
+const jf = require('jsonfile');
 const fs = require('fs');
 const _ = require('lodash');
 
 let expect = chai.expect;
-chai.use(require("chai-json-schema"));
+chai.use(require('chai-json-schema'));
 
-const Cryptox = require("../../lib/index.js");
-const schema = require("../helpers/jsonSchemas.js");
+const Cryptox = require('../../lib/index.js');
+const schema = require('../helpers/jsonSchemas.js');
 
 exports.integrationTest = function (contextIT) {
     const slug = contextIT.slug;
     let myApiKeys, apiKeysFromFile;
     try {                                                       // load private keys if exists, else set to "dummy"
-        apiKeysFromFile = require("../helpers/private_keys.js");
+        apiKeysFromFile = require('../helpers/private_keys.js');
         myApiKeys = {
-            key: apiKeysFromFile[contextIT.slug].key || "dummy",
-            secret: apiKeysFromFile[contextIT.slug].secret || "dummy",
-            username: apiKeysFromFile[contextIT.slug].username || "dummy"
+            key: apiKeysFromFile[contextIT.slug].key || 'dummy',
+            secret: apiKeysFromFile[contextIT.slug].secret || 'dummy',
+            username: apiKeysFromFile[contextIT.slug].username || 'dummy',
         }
     }
     catch(err) {
         myApiKeys = {
-            key: "dummy",
-            secret: "dummy",
-            username: "dummy"
+            key: 'dummy',
+            secret: 'dummy',
+            username: 'dummy',
         }
     }
 
     let cryptox, apiHost;
     let publicCryptox = new Cryptox(contextIT.slug);
     let privateCryptox = new Cryptox(contextIT.slug, myApiKeys);
+
+    function testNativeCall(args) {
+        let nativeMethod = args[0];
+        let nativeArgs = Array.prototype.slice(1);
+        it(`should respond to '${nativeMethod}'`, function (done) {
+            expect(privateCryptox.native).to.respondTo(nativeMethod);
+            done();
+        });
+    }
 
     function shouldVerifyMockResults (method) {
         it("should return HTTP error 418 'I'm a teapot'", function (done) {
@@ -188,6 +197,10 @@ exports.integrationTest = function (contextIT) {
             });
         });
     }
+
+    contextIT.nativeCalls.forEach(function (nativeCall, index, array) {
+        testNativeCall(nativeCall);
+    });
 
     contextIT.publicMethodsToTest.forEach(function (method, index, array) {
         testMethod("public", method);
