@@ -808,6 +808,7 @@ cryptox.getOrderBook(options, callback);
 #### Example
 
 ```js
+
 exchange.getLendBook({currency: "USD"}, function (err, orderBook) {
     if (!err)
         console.log(lendBook);
@@ -892,9 +893,9 @@ The parameter and callback results are as described in the follwoing packages:
 #### Example
 
 ```js
-exchange.native.getLendBook({currency: "USD"}, function (err, orderBook) {
-    if (!err)
-        console.log(lendBook);
+var btce = new Cryptox("btce");
+btce.native.ticker("ltc_btc", function(err, data) {
+  console.log(err, data);
 });
 ```
 
