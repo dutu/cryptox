@@ -68,7 +68,7 @@ Example result:
 
 
 # Supported Exchanges and Implemented methods #
-*if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [exchanges.md](exchanges.md)*
+*if you are interested in extending cryptox for different exchange or a method not yet implemented, check out the document [Exchanges](docs/exchanges.md)*
 
 |                                                            |Bitfinex|Bitstamp      |BitX|BTC-e|CEX.io| Gdax |Poloniex|OXR <sup>[1]</sup>|
 |   ---                                                      |  :-:   |  :-:         |:-: | :-: | :-:  | :-:  |  :-:   |    :-:           |
