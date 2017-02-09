@@ -3,6 +3,12 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.1] - 2017-02-10
+
+### Fixed
+- poloniex flipped base and counter currency
+
+
 ## [1.1.0] - 2016-10-30
 
 ### Added
