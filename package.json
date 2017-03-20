@@ -1,6 +1,6 @@
 {
   "name": "cryptox",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Common API wrapper for multiple crypto currency exchanges",
   "main": "lib/index.js",
   "engines": {
