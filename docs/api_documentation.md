@@ -564,7 +564,8 @@ Example result:
 
 #### Arguments
 
-* `options` argument is not used and it is ignored 
+* `options` argument is not used and it is ignored, except for poloniex. For poloniex `{ account: 'all' }` can be used for summing up the balances of all accounts (exchange, margin and lending)
+ 
  
 * `callback` see [Callbacks](#callbacks)    
 

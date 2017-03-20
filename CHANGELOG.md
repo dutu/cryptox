@@ -3,6 +3,12 @@
 All notable changes to this module are documented in this file.
 cryptox module adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.0] - 2017-03-20
+
+### Added
+- poloiex.getMarginPositions() method supports `options` parameter `{ account: 'all' }` to sum up the balances of all accounts (exchange, margin and lending)
+
+
 ## [1.1.1] - 2017-02-10
 
 ### Fixed
